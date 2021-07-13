@@ -2,9 +2,8 @@ import React from "react"
 import Header from "../components/header"
 import { graphql } from "gatsby"
 import { useSiteData } from '../hooks/site-data'
+import { StaticImage } from 'gatsby-plugin-image'
 import './style.css'
-
-
 export default function Template({ data }) {
   const { title, description } = useSiteData()
   const { markdownRemark } = data // data.markdownRemark holds your post data
@@ -17,6 +16,10 @@ export default function Template({ data }) {
         className="blog-post-content"
         dangerouslySetInnerHTML={{ __html: html }}
       />
+      <div className="blog-footer">
+        <StaticImage src="../post/images/qrcode.jpg" alt="" />
+        <div>欢迎大家关注我的公众号-前端小板凳 一起学习进步！</div>
+      </div>
     </div>
   )
 }

@@ -5,7 +5,7 @@ tags: 跨端技术
 path: /android-layout
 ---
 
-![布局](ViewGroup.png)  
+![布局](./AndroidLayout/viewGroup.png)  
 安卓的页面是通过ViewGroup + View的组合来实现。  
 * ViewGroup是布局容器，它定义内部视图的展示方式。
 * View是视图组件，例如Button、TextView等。

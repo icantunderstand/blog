@@ -4,3 +4,11 @@
   overflow: scroll;
   padding: 0 1.0875rem 1.45rem;
 }
+
+.blog-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 30px;
+}

@@ -7,6 +7,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-gatsby-cloud`,
     `gatsby-plugin-sharp`,
     {
@@ -15,15 +16,15 @@ module.exports = {
         name: `blog`,
         short_name: `blog`,
         start_url: `/`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/post/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `blog`,
-        path: `${__dirname}/src/blog`,
+        name: `post`,
+        path: `${__dirname}/src/post`,
       },
     },
     `gatsby-transformer-sharp`,

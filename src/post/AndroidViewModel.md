@@ -9,11 +9,11 @@ path: /android-view-model
 
 ## ViewModel
 View能有效的做到视图和数据的分离，数据共享能力。
-![ViewModel作用](./AndroidViewModel/viewModel.jpg)
+![ViewModel作用](./AndroidViewModel/viewModel.png)
 
 ### ViewModel生命周期
 ViewModel对象存在的时间范围是获取ViewModel时传递给ViewModelProvider的生命周期。ViewModel将一直留在内存中，直到限定其存在时间范围的Lifecycle永久消失：对于Activity，是在Activity完成时；而对于 Fragment，是在 Fragment 分离时。
-![ViewModel生命周期](./AndroidViewModel/viewModelLife.png)
+![ViewModel生命周期](./AndroidViewModel/lifecycle.png)
 
 ## LiveData  
 LiveData是一种可观察的数据存储类，它具有生命周期感知能力，可以遵循其他应用组件(如Activity、Fragment、Service)的生命周期进行数据的更新通知。使用LiveData有通常有以下的三个步骤:  
