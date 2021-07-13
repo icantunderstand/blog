@@ -1,0 +1,49 @@
+---
+title: 端(跨)端技术学习
+date: 2020-12-24 07:00:00
+categories: 
+tags: 端(跨)端技术学习
+---
+
+## 端技术
+
+### webview
+WebView预加载(WebView复用)
+离线化
+请求预加载
+
+
+一个加载网页的过程中，native、网络、后端处理、CPU都会参与，各自都有必要的工作和依赖关系；让他们相互并行处理而不是相互阻塞才可以让网页加载更快：
+https://github.com/Tencent/VasSonic
+
+WebView初始化慢，可以在初始化同时先请求数据，让后端和网络不要闲着。
+后端处理慢，可以让服务器分trunk输出，在后端计算的同时前端也加载网络静态资源。
+脚本执行慢，就让脚本在最后运行，不阻塞页面解析。
+同时，合理的预加载、预缓存可以让加载速度的瓶颈更小。
+WebView初始化慢，就随时初始化好一个WebView待用。
+DNS和链接慢，想办法复用客户端使用的域名和链接。
+脚本执行慢，可以把框架代码拆分出来，在请求页面之前就执行好。
+
+
+https://blog.csdn.net/carson_ho/article/details/71402764
+https://www.jianshu.com/p/2622895d6d38
+https://yuweiguocn.github.io/android-h5/
+http://blog.cnbang.net/tech/3477/
+
+## 跨端框架
+性能统计
+
+## 跨端技术
+哪种跨端技术合理(好用) 需要什么能力
+### flutter
+
+
+
+
+
+
+
+
+
+
+

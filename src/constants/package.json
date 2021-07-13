@@ -1,0 +1,6 @@
+{
+  "exports": {
+    "require": "./index.js",
+    "import": "./es.js"
+  }
+}

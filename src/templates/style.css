@@ -1,0 +1,6 @@
+.blog-post-content {
+  margin: 0 auto;
+  max-width: 960px;
+  overflow: scroll;
+  padding: 0 1.0875rem 1.45rem;
+}
