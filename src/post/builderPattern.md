@@ -23,11 +23,12 @@ path: /build-pattern
 本文会结合一个创建迷宫的示例来介绍以上几种设计模式.通常实现一个迷宫会定义以下基类:  
  
     // 方向枚举
-    enum Direction { North, South, East, West };  
+    enum Direction { North, South, East, West };
+    // 迷宫组件的公用抽象类
     class MapSite {
       public: virtual void Enter() = 0;
     }  
-    // 房间  
+    // 房间  保存其他MapSite的引用
     class Room: public MapSite {
       public: 
         Room(int roomNo);
@@ -58,7 +59,9 @@ path: /build-pattern
     class Maze {
       public: 
         Maze();
+        // 在迷宫中添加Room
         voidb AddRoom(Room *);
+        // 根据RoomNo查找Room
         Room* RoomNo(int) const;
       private:
     }
@@ -75,8 +78,10 @@ path: /build-pattern
       // 省略很多的SetSide操作
       return aMaze
     }
-通过上面的代码实现的迷宫中硬编码了实现迷宫的行为，不利于扩展,下面通过对创建型设计模式的学习来优化上述代码的问题。
-### Abstract Factory(抽象工厂)
+
+上面代码在定义迷宫布局的时候对布局过程进行了硬编码，在未来需要对迷宫布局进行修改的时候就需要修改硬编码逻辑。通过创建型模式可以实现将实现的细节封装起来，给予代码一定的可变化性。
+
+### Abstract Factory(抽象工厂) - 对象创建型模式
 抽象工厂提供一个创建一系列相关或相互依赖对象的接口而无需指定他们具体的类。
 #### 结构
 ![抽象工厂结构](./builderPattern/abstractFactory.png)
@@ -99,9 +104,25 @@ path: /build-pattern
 3. 需要对一系列相关产品对象设计进行联合使用时
 4. 对外提供产品类库，提供统一的接口  
 
-#### 代码示例
-下面的代码使用Abstract Factory模式来创建一个迷宫,相对于直接在代码中硬编码创建迷宫的方式，通过传递ConcreteFactory来完成具体迷宫的创建.
+#### 优点&缺点
 
+* 分离了具体类的实现，通过具体工厂封装对具体产品实现的细节。
+* 通过具体工厂的实现，将具体产品的实现逻辑封装在一起，增加了整体的一致性。但是在增加新的种类的产品的时候需要实现新的具体工厂。
+
+#### 代码示例
+下面的代码使用Abstract Factory模式来创建一个迷宫。
+
+    // 定义抽象方法类
+    class MazeFactory {
+      public: 
+        MazeFactory()
+      
+      virtual Maze* MakeMaze() const { return new Maze; }
+      virtual Wall* MakeWall() const { return new Wall; }
+      virtual Room* MakeRoom(int n) const { return new Room(n); }
+      virtual Door* MakeDoor(Room* r1, Room* r2) { return new Door(r1, r2); }
+    }
+    // 通过传递具体的工厂实现迷宫的创建
     Maze* MazeGame::CreateMaze(MazeFactory& factory) {
       Maze* aMaze = factory.MakeMaze();
       Room* r1 = factory.MakeRoom(1);
@@ -114,11 +135,16 @@ path: /build-pattern
       r2.SetSide(North, factory.MakeWall());
       // 省略很多的SetSide操作
       return aMaze;
-    }  
+    } 
+
+    // 创建过程
+    MazeGame game;
+    MazeFactory factory
+    game.CreateMaze(factory)
 
 通过传递ConcreteFactory,上面的代码将创建逻辑都封装在具体工厂中，这样通过传递不同的工厂就能完成不同类型对象的创建。
 
-### Builder(生成器)
+### Builder(生成器) - 对象创建型模式
 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。Builder模式能更好的封装产品的内部表示。
 #### 结构  
 ![生成器结构](./builderPattern/builder.jpg)  
@@ -161,10 +187,16 @@ path: /build-pattern
       return builder.GetMaze();
     }
 
+    // 创建过程
+    Maze* maze
+    MazeGame game
+    MazeBuilder builder
+    maze = game.CreateMaze(builder)
+
 对比抽象工厂,Builder模式封装了创建过程的细节，通过不同的builder实现可以创建出不同的对象。
 
-### Factory Method(工厂方法)
-工厂方法定义一个用于创建对象的接口，让子类来实现对应的接口来创建对象。
+### Factory Method(工厂方法) - 对象创建型模式
+工厂方法定义一个用于创建对象的接口，让子类来实现对应的接口来创建对象。Factory Method使一个类的实例化延迟到其子类。
 #### 结构
 ![工厂方法](./builderPattern/factoryMethod.png)
 
@@ -182,7 +214,8 @@ path: /build-pattern
 #### 适用性
 工厂方法适用于以下场景:
 1. 父类不知道它需要创建的对象的类的时候  
-2. 当一个类希望它的子类来指定创建对象的时候  
+2. 当一个类希望它的子类来指定创建对象的时候
+3. 当类将创建对象的职责委托给多个帮助子类中的某一个并且希望某一个帮助子类代理这个创建过程
 
 #### 示例代码
 
@@ -216,7 +249,7 @@ path: /build-pattern
         virtual Room* MakeRoom(int n) const  { return new RoomWithBomb(n); };
     }
 
-### PROTOTYPE（原型)  
+### PROTOTYPE（原型) - 对象创建型模式
 原型模式通过原型实例指定创建对象的种类，通过拷贝原型来创建新的对象
 #### 结构  
 ![原型方法](./builderPattern/prototype.png)
@@ -268,7 +301,7 @@ path: /build-pattern
     MazePrototypeFactory simpleMazeFactory(new Maze, new Wall, new Room, new Door);
     Maze* maze = game.CreateMaze(simpleMazeFactory)
 
-### SINGLETON（单例）
+### SINGLETON（单例）- 对象创建型模式
 保证一个类仅有一个实例，并提供一个访问他的全局访问点
 #### 结构
 ![单例模式](./builderPattern/singleton.jpg)
