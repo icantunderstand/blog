@@ -1,6 +1,7 @@
 
 const path = require(`path`)
 const pageConstants = require('./src/constants')
+const createPaginatedPages = require('gatsby-paginate')
 
 // 创建分类页面
 function createCategoryPage({ actions, graphql }) {
@@ -27,7 +28,9 @@ async function createDetailPage({ actions, graphql }) {
         edges {
           node {
             frontmatter {
-              path
+              path,
+              title,
+              date,
             }
           }
         }
@@ -37,6 +40,14 @@ async function createDetailPage({ actions, graphql }) {
   if (result.errors) {
     console.error(result.errors)
   }
+  createPaginatedPages({
+    edges: result.data.allMarkdownRemark.edges,
+    createPage: createPage,
+    pageTemplate: 'src/templates/index.js',
+    pageLength: 15, // This is optional and defaults to 10 if not used
+    pathPrefix: '', // This is optional and defaults to an empty string if not used
+    context: {}, // This is optional and defaults to an empty object if not used
+  })
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.path,
