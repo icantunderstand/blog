@@ -23,8 +23,6 @@ WebView初始化慢，就随时初始化好一个WebView待用。
 DNS和链接慢，想办法复用客户端使用的域名和链接。
 脚本执行慢，可以把框架代码拆分出来，在请求页面之前就执行好。
 
-https://blog.csdn.net/carson_ho/article/details/71402764
-https://blog.csdn.net/SEU_Calvin/article/details/113809809
 
 // 如何设计一个预加载请求的jsb 
 
