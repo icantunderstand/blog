@@ -24,7 +24,9 @@ async function createDetailPage({ actions, graphql }) {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allMarkdownRemark {
+      allMarkdownRemark (
+        sort: {order: DESC, fields: frontmatter___date}
+      ) {
         edges {
           node {
             frontmatter {

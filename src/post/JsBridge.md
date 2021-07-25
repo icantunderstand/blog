@@ -6,7 +6,7 @@ path: /jsbridge
 ---
 
 Hybrid混合开发相对于单一的客户端开发有着开发周期短，迭代快的优势，但是Hybrid模式开发的页面存在着一定的缺陷，比如性能问题、缺乏客户端能力等。通过JSBridge这个桥梁可以实现客户端能力的打通，赋予了Hybrid应用更强的端能力。
-![JS](JSBridge.jpg)  
+![JS](./JsBridge/JSBridge.png)  
 JSBridge作为客户端和H5的通信的桥梁，可以承接如下的能力:
 * 鉴权能力 JSBridge调用能力鉴权，白名单，黑名单等
 * 胶水能力 JSBridge兼容代码，做版本控制等调用透明
@@ -140,7 +140,7 @@ Js调用Native通常有如下的方案:
             </script>
         </body>
 
-![拦截请求实现调用](overrideUrlCall.png)
+![拦截请求实现调用](./JsBridge/overrideUrlCall.png)
 
 使用iframe发送消息的方式会存在消息丢失，参数限制等问题，可以通过消息队列和拦截shouldInterceptRequest方法来实现。
 ### 拦截特定方法
@@ -172,7 +172,7 @@ Js调用Native通常有如下的方案:
 
         window.prompt('myjsb://')
 
-![重写Prompt方法调用](overridePrompt.png)
+![重写Prompt方法调用](./JsBridge/overridePrompt.png)
 
 ### 客户端注入JSBridge
 通过[addJavascriptInterface](https://developer.android.com/reference/android/webkit/WebView#addJavascriptInterface(java.lang.Object,%20java.lang.String))可以在初始化WebView的时候将客户端的调用逻辑暴露给H5。
@@ -200,7 +200,7 @@ Js调用Native通常有如下的方案:
 
         window.myjsb.showToast("Interface")  
 
-![interface调用](callInterface.png)
+![interface调用](./JsBridge/callInterface.png)
 
 ## Native调用Js
 Nativa调用Js通常有如下的方案:
@@ -226,7 +226,7 @@ Nativa调用Js通常有如下的方案:
         }
     });
 
-![evaluate调用js](evaluateJS.png)
+![evaluate调用js](./JsBridge/evaluateJS.png)
 
 ## 参考
 [小白必看，JSBridge 初探](https://www.zoo.team/article/jsbridge)

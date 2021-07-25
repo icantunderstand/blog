@@ -1,6 +1,6 @@
 ---
 title: 一起学跨端技术-Webview缓存
-date: 2021-7-20  
+date: 2021- 7 - 21 
 tags: 跨端技术
 path: /webview-store
 ---
@@ -71,7 +71,6 @@ Dom Storage指的是LocalStorage和SessionStorage。LocalStorage是持久存储�
     
 ### IndexedDB
 IndexedDB可以通过数据库的方式对数据进行存储，它的存储空间相对于Dom Storage大很多。通常可以基于封装IndexedDB的库来实现数据的存储。IndexedDB的使用方式可以参考[浏览器数据库 IndexedDB 入门教程](https://www.ruanyifeng.com/blog/2018/07/indexeddb.html)
-
 
 ## 参考
 [ApplicationCache](https://webplatform.github.io/docs/apis/appcache/ApplicationCache/)  
