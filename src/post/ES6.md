@@ -106,7 +106,7 @@ path: /es6-basic
     }  // 使用默认参数来做参数的校验
 
 ## 解构
-解构是跟变量的操作关联到一起的,主要用于变量的声明,赋值,函数参数的定义以及提供默认值。对象解构的时候,会把右边的操作值转化成对象。数组的结构的时候会把右边的值转换成迭代器
+解构是跟变量的操作关联到一起的,主要用于变量的声明,赋值,函数参数的定义以及提供默认值。对象解构的时候,会把右边的操作值转化成对象。数组解构的时候相当于调用数组的迭代器实现
 
     const { length } = 'aaa';
     console.log(length) // 3
@@ -247,8 +247,8 @@ CommonJs循环加载时,属于加载时执行.即脚本代码在require的时�
     console.log(test); // undefined
 
 ## iterator(迭代器)
-   在ES6中的可以使用数组结构,for of等语句遍历数组和ES6的新增结构Map,Set是因为在ES6中默认为这些结构创建了[Symbol.iterator]方法.通过这个方法的调用返回一个可以遍历该数据结构的对象(iterator),通过这个对象来遍历数据结构的属性.
-  ![iterator](iterator.png)  
+   在ES6中的可以使用数组解构,for of等语句遍历数组、Map、Set是因为在ES6中默认为这些结构创建了[Symbol.iterator]方法.通过这个方法的调用返回一个可以遍历该数据结构的对象(iterator),通过这个对象来遍历数据结构的属性.
+  ![iterator](./ES6/iterator.png)  
 
     const iterable = {
       [Symbol.iterator]() {
@@ -392,7 +392,7 @@ Set对象是值的集合，可以按照拆入的顺序迭代它的元素且Set�
 | Set.prototype.clear() | 移除set对象内的所有元素 | 
 | Set.prototype.delete(value) | 移除set中与这个值相等的元素 | 
 | Set.prototype.has(value) | 返回一个布尔值, 表示该值是否在set中 | 
-| Set.prototype.keys() | 返回键名的遍历器**遍历顺序是插入顺序** | 
+| Set.prototype.keys() | 返回键值的遍历器 **遍历顺序是插入顺序** | 
 | Set.prototype.values() | 返回键值的遍历器 | 
 | Set.prototype.entries() | 返回键值对的遍历器 | 
 | Set.prototype.forEach() | 使用回调函数遍历每个成员 | 

@@ -41,7 +41,7 @@ categories:
         let now = +new Date();
         if(now - lasttime > wait) {
           lasttime = now;
-          func.apply(this, args);
+          return func.apply(this, args);
         } 
       }
     }
@@ -62,7 +62,7 @@ categories:
     }
     return temp;
   }
-  // 传递过去hash是为了防止迭代到同样的变量 加快
+  // 传递过去hash是为了防止迭代到同样的变量 解决环的问题 加快
   function deepClone(obj, hash = new WeakMap()) {
     if(hash.has(obj))  return hash.get(obj);
     const type = Object.prototype.toString.call(obj);
@@ -85,14 +85,16 @@ categories:
   }
 
 ### 判断两个值是否相等
-
+    
+    // 判断两个值是否相等
     function isSameValue(x, y ) {
       if(x === y) {
-        return x !== 0 || y !== 0 || 1/x === 1/y;
+        return x !== 0 || 1/x === 1/y;
       } else {
         return x !== x && y !== y
       }
     }
+    // 两个对象是否相等
     function shallEqual(objA, objB) {
       if(is(objA, objB)) {
         return true;

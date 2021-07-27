@@ -30,9 +30,6 @@ ViewModel是model of view  包括领域模型(domain model)和视图的状态(st
   3. 组件化(抽象,组合,代码复用)
   4. 函数式编程
 
-### state
-this.setState({})  // 多个更新会batch
-this.setState((state, props) => ({})) // 会接受之前的state 按顺序更新
 
 ## react diff
 react的diff基于以下三点:

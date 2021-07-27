@@ -14,7 +14,7 @@ React在设计上使用了依赖注入的方式,通过注入不同平台的渲�
 在创建组件实例的时候,React会注入不同平台renderer最后结合react-reconciler来实现组件的渲染更新.
 
 ### 事件循环
-[事件循环](https://icantunderstand.cn/2018/09/17/eventloop/)
+[事件循环](https://icantunderstand.cn/event-loop)
 
 ### lane
 在react新的架构中定义了lane的概念.lane用于控制不同任务的更新优先级处理逻辑,具体可以参考[lane模型](https://react.iamkasong.com/concurrent/lane.html)
@@ -25,7 +25,7 @@ React在设计上使用了依赖注入的方式,通过注入不同平台的渲�
 * 发起调用(setState做了什么) 
 
 ### 注入渲染renderer
-在[图说React渲染流程](https://icantunderstand.cn/2021/03/25/reactInterpretation/)中,React会根据当前的页面结构创建workInProgress树,注入renderer的逻辑就在创建组件实例的过程中.
+在[图说React渲染流程](https://icantunderstand.cn/react-render-interpretation)中,React会根据当前的页面结构创建workInProgress树,注入renderer的逻辑就在创建组件实例的过程中.
 在创建[类组件](https://github.com/facebook/react/blob/a423a01223785a8bc4dcd55f2a0288200b033eee/packages/react-reconciler/src/ReactFiberBeginWork.new.js#L943)的时候,会执行constructClassInstance创建组件的实例.
 ![constructClassInstance](./setState/constructor.png)
 在[constructClassInstance](https://github.com/facebook/react/blob/a423a01223785a8bc4dcd55f2a0288200b033eee/packages/react-reconciler/src/ReactFiberClassComponent.new.js#L591)中主要做了如下两件事:
