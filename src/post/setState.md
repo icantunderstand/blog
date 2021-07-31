@@ -46,13 +46,13 @@ setState是挂载在组件实例上的方法,在创建类组件的时候会调�
 ![baseComponent](./setState/baseComponent.png)  
 在调用setState的时候其实是调用注入的updater(classComponentUpdater)的enqueueSetState逻辑来实现页面的渲染更新.
 在classComponentUpdater中主要做了:
-1. 创建update 形成update的链表结构(updateQueue) 在更新阶段会依次链表的update
+1. 创建update 形成update的链表结构(updateQueue) 在更新阶段会依次处理链表的update
 2. 通过scheduleUpdateOnFiber触发更新  
 
 在[scheduleUpdateOnFiber](https://github.com/facebook/react/blob/a423a01223785a8bc4dcd55f2a0288200b033eee/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L456)中获取到根节点通过ensureRootIsScheduled发起根节点更新调度.  
 
 [ensureRootIsScheduled](https://github.com/facebook/react/blob/a423a01223785a8bc4dcd55f2a0288200b033eee/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L632)的功能是在根节点上调度任务的执行,主要功能如下:
-![ensureRootIsScheduled](ensureRootIsScheduled.png)
+![ensureRootIsScheduled](./setState/ensureRootIsScheduled.png)
 * 根据当前任务获取优先级通过Scheduler发起不同优先级的任务调度
 * 同优先级任务合并,不发起新的任务调度  
 

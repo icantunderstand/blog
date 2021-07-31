@@ -23,13 +23,11 @@ Model-View-ViewModel
 ViewModel是model of view  包括领域模型(domain model)和视图的状态(state) ViewModel更适合描述view.
 ![MVVM](reactBasic/MVVM.png) 
 
-
 ## react理念(我对react的一些认识)
   1. V = F(data(View Modal)) 数据驱动视图
   2. 隔离dom,通过虚拟Dom和renderer来绘制页面
   3. 组件化(抽象,组合,代码复用)
   4. 函数式编程
-
 
 ## react diff
 react的diff基于以下三点:
