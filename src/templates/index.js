@@ -14,6 +14,7 @@ const NavLink = props => {
 
 const IndexPage = ({ pageContext }) => {
   const { group, index, first, last, pageCount } = pageContext
+  console.log(pageContext, 1000)
   const previousUrl = index - 1 === 1 ? '/' : (index - 1).toString()
   const nextUrl = (index + 1).toString()
   const [ nextPage, setNextPage ] = useState(nextUrl)

@@ -383,8 +383,6 @@ return是当前程序处理完需要返回的fiber节点
 ### React 高阶用法梳理
 
 
-
-
 [React Fiber的链表结构](https://indepth.dev/posts/1007/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree)
 [React Fiber算法介绍](https://indepth.dev/posts/1008/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react)
 [build your own react](https://pomb.us/build-your-own-react/)

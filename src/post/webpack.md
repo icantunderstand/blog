@@ -5,7 +5,7 @@ tags: 工程化
 path: /webpack-code
 ---
 
-在[深入浅出webpack-Tapable](https://icantunderstand.cn/2021/04/06/webpackTapable/)源码解析中,我们了解到webpack是基于Tapable来实现打包的任务调度,本文基于webpack的源码梳理打包的实现流程.在源码分析中会主要关注以下几点:  
+在[深入浅出webpack-Tapable](https://https://icantunderstand.cn/webpack-tapable)源码解析中,我们了解到webpack是基于Tapable来实现打包的任务调度,本文基于webpack的源码梳理打包的实现流程.在源码分析中会主要关注以下几点:  
 1. webpack启动过程(compiler compilation的生成过程)
 2. 入口文件的解析过程
 3. loader调用过程
@@ -15,7 +15,7 @@ path: /webpack-code
 ## 前置知识
 
 ### Tapable
-webpack基于tapable来实现任务调度和代码逻辑的拆分.[深入浅出webpack-Tapable](https://icantunderstand.cn/2021/04/06/webpackTapable/)
+webpack基于tapable来实现任务调度和代码逻辑的拆分.[深入浅出webpack-Tapable](https://https://icantunderstand.cn/webpack-tapable)
 
 ### webpack基础
 webpack是前端的打包工具,通过loader实现了文件转化能力、plugin实现了打包阶段的介入能力(编译能力增强,任务拆分).  

@@ -208,7 +208,7 @@ categories:
     function getSelectKeyNode(head, k) {
       let index = 0;
       let cur = head;
-      let next = head;
+      let next = head
       while(next.right !== null && index <= k) {
         next = next.right;
         index++;
@@ -245,7 +245,7 @@ categories:
 ### 反转链表
 
     function reverseList(node) {
-      if(!node || !node.next) {
+      if(!!node || !!node.next) {
         return node
       }
       let prev = null
@@ -283,12 +283,12 @@ categories:
       let result = [], acc = []
       for(let i = 0; i < arr.length;i++) {
         acc.push(arr[i])
-        if(i < k -1) {
+        if(i > k -1) {
           result.push(Math.max(...acc))
           acc.shift()
         }
       }
-      return result
+      return Math.max(...result)
     }
 
 ### 合并两个有序数组
@@ -409,6 +409,7 @@ categories:
 
 ### 选择排序
 默认将数组拆分为已排序和未排序部分,循环遍历将未排序部分最小元素插入到已排序末尾
+选择排序的关键是 从后面未排序的部分找到一个最小的
 
 
     function selectSort(arr) {
@@ -538,9 +539,9 @@ categories:
 
 #### 数组中最小的k个元素
 
-    let getLeastNumbers = function(arr, k) {
+    let getLowestNumbers = function(arr, k) {
       // 从 arr 中取出前 k 个数，构建一个大顶堆
-      let heap = [,], i = 0
+      let heap = [], i = 0
       while(i < k) {
         heap.push(arr[i++]) 
       }
@@ -548,15 +549,12 @@ categories:
       
       // 从 k 位开始遍历数组
       for(let i = k; i < arr.length; i++) {
-          if(heap[1] > arr[i]) {
+          if(heap[0] > arr[i]) {
               // 替换并堆化
-              heap[1] = arr[i]
-              heapify(heap, k, 1)
+              heap[0] = arr[i]
+              heapify(heap, k, 0)
           }
       }
-      
-      // 删除heap中第一个元素
-      heap.shift()
       return heap
     };
 
@@ -620,6 +618,7 @@ categories:
 
 ### 插入排序
 默认将数组拆分为已排序部分和未排序部分,循环遍历将未排序部分的第一个元素插入到已排序元素的合适位置 关键点是移动
+插入排序的关键是 找到一个往前面插入
 
     function insertSort(arr) {
       let len = arr.length;
@@ -878,6 +877,7 @@ categories:
       let lowestCA = lowestCommonAncestor(root, p, q)
       // 分别求出公共祖先到两个节点的路经
       let pDis = [], qDis = []
+      // 一个节点到另一个节点的路径之和
       getPath(lowestCA, p, pDis)
       getPath(lowestCA, q, qDis)
       // 返回路径之和
@@ -998,7 +998,6 @@ categories:
     }
 
 
-
-
 ## 相关资料
-https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html
+https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html  
+https://www.cnblogs.com/chengxiao/p/6129630.html

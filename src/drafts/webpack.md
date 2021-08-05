@@ -1,6 +1,6 @@
 ---
 title: webpack资料总结 
-date: 2021-04-1 11:30:00  
+date: 2021-4-1 11:30:00  
 tags: webpack
 categories: webpack
 ---
@@ -101,13 +101,13 @@ Plugin主要职责 基于webpack构建的hooks来增强构建能力
       class MyPlugin {
         apply (compiler) {
           // 找到合适的事件钩子，实现自己的插件功能
-          compiler.hooks.run.tapAsync('MyPlugin', (compiler, callback) => {
+          compiler.hooks.run.tapAsync('MyPlugin', (compilation, callback) => {
               // compilation: 当前打包构建流程的上下文
               console.log(compilation);
               // do something...
               callback()
           })
-          compiler.hooks.run.tapPromise('MyPlugin', (compiler) => {
+          compiler.hooks.run.tapPromise('MyPlugin', (compilation) => {
           // compilation: 当前打包构建流程的上下文
           return new Promise((resolve, reject) => {
             resolve(11)

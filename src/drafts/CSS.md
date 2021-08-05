@@ -49,30 +49,13 @@ categories: CSS
     }
 
 ### flex
-可以通过order来调整加载的顺序
 
     <div id="container">
-      <div id="left">left</div>
+      // 调整order
       <div id="main">main</div>
+      <div id="left">left</div>
       <div id="right">right</div>
     </div>
-
-    #container {
-      display: flex;
-    }
-    #left {
-      width: 100px;
-      background: red;
-    }
-    #right {
-      width: 100px;
-      background: green;
-    }
-    #main {
-      flex:1;
-      order: 1;
-      background: blue;
-    }
 
 ### BFC
 BFC区域不与float区域重合

@@ -1,3 +1,5 @@
+const { func } = require("prop-types");
+
 function buildMaxHeap(arr) {
   const len = arr.length;
   for(let i = Math.floor(len /2); i >= 0; i--) {
@@ -35,3 +37,5 @@ function heapSort(arr) {
   }
   return arr;
 }
+
+

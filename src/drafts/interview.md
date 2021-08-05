@@ -282,32 +282,25 @@ categories:
     }
 
     // null === null undefined === undefined true
-    // 实现一个includes方法
-    function sameValue(x, y) {
-      return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
-    }
-
-    Object.defineProperty(Array.prototype, 'includes', { value: function (valueToFind, fromIndex){
-      const o = Object(this);
-      const len = o.length;
-      if(len === 0) return false;
-      const n = fromIndex || 0;
-      const k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
-
-      while(k < len) {
-        if(sameValue(o[k], valueToFind)) {
-          return true;
-        }
-        k++;
-      }
-      return false;
-    }});
-
     Array.prototype.includes(value) // 是否存在某个值
     Array.prototype.every(callback) // 检查所有元素 有一个返回false 就返回false 
     Array.prototype.some(value) // 检查至少有一个通过测试
     Array.prototype.reduce((accumulator, currentValue, index, array) => {}, initValue)
     Array.prototype.rightReduce((accumulator, currentValue, index, array) => {}, initValue)
+
+## 实现compose函数
+
+    function compose(...funcs) {
+      if(funcs.length === 0) {
+        return arg => arg
+      }
+      if(funcs.length === 1) {
+        return func[0]
+      }
+      return funcs.reduce((a,b) => (...args) => a(b(...args)))
+    }
+
+
 
 
 
