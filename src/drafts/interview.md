@@ -196,10 +196,21 @@ categories:
     }
     // 创建出来对象的__proto__ 是函数的prototype
 
-    proto 对象的原型
+    __proto__ 对象的原型
     prototype 函数的原型  Func.prototype.constructor === Func
 
 ## 实现继承的几种方式
+
+### 原型链面试问题
+
+    Function.prototype.a = () => console.log(1);
+    Object.prototype.b = () => console.log(2); 
+    function A() {}
+    console.log(A.__proto__ === Function.prototype) // true
+    console.log(Object.__proto__ === Function.prototype) //true
+    const a = new A();
+    // a.a(); // 无法执行
+    a.b();
 
 ### 原型链继承
 
@@ -270,7 +281,7 @@ categories:
     }
     // 数组的相关方法
     unshift(value) 在前面插入  shift() 在前面移除
-    // 拆分数组
+    // 数组扁平化
     function flattenDeep(arr) {
       return arr.reduce((acc, val) => {
         if(Array.isArray(val)) {
@@ -300,8 +311,63 @@ categories:
       return funcs.reduce((a,b) => (...args) => a(b(...args)))
     }
 
+## 实现get函数
+
+    function get (source, path, defaultValue = undefined) {
+      const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.')
+      let result = source
+      for (const p of paths) {
+        result = Object(result)[p]
+        if (result === undefined) {
+          return defaultValue
+        }
+      }
+      return result
+    }
+
+### 实现一个jsonp
+* 标签的移除 
+* callback注册到window上 需要进行移除(冲突) 和 callback的返回
+
+    function jsonp ({url, data, callback}) {
+      const container = document.getElementsByTagName('head')[0];
+      const fnName = `jsonp_${new Date().getTime()}`;
+      const script = document.createElement('script');
+      script.src = `${url}?${objectToQuery(data)}&callback=${fnName}`;
+      script.type = 'text/javascript';
+      container.appendChild(script);
+
+      window[fnName] = function (res) {   
+          callback && callback(res);
+          container.removeChild(script);
+          delete window[fnName];
+      }
+
+      script.onerror = function() { // 异常处理，也是很多人漏掉的部分
+          window[fnName] = function() {
+          callback && callback(
+            'something error hanppend!'
+          )
+          container.removeChild(script);
+          delete window[fnName];
+        }
+      }
+    }
 
 
+## promise
+
+1. then 和 catch 期望接收函数做参数，如果非函数就会发生 Promise 穿透现象，打印的是上一个 Promise 的返回
+
+    const promise = new Promise(function(resolve, reject){
+      setTimeout(function() {
+        resolve(1);
+      }, 3000)
+    })
+
+    promise.then(2).then((n) => {
+      console.log(n)
+    });
 
 
 

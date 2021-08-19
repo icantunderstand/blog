@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style >
-     #test {
-       width: 100px !important;
-       height: 100px;
-       background: blue;
-       border-radius: 100px 0 0 0;
-     }
   </style>
 </head>
 <body>
   <div id="test" style="width: 300px"></div>
+  <script >
+    function uncurry(fn) {
+      return function uncurried(...args) {
+        let ref = fn
+        for(let arg of args) {
+          ret = ret(arg)
+        }
+        return ret
+      }
+    }
+  </script>
 </body>
 </html>

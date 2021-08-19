@@ -20,13 +20,21 @@ categories: 前端基础
 ![http 1.1 三种模式](interviewNetwork/http1.1.png)
 1. short-lived: Connection: close
 2. Persistent Connection: keep-alive  TCP的慢启动和连接(DNS 三次握手)的建立减少请求完成的整体时间
-3. http pipelining  在一个链接上发送多个请求,不必等待上一个结果的返回.返回需要按照发送的顺序返回  
+3. http pipelining  在一个链接上发送多个请求,不必等待上一个结果的返回.返回需要按照发送的顺序返回
 
 pipeline 模式 
 1. 需要逐个响应, 存在队首阻塞
 2. 占用资源,容易被攻击
 3. 断开连接的处理
 4. pipeline的中间的代理需要支持管道技术  
+
+#### TCP && UDP
+1. tcp是面向连接的，udp是无连接就发送数据的
+2. tcp传输是可靠的 udp传输不可靠 udp相比TCP之下容易丢包，报文乱序
+3. 基于tcp的应用层协议：http,https,ftp,telnet 基于udp ：dns,tftp
+
+#### https && http
+HTTPS 其实就是建构在 SSL/TLS 之上的 HTTP 协议
 
 #### 三次握手
 
@@ -156,7 +164,9 @@ if-last-modified
 
 ##### 规则
 ###### 简单请求 
-1. GET POST HEAD  Content-Type: text/plain  multipart/form-data application/x-www-form-urlencoded 不需要发送预检请求 option
+* GET POST HEAD
+* Content-Type: text/plain  multipart/form-data application/x-www-form-urlencoded
+不需要发送options请求 但是跟复杂的CROS请求一致 仍然需要服务端返回首部字段来判断
 ###### 复杂请求
 发送预检请求与服务器沟通服务端允许的请求的规则(method, headers),在发送实际的请求.
 例如 options   Access-Control-Request-Method: POST, Access-Control-Request-Headers: Content-Type
@@ -179,6 +189,8 @@ cookie通过服务端的set cookie来做用户信息的存储 通常的设置方
 
 1. cookie可以domain  path  不同domain不可以cookie共享 相同domain的不同path 可以共享domain的cookie
 2. http-only 防止被js读取
+3. 在cookie设置domain和path的时候 只有相同domain和path的请求会携带cookie  
+4. 在跨域请求的时候 设置withCredential: true的时候 会携带cookie，服务端需要设置响应头Access-Control-Allow-Credentials: true 才能拿到响应
 
 ##### cookie操作
 
@@ -257,6 +269,7 @@ dom渲染完成时间： domContentLoadedEventEnd - navigationStart
 https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
 https://lz5z.com/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-CSS3%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/
 [面试提纲](https://juejin.cn/post/6844903574124625934)
+[深大面试题](https://blog.szuea.com/)
 
 
 

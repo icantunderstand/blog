@@ -15,8 +15,8 @@ path: /iosmorphism
 ## 简单的实现思路
 1. 将client端的代码转换成server可以执行的代码(es6 => commonjs).
 2. 在两端组合出一套模式相同的代码逻辑.下面的例子中在server和client端使用不同的react-router提供的组件.
-![App](./isomorphism/app.png) 
-3. server端路由匹配,组装资源(css, js, data), 可以通过不同的中间件根据请求信息来组装.
+![App](./isomorphism/app.png)   
+3. server端路由匹配,组装资源(css, js, data), 可以通过不同的中间件根据请求信息来组装.  
 4. client端路由匹配,匹配资源(data, 检查页面渲染结果是否正确).
 
 ## 过程

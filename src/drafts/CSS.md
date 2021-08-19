@@ -338,3 +338,64 @@ BFC区域不与float区域重合
 
   td:nth-child(2n+1) // 奇数行
   td:nth-child(2n) // 偶数行
+
+
+### 移动端适配方案
+https://juejin.cn/post/6847902224740253709
+#### rem布局方案
+
+1. 设置viewport 
+<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1; minimum-scale=1; user-scalable=no;">
+
+2. 调整跟字体
+function setRemUnit () {
+    var rem = document.documentElement.clientWidth / 10
+    // 375/10 = 37.5  基准值  可以结合postcss-pxtorem来实现px到rem的转换
+    docEl.style.fontSize = rem + 'px'
+}
+缺点
+1. viewport对pc端无效
+2. 改变fontSize的代码必须放到css样式之前
+3. 不想适配 
+
+
+#### 媒体查询
+
+@ media all (min-width: 30em) and (max-width: 50em) { ... }
+
+#### vw适配
+vw是根据视口的长度和宽度进行适配  
+1vw等于window.innerWidth的1%  如果设计稿是750 1vw相当于7.5px
+
+结合rem和vw实现是适配
+给根元素大小设置随着视口变化而变化的vw单位，这样就可以实现动态改变其大小。 在根元素设置vw单位
+限制根元素字体大小的最大最小值，配合body加上最大宽度和最小宽度
+
+// rem 单位换算：定为 75px 只是方便运算，750px-75px、640-64px、1080px-108px，如此类推
+ $vm_fontsize: 75; // iPhone 6尺寸的根元素大小基准值
+ @function rem($px) {
+    @return ($px / $vm_fontsize ) * 1rem;
+ }
+ // 根元素大小使用 vw 单位
+ $vm_design: 750;
+ html {
+    font-size: ($vm_fontsize / ($vm_design / 2)) * 100vw; //可以直接写20vw （1rem == 20vw）
+    // 同时，通过Media Queries 限制根元素最大最小值
+    @media screen and (max-width: 320px) {
+        font-size: 64px;
+    }
+    @media screen and (min-width: 540px) {
+        font-size: 108px;
+    }
+}
+// body 也增加最大最小宽度限制，避免默认100%宽度的 block 元素跟随 body 而过大过小
+body {
+    max-width: 540px;
+    min-width: 320px;
+}
+
+// 存在问题是视口过小的时候 字体也太小
+
+
+
+

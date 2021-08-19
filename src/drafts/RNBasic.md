@@ -1,20 +1,29 @@
-
-
 ---
-title: RN 基础知识汇总
-date: 2020-04-16 09:00:00
+title: React Native系统学习
+date: 2020-4-16 09:00:00
 tags: 跨端开发
 categories: 
 ---
 
-## React Native新增一个原生组件的方式
-1. 模块需要实现RctBridgeModule 插入RCT_EXPORT_MODULE宏(收集暴露给js的类)  RCT_EXPORT_METHOD暴露方法 RCT_EXPORT_VIEW_PROPERTY暴露属性
+这里会系统的梳理react native的基础原理 react native未必是一个完善的跨端框架 只要是通过梳理关键点 了解跨端框架的实现方式并通过系统的梳理能对现有的框架进行优化或者在现有的技术方案上可迁移的点
 
-## React Native渲染过程
-1. 创建RCTRootView  异步加载js 加载完成通知RCTRootView
-2. RCTRootVIew创建RCTContentView挂载到RCTRootView上并调用appRegistry的runApplication,renderApplication方法 
-3. RCTUIManager createView(创建主视图 + 设置子视图)
-4. RctUIManager => pendingUIBlocks 会批处理Js to Native侧的UI请求
+React 启动流程梳理  http://www.ayqy.net/blog/react-native-architecture-overview/
+
+## react native启动流程
+1. 加载js bundle 代码
+2. 初始化Native Modules  
+3. 初始化 JSCExecutor
+4. 创建Module配置表
+5. 注入Module信息到JSCExector
+6. 执行JS Bundle代码
+
+## React Native新增一个原生组件的方式
+模块需要实现RctBridgeModule 插入RCT_EXPORT_MODULE宏(收集暴露给js的类) 
+* RCT_EXPORT_METHOD暴露方法
+* RCT_EXPORT_VIEW_PROPERTY暴露属性
+
+## React Native渲染过程 这里需要梳理线程相关知识
+主要角色 UIManager和ShadowView 
 
 
 ## React Native通信过程

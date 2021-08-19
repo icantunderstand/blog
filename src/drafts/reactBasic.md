@@ -29,6 +29,16 @@ ViewModel是model of view  包括领域模型(domain model)和视图的状态(st
   3. 组件化(抽象,组合,代码复用)
   4. 函数式编程
 
+## React element && Component && instance
+element是通过React.createElement创建的对象 包括type props children等
+Component 是定义的组件 比如函数组件 或者类组件等
+instance 类组件有instance 声明周期 函数式组件没有instance
+
+## 函数组件替代类组件？？？
+1. hooks更好的实现了逻辑的复用 
+2. 用hooks取代生命周期 函数更加声明化(命令式编程 => 声明式编程)  类组件基于生命周期实现的逻辑不好
+
+
 ## react diff
 react的diff基于以下三点:
 1. DOM节点的跨层级的移动操作比较少
@@ -217,6 +227,9 @@ React.memo(MyComponent, areEqual)
 
 ### hooks
 
+### useRef 
+useRef可以保存在组件渲染的时候的一个常量
+修改.current的值 并不能使组件渲染
 #### useState
 
   // 接受一个初始值 
@@ -231,8 +244,95 @@ useEffect(() => {
   return () => {}
 }, [compare])
 
+#### 用hooks实现一个定时器
+
+    //注意CountDown要大写
+    function CountDown(value) {
+    const timer = useRef(null)
+    let [ count, setCount ] = useState(value)
+    const [ refresh, setFresh ] = useState(false)
+
+    useEffect(() => {
+      timer.current = setInterval(() => {
+        setCount(count--)
+      }, 1000)
+      if(refresh) {
+        setFresh(false)
+      }
+      return () => {
+        clearInterval(timer.current)
+      }
+      
+    }, [refresh])
+    function changeRresh() {
+      setFresh(true)
+      clearInterval(timer.current)
+      setCount(value)
+    }
+    return [count, changeRresh]
+  }
+
 #### useContext
-useContext可以拿到最近的Provider的值
+通过useContext可以实现redux类的状态共享
+
+    // 父组件  全局的state都放到外层provider 需要进行context的拆分 减少重复的渲染
+    function App() {
+      const [ value, setValue ]  = useState(1)
+      function changeValue() {
+        setValue(value + 1)
+      }
+      return (
+        <div className="App">
+          <MyContext.Provider value={{ changeValue, value }}>
+            <ChildA />
+            <ChildB />
+          </MyContext.Provider>
+        </div>
+      );
+    }
+    // 子组件
+    function ChildA(props) {
+      const { value, changeValue } = useContext(MyContext)
+      return <div onClick={changeValue}>
+        {value}
+      </div>
+    }
+
+#### useReducer 
+通过useReducer和useContext 是实现类redux的状态管理
+
+    // reducer
+    export const initValue = { value: 1 }
+    export const reducer = (state, action) => {
+      console.log(action)
+      switch(action) {
+        case 'update': 
+          return { ...state, value: state.value + 1 }
+        default: 
+          return state
+      }
+    }
+    // 父组件
+    function App() {
+      const [ state, dispatch ] = useReducer(reducer, initValue)
+      return (
+        <div className="App">
+          <MyContext.Provider value={{ state, dispatch }} >
+            <ChildA />
+          </MyContext.Provider>
+            
+        </div>
+      );
+    }  
+    // 子组件
+    function ChildA(props) {
+      const { state, dispatch } = useContext(MyContext)
+      return <div 
+        onClick={() => { console.log('change'); dispatch('update') }}
+      >
+        {state.value}
+      </div>
+    } 
 
 ## react 源码学习
 新的架构分为3个部分:

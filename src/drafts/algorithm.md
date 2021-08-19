@@ -117,12 +117,40 @@ categories:
       return stack.join('')
     };
 
+### 去除字符串出现次数少的字符
+
+
+    function getMostStr(str) {
+      const map = new Map()
+      for(let i = 0; i < str.length;i++) {
+        if(map.has(str[i])) {
+          const list =  map.get(str[i])
+          list.push(str[i])
+        } else {
+          map.set(str[i], [str[i]])
+        }
+      }
+      let maxLength = 0
+      let maxArr = []
+      for([key, list] of map) {
+        if(list.length > maxLength) {
+          // 替换
+          maxArr = [list]
+        } else if(list.length === maxLength) {
+          // 相同的保留
+          maxArr.push(list)
+        }
+        maxLength = Math.max(list.length, maxLength)
+      }
+      return maxArr.reduce((acc, curr) => {
+        return acc + curr.join('')
+      }, '')
+    }
 
 ## 链表操作
 
-## 找到单向链表相交的起始点
+## 找到两个单向链表相交的起始点
 
-    // 遍历标注  先遍历一次打标记(存储)
 
     // 双指针法
     function getCommonNode(list1, list2) {
@@ -497,6 +525,12 @@ categories:
     }
 
 ### 堆排序
+
+堆其实就是利用完全二叉树的结构来维护的一维数组
+
+大顶堆: 每个结点的值都大于或等于其左右孩子结点的值
+小顶堆: 每个结点的值都小于或等于其左右孩子结点的值
+
 先把所有的非叶子节点构建成最大堆, 排序的时候拿第一个(最大的元素)与最后一个互换, 然后把后边的部分排序继续构建堆重复这个过程
 
     function buildMaxHeap(arr) {
@@ -913,28 +947,71 @@ categories:
       return hasFound
     }
 
+## js 大数相乘
+
+  function multi(a, b) {
+    const stra = String(a)
+    const strb = String(b)
+    const resultLength = stra.length + strb.length
+    const result = new Array(resultLength).fill(0)
+    for(let i = 0; i < stra.length;i++) {
+      for(let j = 0; j < strb.length;j++) {
+        result[i+j+1] += Number(stra[i]) * Number(strb[j])
+      }
+    }
+    for(let i = resultLength - 1;i >= 0; i--) {
+      let carry = Math.trunc(result[i] / 10)
+      if(carry) {
+        result[i - 1] += carry 
+      } 
+      result[i] = result[i] % 10
+    }
+    while(result[0] === 0) {
+      result.shift()
+    }
+    return result.join('') || '0'
+  }
 
 ## 实现一个连加函数
 
-// Function.prototype.toString  返回一个代表当前函数源代码的字符串
-// Object.prototype.valueOf() 返回指定对象的原始值
-    function Add(pnum)
-    {
-        let sumnum = pnum;
-        function tf(p1)
-        {
-            sumnum += p1;
-            return tf
-        }
-        tf.toString = function() {
-          return sumnum;
-        }
-        tf.valueOf=function()
-        {
-            return sumnum;
-        }
-        return tf;
+  function curry(fn) {
+      return function (x) {
+        return function g(x, y) {
+          if(y == void 0) {
+            return x
+          } else {
+            return g.bind(this, fn(x,y))
+          }
+        }.bind(this, x)
+      }
     }
+    function add(x, y) {
+      return x + y
+    }
+    const curryAdd = curry(add)
+    console.log(curryAdd(1)(2)(3)())
+
+### 获取给定字符串的全排列
+
+  function getFullStr(str) {
+    const result = []
+    if(str.length == 0) {
+      return result
+    }
+    if(str.length === 1) {
+      return result[str[0]]
+    }
+    for(let i = 0 ; i < str.length;i++) {
+      const currChar = str[i]
+      const restCharStr = str.substring(0,i) + str.substring(i + 1)
+      const getRestFullStr = getFullStr(str).map(item => currChar + item)
+      if(getRestFullStr.length === 0) {
+        getRestFullStr.push(currChar)
+      }
+      result = result.concat(getRestFullStr)
+    }
+    return result
+  }
 
 ## 顺时针打印矩阵
 

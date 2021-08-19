@@ -19,7 +19,7 @@ function createCategoryPage({ actions, graphql }) {
   }
   
 }
-// 创捷详情页
+// 创建详情页
 async function createDetailPage({ actions, graphql }) {
   const { createPage } = actions
   const result = await graphql(`
@@ -33,6 +33,7 @@ async function createDetailPage({ actions, graphql }) {
               path,
               title,
               date,
+              top
             }
           }
         }
@@ -42,13 +43,25 @@ async function createDetailPage({ actions, graphql }) {
   if (result.errors) {
     console.error(result.errors)
   }
+  // 做置顶逻辑
+  const resultArr = []
+  result.data.allMarkdownRemark.edges.forEach(item => {
+    const { node } = item || {}
+    const { top } = (node || {}).frontmatter
+    if(top) {
+      resultArr.unshift(item)
+    } else {
+      resultArr.push(item)
+    }
+  })
+  result.data.allMarkdownRemark.edges = resultArr
   createPaginatedPages({
     edges: result.data.allMarkdownRemark.edges,
     createPage: createPage,
     pageTemplate: 'src/templates/index.js',
     pageLength: 15, // This is optional and defaults to 10 if not used
     pathPrefix: '', // This is optional and defaults to an empty string if not used
-    context: {}, // This is optional and defaults to an empty object if not used
+    context: { pageAllCount: result.data.allMarkdownRemark.edges.length }, // This is optional and defaults to an empty object if not used
   })
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({

@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `noodles的笔记本`,
-    description: `低头做事抬头看路`,
+    description: `让技术更有趣`,
     author: `noodles`,
     siteUrl: `https://icantunderstand.cn`,
   },
