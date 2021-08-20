@@ -209,7 +209,7 @@ categories:
     console.log(A.__proto__ === Function.prototype) // true
     console.log(Object.__proto__ === Function.prototype) //true
     const a = new A();
-    // a.a(); // 无法执行
+     a.a(); // 无法执行
     a.b();
 
 ### 原型链继承

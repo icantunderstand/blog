@@ -49,4 +49,28 @@ path:
     }
 
 ## 函数组合
+  性能  函数执行的性能  每次都需要做的操作 减少
+  我们不是为了隐藏细节而抽象;我们正在分离细节以提高对其他的注意
+  compose
+  pipe
+  function pipe(...fns) {
+      return function piped(result) {
+        const list = [...fns]
+        while(list.length > 0) {
+          result = list.shift()(result)
+        }
+        return result
+      }
+    }
 
+    function getData() {
+      return [1,2,3,4,5];
+    }
+
+    // 命令式
+    var tmp = getData();
+    var a = tmp[0];
+    var b = tmp[3];
+
+    // 声明式 从how到what
+    var [ a ,,, b ] = getData();

@@ -10,13 +10,13 @@
 <body>
   <div id="test" style="width: 300px"></div>
   <script >
-    function uncurry(fn) {
-      return function uncurried(...args) {
-        let ref = fn
-        for(let arg of args) {
-          ret = ret(arg)
+    function pipe(...fns) {
+      return function piped(result) {
+        const list = [...fns]
+        while(list.length > 0) {
+          result = list.shift()(result)
         }
-        return ret
+        return result
       }
     }
   </script>
