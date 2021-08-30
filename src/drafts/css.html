@@ -4,21 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <style >
+  <style>
+    body {
+      height: 1000px;
+      overflow: auto;
+    }
+    #ss {
+      position: sticky;
+      top: 0px;
+      width: 100px;
+      height: 100px;
+      background: blue;
+    }
+    #aa {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
   </style>
 </head>
 <body>
-  <div id="test" style="width: 300px"></div>
-  <script >
-    function pipe(...fns) {
-      return function piped(result) {
-        const list = [...fns]
-        while(list.length > 0) {
-          result = list.shift()(result)
-        }
-        return result
-      }
-    }
+  <script>
   </script>
 </body>
 </html>

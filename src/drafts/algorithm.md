@@ -873,6 +873,19 @@ categories:
       return result 
     }
 
+### 获取二叉树根节点到叶子节点的路径
+
+
+    var binaryTreePaths = function(root) {
+      if (root === null) return [];
+      if (root.left === null && root.right === null) {
+        return [root.val.toString()];
+      }
+      var left = binaryTreePaths(root.left),
+          right = binaryTreePaths(root.right);
+      return left.concat(right).map(x => root.val + '->' + x);
+    }
+
 ### 判断二叉树上路径上值的和是否有对应的值
 
     function hasPathSum(tree, sum) {
@@ -1073,7 +1086,110 @@ categories:
       }
       return max
     }
+    // 买入股票的最佳时机
+    [3,4,5,6,7,2,8] => 6 2买入 8卖出
+    function bestTime(nums) {
+      let max = 0
+      let acc = 0
+      for(let i = 1; i< nums.length;i++) {
+        acc += nums[i] - nums[i-1]
+        if(acc < 0) {
+          acc = 0
+        }
+        if(acc > max) {
+          max = acc
+        }
+      }
+      return max
+    }
 
+##  使用Promise实现红绿灯
+
+
+    function promiseFn(fn, time) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => { fn(); resolve() }, time)
+      })
+    }
+    function runFn() {
+      return promiseFn(() => { console.log('红灯') }, 2000).then(() => {
+        return promiseFn(() => { console.log('绿色') }, 2000)
+      }).then(() => {
+        return promiseFn(() => { console.log('黄色') }, 2000)
+      }).then(runFn, 0)
+    }
+    runFn()
+
+## 扑克洗牌
+
+    int randInt(int min, int max);
+
+    // 第一种写法
+    void shuffle(int[] arr) {
+        int n = arr.length();
+        /******** 区别只有这两行 ********/
+        for (int i = 0 ; i < n; i++) {
+            // 从 i 到最后随机选一个元素
+            int rand = randInt(i, n - 1);
+            /*************************/
+            swap(arr[i], arr[rand]);
+        }
+    }
+
+## 数组的最长上升子序列
+
+  public int lengthOfLIS(int[] nums) {
+    int[] dp = new int[nums.length];
+    // base case：dp 数组全都初始化为 1
+    Arrays.fill(dp, 1);
+    for (int i = 0; i < nums.length; i++) {
+        for (int j = 0; j < i; j++) {
+            if (nums[i] > nums[j]) 
+                dp[i] = Math.max(dp[i], dp[j] + 1);
+        }
+    }
+    
+    int res = 0;
+    for (int i = 0; i < dp.length; i++) {
+        res = Math.max(res, dp[i]);
+    }
+    return res;
+  }
+
+## 实现将list转换成tree结构
+
+    const oldData = [
+    
+      {id:1,name:'boss',parentId:0},
+    
+      {id:2,name:'lily',parentId:1},
+    
+      {id:3,name:'jack',parentId:1},
+    
+      {id:4,name:'john',parentId:2},
+    
+      {id:5,name:'boss2',parentId:0},
+    ]
+
+  function listToTree(oldArr){
+    oldArr.forEach(element => {
+        let parentId = element.parentId;
+        if(parentId !== 0){
+            oldArr.forEach(ele => {
+                if(ele.id == parentId){ //当内层循环的ID== 外层循环的parendId时，（说明有children），需要往该内层id里建个children并push对应的数组；
+                    if(!ele.children){
+                        ele.children = [];
+                    }
+                    ele.children.push(element);
+                }
+            });
+        }
+    });
+    console.log(oldArr)  //此时的数组是在原基础上补充了children;
+    oldArr = oldArr.filter(ele => ele.parentId === 0); //这一步是过滤，按树展开，将多余的数组剔除；
+    console.log(oldArr)
+    return oldArr;
+    }
 
 ## 相关资料
 https://wiki.jikexueyuan.com/project/easy-learn-algorithm/fast-sort.html  

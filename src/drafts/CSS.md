@@ -396,6 +396,26 @@ body {
 
 // 存在问题是视口过小的时候 字体也太小
 
+### keyframes
 
+    p {
+      animation-duration: 3s;
+      animation-name: slidein;
+    }
 
+    @keyframes slidein {
+      from {
+        margin-left: 100%;
+        width: 300%;
+      }
+
+      to {
+        margin-left: 0%;
+        width: 100%;
+      }
+    }
+    // js的话是window.requestAnimationFrame来实现动画  
+    // cancelAnimationFrame 取消动画
+
+### css实现环装进度条
 

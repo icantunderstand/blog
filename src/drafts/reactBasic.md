@@ -29,6 +29,14 @@ ViewModel是model of view  包括领域模型(domain model)和视图的状态(st
   3. 组件化(抽象,组合,代码复用)
   4. 函数式编程
 
+## 受控组件&&非受控组件
+1. 受控组件依赖于state，通过onChange => state => value,非受控组件不依赖state
+2. 非受控组件设置获取值相当于操作Dom，可以更好的与其他库结合
+
+## 单页应用和多页应用对比
+1. 单页跳转不需要刷新 多页需要刷新（SEO问题 服务端路径映射问题）
+2. 单页前进后退
+
 ## React element && Component && instance
 element是通过React.createElement创建的对象 包括type props children等
 Component 是定义的组件 比如函数组件 或者类组件等
@@ -36,7 +44,7 @@ instance 类组件有instance 声明周期 函数式组件没有instance
 
 ## 函数组件替代类组件？？？
 1. hooks更好的实现了逻辑的复用 
-2. 用hooks取代生命周期 函数更加声明化(命令式编程 => 声明式编程)  类组件基于生命周期实现的逻辑不好
+2. 用hooks取代生命周期 函数更加声明化(命令式编程 => 声明式编程)  类组件基于生命周期实现的逻辑不好 hooks的依赖管理 纯度问题都需要考虑
 
 
 ## react diff
@@ -181,6 +189,9 @@ React.memo(MyComponent, areEqual)
 
 ### createRef()
 
+    // 当ref作用于html元素的时候，他的current挂载的是dom元素
+    // 当 ref 属性用于自定义 class 组件时，ref 对象接收组件的挂载实例作为其 current 属性。
+    // 不能在函数组件上使用createRef()
     class App extends Component {
       constructor(props) {
         super(props)
@@ -200,7 +211,7 @@ React.memo(MyComponent, areEqual)
 ### forwardRef
 在高阶组件中的使用 能从外部获取内部的ref
 
-
+    // forwardRef主要实现ref转发
     const FancyButton = React.forwardRef((props, ref) => (
       <button ref={ref} className="FancyButton">
         {props.children}
@@ -297,6 +308,10 @@ useEffect(() => {
         {value}
       </div>
     }
+
+#### useMemo
+相比React.memo(Component, compore)  shouldComponentUpdate
+useMemo能实现组件内部的局部控制更新
 
 #### useReducer 
 通过useReducer和useContext 是实现类redux的状态管理
@@ -480,7 +495,9 @@ return是当前程序处理完需要返回的fiber节点
 
 #### lane模型
 
-### React 高阶用法梳理
+## react router实现自动化路由
+https://juejin.cn/post/6953933167321415716
+
 
 
 [React Fiber的链表结构](https://indepth.dev/posts/1007/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-to-walk-the-components-tree)

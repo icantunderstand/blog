@@ -266,6 +266,13 @@ dom渲染完成时间： domContentLoadedEventEnd - navigationStart
 页面onload时间： loadEventEnd - navigationStart
 
 
+## 单点登录实现(SSO)
+https://juejin.cn/post/6844903664985866253
+
+## JWT(JSON Web Token)
+https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html
+将认证信息返回给客户端进行存储
+
 https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work
 https://lz5z.com/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-CSS3%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/
 [面试提纲](https://juejin.cn/post/6844903574124625934)

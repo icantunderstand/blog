@@ -1,24 +1,20 @@
 ---
-title: redux学习
-date: 2018 - 12 - 02
+title: 前端状态管理
+date: 2021-8-24
 tags: React
-path: /redux
+path: /state-control
 ---
 
-## 简介
-本文主要从redux的设计哲学开始逐步的介绍redux的使用并且深入到源码中对reudx进行系统的学习
-## redux的设计哲学
-### 单一数据源  
-redux是应用状态管理的容器,提供单一的数据源来维护应用的状态.
-### 状态是只读的  
-redux通过对应用的状态的变更的方式进行了一定的约定,应用的状态只能通过action来单向的更改  
-### 通过纯函数接受action来改变应用的状态
-纯函数使得应用的状态变化是可以预测的,可以更加方便开发者调试(时间旅行)  
-## 为什么使用redux
-  1. redux提供的状态管理解决了组件间状态共享的问题并且一定程度的解耦了组件之间的关联.
-  2. 单向数据流动对开发者来说应用的状态变的可控.  
+
+页面开发中数据在组件之间共享和同步是一个比较常见的问题，通过合理的状态管理可以实现清晰的数据流和组件的状态同步就能减少业务的复杂度。本文主要对比Redux和Mobx的实现细节来深入状态管理的技术实现，这样在做技术选型的时候能有一定的考量
+##  1. <a name='reduxhttps:github.comreduxjsredux'></a>[redux](https://github.com/reduxjs/redux)
+
+###  1.1. <a name='redux'></a>redux的思路
+![redux实现思路](./stateControl/redux.png)
+1. redux通过全局的store来统一管理数据，通过订阅机制实现数据变更的通知
+2. redux引入函数式编程的概念，约定通过action来触发全局store的更新，单向数据流能一定程度上降低业务的复杂度
   
-## redux简单使用  
+###  1.2. <a name='redux-1'></a>redux简单使用  
 
     import { createStore } from 'redux';
     const action_type = 'test';
@@ -47,10 +43,10 @@ redux通过对应用的状态的变更的方式进行了一定的约定,应用�
 * dispath(action)更新应用的状态  
 * subscribe(listener)来订阅状态变更时触发的事件.
 通过上面的分析可以看出redux实现了一套发布订阅的机制来实现状态的变更和通知,下面将深入redux的源码来了解redux的具体实现
-## redux源码学习
+###  1.3. <a name='redux-1'></a>redux源码解析
 以下源码部分基于redux@4.0.1,为了整体介绍redux的整体流程,只保留了关键的部分并且进行了一部分修改.
-### createStore
-createStore(reducer, preloadedState, enhancer)接受reducer,状态初始值,store增加函数来生成应用的store
+####  1.3.1. <a name='createStore'></a>createStore
+createStore(reducer, preloadedState, enhancer)接受reducer,状态初始值,store增强函数来生成应用的store
 
     export default function createStore(reducer,preloadedState, enhancer) { 
       let currentReducer = reducer;
@@ -98,8 +94,8 @@ createStore(reducer, preloadedState, enhancer)接受reducer,状态初始值,sto
       }
     }
 
-### combineReducer
-combineReucer(reducer)可以将多个reducer函数组合起来,接受action并改变状态.combineReducer解决了将所有的更新逻辑写到一个文件的问题,通过reducer的组合应用也更加灵活
+####  1.3.2. <a name='combineReducer'></a>combineReducer
+combineReucer(reducer)可以将多个reducer函数组合起来,接受action并改变状态.combineReducer解决了将所有的更新逻辑写到一个文件的问题
 
     export default function combineReducers(reducers) {
       const reducerKeys = Object.keys(reducers);
@@ -131,7 +127,7 @@ combineReucer(reducer)可以将多个reducer函数组合起来,接受action并
       }
     }
 
-### applyMiddleware
+####  1.3.3. <a name='applyMiddleware'></a>applyMiddleware
 applyMiddleware是redux提供对外部进行扩展的途径,通常情况下dispacth只能接受一个对象来对状态进行修改,通过添加不同的中间件,对dispatch进行增强,可以使它接受更多的类型(function, promise)和实现更多的功能, 下面先从一个使用中间件的实例来了解appleMiddleware到底做了什么.
 
     function thunkMiddleware({ dispatch, getState }) {
@@ -151,7 +147,7 @@ applyMiddleware是redux提供对外部进行扩展的途径,通常情况下dis
       console.log(1);
       return { type: action_type };
     });
-通过上面的例子,dispatch就能接受函数类型并且执行对应的函数,下面来了解appleMiddleware的源码是怎样实现的.applyMiddleware返回的是store的enhancer,通过对createStore代码部分的学习,在传入enhancer的时候,执行的是enhancer(createStore)(reducer, preloadedState).
+通过上面的例子,dispatch就能接受函数类型并且执行对应的函数,下面来了解appleMiddleware的源码是怎样实现的.applyMiddleware返回的是store的enhancer,在createStore的代码部,在传入enhancer的时候,执行的是enhancer(createStore)(reducer, preloadedState).
     
     function compose(...funcs) {
       if (funcs.length === 0) {
@@ -185,8 +181,64 @@ applyMiddleware是redux提供对外部进行扩展的途径,通常情况下dis
       }
     }
 
-## 总结
-通过以上简单理解了redux的实现原理,但是在具体使用的过程中还要思考为什么要使用redux并且对比redux跟其他状态管理(例如mobx)等的优缺点.其实重要的是理解所使用的库到底解决了本身应用的痛点才能选择合适的库并且发挥它的最大功能.
+####  1.3.4. <a name='reduxreact'></a>redux结合react  
+![react-redux](./stateControl/reactRedux.png)  
+React-Redux的作用是将React组件和Redux绑定，React组件可以通过react-reudx完成数据的获取和更新。其中connect函数就是这个功能，通过下面的代码可以看出connect主要是从redux或者context中获取属性通过高阶组件的方式返回包裹组件。
+
+
+    const Connect = _Connect as ConnectedComponent<
+      typeof WrappedComponent,
+      WrappedComponentProps
+    >
+    Connect.WrappedComponent = WrappedComponent
+    Connect.displayName = ConnectFunction.displayName = displayName
+
+    if (forwardRef) {
+      const _forwarded = React.forwardRef(function forwardConnectRef(
+        props,
+        ref
+      ) {
+        // @ts-ignore
+        return <Connect {...props} reactReduxForwardedRef={ref} />
+      })
+
+      const forwarded = _forwarded as ConnectedWrapperComponent
+      forwarded.displayName = displayName
+      forwarded.WrappedComponent = WrappedComponent
+      return hoistStatics(forwarded, WrappedComponent)
+    }
+
+
+##  2. <a name='Mobx'></a>Mobx  
+![mobx](./stateControl/mobx.png)  
+mobx将响应式编程的概念引入到状态管理的实现上，通过观察者模式实现组件的更新。相比redux他的优势在于:
+1. 在组件更新上性能更好 redux通过发布订阅的模式会在所有的组件上进行Prop的脏检查，mbox通过proxy依赖收集能更精确的控制组件的更新
+2. 长期维护上存在一定优势 mbox基于proxy内部维护了更新的机制，redux需要通过mapStateTpProps来主动告知订阅的属性存在一定维护成本
+### mobx简单使用
+
+
+    import { observable } from "mobx";
+    import { observer } from 'mobx-react'
+    // 定义一个可观察的值
+    var timerData = observable({
+      secondsPassed: 0
+    });
+    // 定义了观察者 当secondsPassed发生变化的时候会触发组件更新
+    const Timer = observer(({ timerData }) =>
+        <span>Seconds passed: { timerData.secondsPassed } </span>
+    );
+    setTimeout(() => { timerData.secondsPassed = 33 }, 2000)
+
+    function App() {
+      return <Timer timerData={timerData} />
+    }
+
+##  3. <a name=''></a>参考
+[我为什么从Redux迁移到了Mobx](https://tech.youzan.com/mobx_vs_redux/)  
+[react-redux](https://github.com/reduxjs/react-redux)  
+[redux](https://github.com/reduxjs/redux)  
+[Becoming fully reactive: an in-depth explanation of MobX](https://medium.com/hackernoon/becoming-fully-reactive-an-in-depth-explanation-of-mobservable-55995262a254)  
+[mobx 源码解读（一）：从零到 observable 一个 object 如何](https://zhuanlan.zhihu.com/p/85720939)
 
 
 

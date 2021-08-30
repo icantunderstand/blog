@@ -6,6 +6,10 @@ tags:
 categories: 
 ---
 
+## 进程和线程
+1. 进程是操作系统资源调度的基本单位，线程是任务的调度执行的基本单位
+2. 线程共享所属进程的资源，因此共享简单，但是同步复杂，需要用加锁等措施
+
 ## 函数节流
 
 ### 防抖函数
@@ -157,7 +161,8 @@ categories:
     }
 
 ### call 
-
+    
+    // call的性能更好 不需要处理参数转换
     Function.prototype.myCall = function(context, ...args) {
       context = context || window;
       context.fn = this;
@@ -298,6 +303,9 @@ categories:
     Array.prototype.some(value) // 检查至少有一个通过测试
     Array.prototype.reduce((accumulator, currentValue, index, array) => {}, initValue)
     Array.prototype.rightReduce((accumulator, currentValue, index, array) => {}, initValue)
+    Array.prototype.sort()
+    // 当没有比较函数的时候 会将元素转化为字符串进行比较
+    // 存在比较函数 < 0  a在b前面 === 0 不换位置 >0 a在后面
 
 ## 实现compose函数
 
@@ -369,6 +377,23 @@ categories:
       console.log(n)
     });
 
+## requestAnimationFrame
+
+
+    if (!window.requestAnimationFrame)
+      window.requestAnimationFrame = function(callback, element) {
+          var currTime = new Date().getTime();
+          var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+          var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+            timeToCall);
+          lastTime = currTime + timeToCall;
+          return id;
+    };
+
+## ts中type和interface的区别
+type和interface都可以描述类型和函数，进行扩展等
+1. type可以声明别名 type Name = string
+2. interface有声明合并 type没有
 
 
 

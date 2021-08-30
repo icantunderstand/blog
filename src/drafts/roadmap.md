@@ -17,12 +17,12 @@
 2. 跨端能力
    android
    flutter
-   maybe 小程序
 3. 服务端
     node
     go
     graphQL(趁着这次blog从hexo迁移到React)
 4. react框架学习
+   next.js
 
 ## 问题todo
 服务端渲染 模式 SSR   SSG(编译时生成html) 
@@ -36,11 +36,14 @@ http://www.ayqy.net/blog/csr-vs-ssr-vs-prerendering-vs-hydration/
 
 
 // 近期计划
-安卓基础  
+
 前端监控平台 实现
 
-// 开启一个新的系列-一天一个设计模式
+// 开启一个新的系列-一天一个设计模式 这个要搞下去
 // 梳理下__proto__  prototype
+// 写一个梳理mobx和rudux
+
+https://tech.youzan.com/mobx_vs_redux/
 
 // letcode 一直有个习惯
 // 更加系统的学习react native  => lynx
