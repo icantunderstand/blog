@@ -1,12 +1,11 @@
 ---
-title: 前端状态管理
-date: 2021-8-24
+title: 当我们聊状态管理的时候我们在聊什么
+date: 2021-8-31
 tags: React
 path: /state-control
 ---
 
-
-页面开发中数据在组件之间共享和同步是一个比较常见的问题，通过合理的状态管理可以实现清晰的数据流和组件的状态同步就能减少业务的复杂度。本文主要对比Redux和Mobx的实现细节来深入状态管理的技术实现，这样在做技术选型的时候能有一定的考量
+页面开发中数据在组件之间共享和同步是一个比较常见的问题，通过状态管理可以实现清晰的数据流和组件状态同步能一定程度上减少业务的复杂度。本文主要对比Redux和Mobx的实现细节来深入状态管理的技术实现，这样在做技术选型的时候能有一定的考量
 ##  1. <a name='reduxhttps:github.comreduxjsredux'></a>[redux](https://github.com/reduxjs/redux)
 
 ###  1.1. <a name='redux'></a>redux的思路
@@ -210,10 +209,15 @@ React-Redux的作用是将React组件和Redux绑定，React组件可以通过rea
 
 
 ##  2. <a name='Mobx'></a>Mobx  
-![mobx](./stateControl/mobx.png)  
 mobx将响应式编程的概念引入到状态管理的实现上，通过观察者模式实现组件的更新。相比redux他的优势在于:
 1. 在组件更新上性能更好 redux通过发布订阅的模式会在所有的组件上进行Prop的脏检查，mbox通过proxy依赖收集能更精确的控制组件的更新
 2. 长期维护上存在一定优势 mbox基于proxy内部维护了更新的机制，redux需要通过mapStateTpProps来主动告知订阅的属性存在一定维护成本
+
+### mobx背景介绍
+![mobx](./stateControl/mobx.png)  
+* Observable  定义可观察的值，当observable值变化的时候会触发Derivations  
+* Derivations Derivations主要为Computed values和Reactions，可观察值的改变会触发对应的Derivations触发  
+* Actions actions触发Observable值的更改进而触发Derivations  
 ### mobx简单使用
 
 
@@ -232,6 +236,120 @@ mobx将响应式编程的概念引入到状态管理的实现上，通过观察�
     function App() {
       return <Timer timerData={timerData} />
     }
+
+### mobx源码解析  
+使用mobx实现组件更新的方式如下:
+* mobx实现创建Observable值和触发Derivations
+* mobx-react实现对react组件的封装，创建基于组件的Derivations从而在对应的Observable值修改的时候完成组件的更新
+![mobx原理](./stateControl/mobxlogic.png) 
+
+#### mobx生成Observable
+Observable会根据传入的值类型包装生成代理，在对观察值获取和设置的时候都是调用代理的方法
+
+    // mobx暴露的observable调用的入口函数 
+    function createObservable(v: any, arg2?: any, arg3?: any) {
+      // @observable someProp;
+      if (isStringish(arg2)) {
+          storeAnnotation(v, arg2, observableAnnotation)
+          return
+      }
+      // 如果已经是可观察值忽略
+      if (isObservable(v)) return v
+      if (isPlainObject(v)) return observable.object(v, arg2, arg3)
+      // 这里省略了其他数据类型的包装 
+      // 调用工厂方法对不同类型的值包装成可观察值
+      if (typeof v === "object" && v !== null) return v
+      // anything else
+      return observable.box(v, arg2)
+    }
+    // 观察值封装的工厂方法
+    // 省略若干其他类型的封装
+    object<T = any>(
+        props: T,
+        decorators?: AnnotationsMap<T, never>,
+        options?: CreateObservableOptions
+    ): T {
+        return extendObservable(
+            globalState.useProxies === false || options?.proxy === false
+                ? asObservableObject({}, options)
+                : asDynamicObservableObject({}, options),
+            props,
+            decorators
+        )
+    },
+    //extendObservable通过创建一个代理(管家)来代理属性的访问和设置，这里关注在没有proxy设置的场景asObservableObject在内部创建了代理
+    const adm = new ObservableObjectAdministration(
+        target,
+        new Map(),
+        String(name),
+        getAnnotationFromOptions(options)
+    )
+    在ObservableObjectAdministration内部维护了维护了获取属性的get和set方法
+  
+![setAndGet](./stateControl/setAndGet.png)  
+在上面的例子对观察值进行修改的时候，会最终走入observablevalue的更新值并且触发Derivations
+
+
+    setNewValue_(newValue: T) {
+      const oldValue = this.value_
+      this.value_ = newValue
+      this.reportChanged()
+      if (hasListeners(this)) {
+          notifyListeners(this, {
+              type: UPDATE,
+              object: this,
+              newValue,
+              oldValue
+          })
+      }
+    }
+    export function endBatch() {
+      if (--globalState.inBatch === 0) {
+          // 触发Derivations
+          runReactions()
+          // 省略若干逻辑
+          globalState.pendingUnobservations = []
+      }
+    }
+
+#### mobx-react生成Derivations
+这里主要从包装函数式组件来看Derivations的生成过程，函数式组件的封装方法主要做了:
+* 定义更新逻辑并与生成的Reaction绑定
+* 通过运行函数 将observable值与Reaction绑定
+
+      export function useObserver<T>(fn: () => T, baseComponentName: string = "observed"): T {
+          const [, setState] = React.useState()
+          // 定义刷新组件逻辑
+          const forceUpdate = () => setState([] as any)
+          const reactionTrackingRef = React.useRef<IReactionTracking | null>(null)
+          if (!reactionTrackingRef.current) {
+              // 创建Derivations 在设置observable的时候会触发相应的newReaction
+              const newReaction = new Reaction(observerComponentNameFor(baseComponentName), () => {
+                if (trackingData.mounted) {
+                  forceUpdate()
+                } else {
+                    trackingData.changedBeforeMount = true
+                }
+              })
+          }
+          const { reaction } = reactionTrackingRef.current!
+          let rendering!: T
+          let exception
+          // track通过运行组件 走入组件的get方法 将reaction跟observable值关联起来
+          reaction.track(() => {
+              try {
+                  rendering = fn()
+              } catch (e) {
+                  exception = e
+              }
+          })
+          return rendering
+      }
+
+这样当observable更改的时候会触发对应的Reaction执行从而达到组件刷新的目的
+
+
+在业务开发中最开始引入状态管理是为了实现组件之间的状态共享，而使用Redux或者Mobx是引入不同的编程范式来实现这种共享的行为。不同的编程范式能给予项目一定的约束从而实现业务开发的规范。但是范式的引入也一定程度上增加了项目的复杂度，比如redux的依赖管理、中间件概念、mobx跟踪性较弱的更新逻辑等。在考虑引入具体方案的时候应该考虑整个项目的现状和成本，是不是有更轻量化的实现，比如React Hooks。
 
 ##  3. <a name=''></a>参考
 [我为什么从Redux迁移到了Mobx](https://tech.youzan.com/mobx_vs_redux/)  
