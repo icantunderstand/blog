@@ -41,9 +41,7 @@ http://www.ayqy.net/blog/csr-vs-ssr-vs-prerendering-vs-hydration/
 
 // 开启一个新的系列-一天一个设计模式 这个要搞下去
 // 梳理下__proto__  prototype
-// 写一个梳理mobx和rudux
 
-https://tech.youzan.com/mobx_vs_redux/
 
 // letcode 一直有个习惯
 // 更加系统的学习react native  => lynx

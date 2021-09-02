@@ -1,7 +1,7 @@
 ---
 title: 编程拾遗系列设计模式-创建型模式
 date: 2020-7-6
-tags: 计算机基础
+tags: 设计模式
 path: /build-pattern
 ---
 

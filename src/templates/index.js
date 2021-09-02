@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'gatsby-link'
 import Layout from '../components/layout';
+import { centerPageType } from '../constants'
 
 import './style.css'
 
@@ -14,7 +15,7 @@ const NavLink = props => {
 
 const IndexPage = ({ pageContext }) => {
   const { group, index, first, last, pageCount, pageAllCount } = pageContext
-  const previousUrl = index - 1 === 1 ? '/' : (index - 1).toString()
+  const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
   const nextUrl = (index + 1).toString()
   const [ nextPage, setNextPage ] = useState(nextUrl)
   const [ jumpError, setJumpError ] = useState(false)
@@ -36,8 +37,16 @@ const IndexPage = ({ pageContext }) => {
   return (
     <Layout>
       <div>
-      {group.map(({ node }) => {
-        const { frontmatter } = node
+      {group.map((data = {}) => {
+        const { type, path } = data.extra || {}
+        if(type === centerPageType) {
+          return <div key={path}>
+            <Link to={path}>{path}</Link>
+            &nbsp;
+            <div className="top-post"><em>置顶</em></div>
+          </div>
+        }
+        const { frontmatter } = data.node || {}
         return <div key={frontmatter.path} >
           <Link to={frontmatter.path}>{frontmatter.title}</Link>
           &nbsp;
