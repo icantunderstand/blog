@@ -33,13 +33,24 @@ path: /chain-responsibility
 * 连接后继者
 * 表示请求
 
-    class Handler {
-      public:
-        virtual void handleRequest(Request* theRequest)
-        // _successor 实现后继链
-        Handler(Handler* s) : _successor(s) {}
-      private:
-        Handler*  _successor
-    }
+
+        class Handler {
+        public:
+            virtual void handleRequest(Request* theRequest)
+            // _successor 实现后继链
+            Handler(Handler* s) : _successor(s) {}
+        private:
+            Handler*  _successor
+        }
+
+        class ConcreteHandler: public Handler {
+            public:
+            handleRequest(Request* theRequest) {
+                case:
+                /* 省略若干判断*/
+                default:
+                /*转发给后继处理*/    
+            }
+        }
 
 
