@@ -88,9 +88,9 @@ async function createDetailPage({ actions, graphql }) {
       }    
     `)
     centerListArr.push({ list: centerResult, extra: { type: pageConstants.centerPageType, path: title } })
-    
     if(index === pageConstants.centerList.length - 1) {
       result.data.allMarkdownRemark.edges = resultArr
+      const centerList = centerListArr.reduce((acc,curr) => { return acc.concat(curr.list.data.allMarkdownRemark.edges) }, [])
       createPaginatedPages({
         edges: [...centerListArr, ...result.data.allMarkdownRemark.edges],
         createPage: createPage,
@@ -98,8 +98,8 @@ async function createDetailPage({ actions, graphql }) {
         pageLength: 15, // This is optional and defaults to 10 if not used
         pathPrefix: '', // This is optional and defaults to an empty string if not used
         context: { pageAllCount: allCount }, // This is optional and defaults to an empty object if not used
-      })
-      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+      });
+      ([...result.data.allMarkdownRemark.edges,...centerList]).forEach(({ node }) => {
         createPage({
           path: node.frontmatter.path,
           component: path.resolve(`src/templates/post.js`),

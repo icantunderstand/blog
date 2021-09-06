@@ -84,7 +84,7 @@ path: /build-pattern
 ### Abstract Factory(抽象工厂) - 对象创建型模式
 抽象工厂提供一个创建一系列相关或相互依赖对象的接口而无需指定他们具体的类。
 #### 结构
-![抽象工厂结构](./builderPattern/abstractFactory.png)
+![抽象工厂结构](../designMode/abstractFactory.png)
 
 * AbstractFactory  
 声明一个创建抽象产品对象的操作接口
@@ -147,7 +147,7 @@ path: /build-pattern
 ### Builder(生成器) - 对象创建型模式
 将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。Builder模式能更好的封装产品的内部表示。
 #### 结构  
-![生成器结构](./builderPattern/builder.jpg)  
+![生成器结构](../designMode/builder.jpg)  
 
 * Builder 
 为创建一个Product对象的各个部件指定抽象接口
@@ -198,7 +198,7 @@ path: /build-pattern
 ### Factory Method(工厂方法) - 对象创建型模式
 工厂方法定义一个用于创建对象的接口，让子类来实现对应的接口来创建对象。Factory Method使一个类的实例化延迟到其子类。
 #### 结构
-![工厂方法](./builderPattern/factoryMethod.png)
+![工厂方法](../designMode/factoryMethod.png)
 
 * Product  
 定义工厂方法所创建对象的接口(抽象产品)  
@@ -252,7 +252,7 @@ path: /build-pattern
 ### PROTOTYPE（原型) - 对象创建型模式
 原型模式通过原型实例指定创建对象的种类，通过拷贝原型来创建新的对象
 #### 结构  
-![原型方法](./builderPattern/prototype.png)
+![原型方法](../designMode/prototype.png)
 
 * Prototype  
 声明一个克隆自身的接口  
@@ -304,7 +304,7 @@ path: /build-pattern
 ### SINGLETON（单例）- 对象创建型模式
 保证一个类仅有一个实例，并提供一个访问他的全局访问点
 #### 结构
-![单例模式](./builderPattern/singleton.jpg)
+![单例模式](../designMode/singleton.jpg)
 
 * Singleton
 定义一个Instance操作，允许客户访问它的唯一实例
