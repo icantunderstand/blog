@@ -214,7 +214,7 @@ categories:
     console.log(A.__proto__ === Function.prototype) // true
     console.log(Object.__proto__ === Function.prototype) //true
     const a = new A();
-     a.a(); // 无法执行
+    a.a(); // 无法执行
     a.b();
 
 ### 原型链继承
@@ -395,5 +395,22 @@ type和interface都可以描述类型和函数，进行扩展等
 1. type可以声明别名 type Name = string
 2. interface有声明合并 type没有
 
+## 移动端事件 
+touchstart 当用户在触摸平面上放置了一个触点时触发
+touchend 当一个触点被用户从触摸平面上移除（即用户的一个手指或手写笔离开触摸平面）时触发
+touchmove 当用户在触摸平面上移动触点时触发
+touchcancel 当触点由于某些原因被中断时触发
+
+移动端300ms延迟问题 是为了双击缩放问题才导致的
+
+禁止缩放 并且是响应式可以解决
+<meta name="viewport" content="user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+fastclick的原理 是在touchend之后出发一个click事件
+
+## js中0.1 + 0.2 !== 0.3的问题
+JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE 754 标准 通过64位来表示一个数字
+0.1 + 0.2 转换成2进制 然后对阶运算
 
 

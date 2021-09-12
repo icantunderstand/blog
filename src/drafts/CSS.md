@@ -417,5 +417,4 @@ body {
     // js的话是window.requestAnimationFrame来实现动画  
     // cancelAnimationFrame 取消动画
 
-### css实现环装进度条
 
