@@ -10,9 +10,10 @@ function createCategoryPage({ actions, graphql }) {
   for(let i = 0; i < blogCategory.length;i++) {
     const category = blogCategory[i];
     createPage({
-      path: category,
+      path: category.key,
       context: {
-        category,
+        category: category.key,
+        meta: category?.meta
       },
       component: path.resolve(`src/templates/category.js`),
     })

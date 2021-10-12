@@ -24,6 +24,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "concurrently": "^6.2.1",
     "prettier": "2.3.2"
   },
   "keywords": [

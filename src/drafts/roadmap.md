@@ -5,7 +5,6 @@
   凤凰项目
   告别失控
  https://tc39.es/ecma262/ 
- https://github.com/Simingchen/Functional-Light-JS
 
 
 ## 近期计划
@@ -20,7 +19,6 @@
 3. 服务端
     node
     go
-    graphQL(趁着这次blog从hexo迁移到React)
 4. react框架学习
    next.js
 
@@ -32,19 +30,17 @@ http://www.ayqy.net/blog/csr-vs-ssr-vs-prerendering-vs-hydration/
 
 工作目标
 1. 规范流程工具(开发 上线性能)
-2. 跨端能力发展 落地跨端方案(etc  先从h5的能力优化入手)
+2. 跨端能力发展  系统性梳理react native(lynx) => 落地跨端方案(etc  先从h5的能力优化入手)
 
 
 // 近期计划
-
-前端监控平台 实现
+// 想一想在过两年后的状态(是什么样子的)
+前端监控平台
 
 // 开启一个新的系列-一天一个设计模式 这个要搞下去
-// 梳理下__proto__  prototype
 
 
 // letcode 一直有个习惯
-// 更加系统的学习react native  => lynx
 
 
 ## 需要关注的点
