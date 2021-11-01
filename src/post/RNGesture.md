@@ -1,6 +1,6 @@
 ---
 title: react-native中的手势处理
-date: 2020 - 4 - 15
+date: "2020-04-15"
 tags: 跨端技术
 path: /rn-gesture
 ---

@@ -1,6 +1,6 @@
 ---
 title: 一起学Android-页面数据管理(ViewModel&LiveData)
-date: 2021-7-2  
+date: "2021-07-02"  
 tags: 跨端技术
 path: /android-view-model
 ---

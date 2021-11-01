@@ -1,6 +1,6 @@
 ---
 title: 一起学跨端技术-离线包
-date: 2021-7-22
+date: "2021-07-22"
 tags: 跨端技术
 path: /cross-platform-offline
 ---

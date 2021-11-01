@@ -1,6 +1,6 @@
 ---
 title: How to wirte your own Virtual DOM(译)
-date: 2019 - 4 - 2
+date: "2019-04-02"
 tags: React
 path: /react-virtual-dom
 ---

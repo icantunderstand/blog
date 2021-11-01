@@ -12,18 +12,7 @@ const blogCategory = [
   { key: "前端快报", meta: "收录最近阅读的前端资料"}
 ]
 
-
-
-const centerList = [
-  { title: '设计模式', needCollapse: true },
-  { title: '前端快报', needCollapse: true }
-]
-
-const centerPageType = 'centerPage'
-
- export default {
+export default {
    blogCategory,
-   centerList,
-   centerPageType
  }
  

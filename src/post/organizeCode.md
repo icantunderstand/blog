@@ -1,6 +1,6 @@
 ---
 title: 维护项目的一些想法(持续更新)
-date: 2021- 8- 4
+date: "2021-08-04"
 tags: 工程化
 path: /organize-code
 ---

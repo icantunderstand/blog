@@ -1,6 +1,6 @@
 ---
 title: 做技术规划的一些思考与总结
-date: 2021-7-31
+date: "2021-07-31"
 tags: 思考
 path: /how-to-manage-skill
 ---

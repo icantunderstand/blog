@@ -1,6 +1,6 @@
 ---
 title: 当我们聊状态管理的时候我们在聊什么
-date: 2021-8-31
+date: "2021-08-31"
 tags: React
 path: /state-control
 ---

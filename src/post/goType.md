@@ -1,6 +1,6 @@
 ---
 title: go数据类型初识
-date: 2019 - 4 - 01 
+date: "2019-04-01" 
 tags: Go
 path: /go-type
 ---

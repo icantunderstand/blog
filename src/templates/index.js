@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Link from 'gatsby-link'
 import Layout from '../components/layout';
-import { centerPageType } from '../constants'
 import { sendHomePv } from '../utils'
 
 import './style.css'
@@ -42,14 +41,6 @@ const IndexPage = ({ pageContext }) => {
     <Layout>
       <div>
       {group.map((data = {}) => {
-        const { type, path } = data.extra || {}
-        if(type === centerPageType) {
-          return <div key={path}>
-            <Link to={path}>{path}</Link>
-            &nbsp;
-            <div className="top-post"><em>置顶</em></div>
-          </div>
-        }
         const { frontmatter } = data.node || {}
         return <div key={frontmatter.path} >
           <Link to={frontmatter.path}>{frontmatter.title}</Link>

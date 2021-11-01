@@ -1,6 +1,6 @@
 ---
 title: setState源码分析
-date: 2021 - 4 - 1
+date: "2021-04-01"
 tags: React
 path: /react-setstate
 ---

@@ -1,6 +1,6 @@
 ---
 title: 图说React渲染流程
-date:  2021 - 3 - 25
+date:  "2021-03-25"
 tags: React
 path: /react-render-interpretation
 ---

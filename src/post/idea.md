@@ -1,6 +1,6 @@
 ---
 title: 想法片段总结
-date: 2020 - 12 - 21 
+date: "2020-12-21"
 tags: 思考
 path: /idea
 top: true

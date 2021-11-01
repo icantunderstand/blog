@@ -1,6 +1,6 @@
 ---
 title: 聊聊前端的路由方案
-date: 2020 - 12 - 15 
+date: "2020-12-15" 
 tags: JavaScript
 path: /history
 ---

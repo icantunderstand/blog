@@ -1,6 +1,6 @@
 ---
 title: koa
-date: 2017 - 3 - 24
+date: "2017-03-24"
 tags: JavaScript
 path: /koa
 ---

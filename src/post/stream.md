@@ -1,6 +1,6 @@
 ---
 title: node中Stream流基础
-date: 2018 - 2 - 4 
+date: "2018-02-04"
 tags: Node
 path: /node-stream
 ---

@@ -1,6 +1,6 @@
 ---
 title: 一起学跨端技术-数据预取
-date: 2021-7-23
+date: "2021-07-23"
 tags: 跨端技术
 path: /cross-platform-prefetch
 ---

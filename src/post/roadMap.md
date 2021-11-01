@@ -1,6 +1,6 @@
 ---
 title: 初心
-date: 2019 - 7 - 10
+date: "2019-07-10"
 path: /my-heart
 tags: 思考
 ---

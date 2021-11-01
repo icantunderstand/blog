@@ -1,6 +1,6 @@
 ---
 title: React 事件系统源码解读
-date:  2021 - 3 - 28
+date:  "2021-03-28"
 tags: React
 path: /react-event
 ---

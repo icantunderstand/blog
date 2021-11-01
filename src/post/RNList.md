@@ -1,6 +1,6 @@
 ---
 title: 聊聊React Native中的长列表
-date: 2020 - 3 - 22
+date: "2020-03-22"
 tags: 跨端技术
 path: /rn-list
 ---

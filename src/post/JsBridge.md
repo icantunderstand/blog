@@ -1,6 +1,6 @@
 ---
 title: Hybrid开发-JSBridge原理
-date: 2021 - 7 - 7  
+date: "2021-07-07"  
 tags: 跨端技术
 path: /jsbridge
 ---

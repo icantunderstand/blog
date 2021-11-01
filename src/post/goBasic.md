@@ -1,6 +1,6 @@
 ---
 title: go入门课-简介
-date: 2019 - 3 - 26 
+date: "2019-03-26" 
 tags: Go
 path: /go-basic
 ---

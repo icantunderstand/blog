@@ -1,6 +1,6 @@
 ---
 title: 如何构建一个WEB同构应用
-date: 2019 - 4 - 24
+date: "2019-04-24"
 tags: 工程化
 path: /iosmorphism
 ---

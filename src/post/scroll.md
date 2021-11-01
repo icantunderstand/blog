@@ -1,6 +1,6 @@
 ---
 title: 页面滚动
-date: 2018 - 8 - 26
+date: "2018-08-26"
 tags: JavaScript
 path: /js-scroll
 ---

@@ -1,6 +1,6 @@
 ---
 title: 虚拟列表的简单实现
-date: 2019 - 2 - 24
+date: "2019-02-24"
 tags: JavaScript
 path: /virtual-list
 ---

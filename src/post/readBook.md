@@ -1,6 +1,6 @@
 ---
 title: 读书目录
-date: 2021-8-20
+date: "2021-08-20"
 tags: 思考
 path: /book-list
 top: true

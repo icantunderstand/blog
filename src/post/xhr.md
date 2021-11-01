@@ -1,6 +1,6 @@
 ---
 title: XMLHttpRequest之查缺补漏
-date: 2018 - 8 - 12
+date: "2018-08-12"
 tags: JavaScript
 path: /xhr
 ---

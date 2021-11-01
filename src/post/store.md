@@ -1,6 +1,6 @@
 ---
 title: 缓存那些事
-date: 2018 - 10 - 28 
+date: "2018-10-28" 
 tags: 计算机基础
 path: /web-store
 ---

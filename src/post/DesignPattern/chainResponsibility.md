@@ -1,6 +1,6 @@
 ---
 title: 10分钟设计模式-责任链
-date: 2021-9-6
+date: "2021-09-06"
 tags: 设计模式
 path: /chain-responsibility
 ---

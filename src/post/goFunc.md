@@ -1,6 +1,6 @@
 ---
 title: go语言入门之-函数和方法
-date: 2019 - 4 - 19 
+date: "2019-04-19" 
 tags: Go
 path: /go-func
 ---

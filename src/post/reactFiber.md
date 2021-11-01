@@ -1,6 +1,6 @@
 ---
 title: React Fiber Architecture(译)
-date: 2019 - 5 - 9
+date: "2019-05-09"
 tags: React
 path: /react-fiber
 ---

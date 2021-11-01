@@ -1,6 +1,6 @@
 ---
 title: I/O 
-date: 2018 - 7 - 29  
+date: "2018-07-29"  
 tags: 计算机基础
 path: /computer-io
 ---

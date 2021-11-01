@@ -1,6 +1,6 @@
 ---
 title: React render流程梳理
-date: 2019 - 5 - 10
+date: "2019-05-10"
 tags: React
 path: /react-render
 ---

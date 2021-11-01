@@ -1,6 +1,6 @@
 ---
 title: React高阶组件
-date: 2018 - 12 - 11 
+date: "2018-12-11" 
 tags: React
 path: /react-hoc
 ---

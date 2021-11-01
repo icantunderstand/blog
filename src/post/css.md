@@ -1,6 +1,6 @@
 ---
 title: CSS基础总结
-date: 2018- 10 - 18  
+date: "2018-10-18"  
 tags: CSS
 path: /css-basic
 ---

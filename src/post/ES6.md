@@ -1,6 +1,6 @@
 ---
 title: ES6基础语法
-date: 2018 - 03 - 19
+date: "2018-03-19"
 tags: JavaScript
 path: /es6-basic
 ---

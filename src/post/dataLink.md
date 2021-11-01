@@ -1,6 +1,6 @@
 ---
 title: 计算机基础之数据链路层  
-date: 2018- 6 -18
+date: "2018-06-18"
 tags: 计算机基础
 path: /data-link
 ---

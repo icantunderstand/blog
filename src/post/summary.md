@@ -1,6 +1,6 @@
 ---
 title: 2020年总结
-date: 2021 - 2 - 1
+date: "2021-02-01"
 tags: 思考
 path: /2020-summary
 ---
