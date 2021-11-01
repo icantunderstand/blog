@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'gatsby-link'
 import Layout from '../components/layout';
 import { centerPageType } from '../constants'
+import { sendHomePv } from '../utils'
 
 import './style.css'
 
@@ -34,6 +35,9 @@ const IndexPage = ({ pageContext }) => {
       setJumpError(true)
     }
   }
+  useEffect(() => {
+    sendHomePv()
+  }, [])
   return (
     <Layout>
       <div>

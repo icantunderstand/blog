@@ -1,13 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Header from "../components/header"
 import { graphql } from "gatsby"
-import { useSiteData } from '../hooks/site-data'
 import { StaticImage } from 'gatsby-plugin-image'
+import { useSiteData } from '../hooks/site-data'
 import './style.css'
+import { sendPagePv } from '../utils'
+
 export default function Template({ data }) {
   const { title, description } = useSiteData()
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
+  useEffect(() => {
+    sendPagePv()
+  }, [])
   return (
     <div className="blog-post">
       <Header siteTitle={title} description={description} />
