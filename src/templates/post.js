@@ -1,7 +1,8 @@
 import React, { useEffect } from "react"
-import Header from "../components/header"
 import { graphql } from "gatsby"
 import { StaticImage } from 'gatsby-plugin-image'
+import Header from "../components/header"
+import Comment from '../components/comment'
 import { useSiteData } from '../hooks/site-data'
 import './style.css'
 import { sendPagePv } from '../utils'
@@ -25,6 +26,7 @@ export default function Template({ data }) {
         <StaticImage src="../post/images/qrcode.jpg" alt="" />
         <div>欢迎大家关注我的公众号-前端小板凳 一起学习进步！</div>
       </div>
+      <Comment />
     </div>
   )
 }
