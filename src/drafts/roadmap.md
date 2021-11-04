@@ -17,7 +17,7 @@
    android
    flutter
 3. 服务端
-    node
+    node  nestjs
     go
 4. react框架学习
    next.js
@@ -36,7 +36,6 @@ http://www.ayqy.net/blog/csr-vs-ssr-vs-prerendering-vs-hydration/
 // 近期计划
 // 想一想在过两年后的状态(是什么样子的)
 前端监控平台
-// 想删除分类模式
 
 // 开启一个新的系列-一天一个设计模式 这个要搞下去
 
