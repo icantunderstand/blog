@@ -7,6 +7,7 @@ const blogCategory = [
   { key: "工程化" },
   { key: "设计模式" },
   { key: "计算机基础" },
+  { key: '源码解读' },
   { key: "React" },
   { key: "Node"},
   { key: "前端快报", meta: "收录最近阅读的前端资料"}
