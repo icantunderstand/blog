@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { useSiteData } from '../hooks/site-data'
 
 import Header from "./header"
+import AdComponent from './adComponent'
 import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -19,6 +20,7 @@ const Layout = ({ children }) => {
       >
         <main>{children}</main>
       </div>
+      <AdComponent />
     </>
   )
 }
