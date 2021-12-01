@@ -40,6 +40,7 @@ module.exports = {
             },
           },
           'gatsby-remark-gifs',
+          'gatsby-remark-reading-time',
         ],
       },
     },

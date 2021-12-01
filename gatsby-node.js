@@ -31,6 +31,11 @@ async function createDetailPage({ actions, graphql }) {
         edges {
           node {
             id
+            fields {
+              readingTime {
+                text
+              }
+            }
             frontmatter {
               title
               date
@@ -68,9 +73,11 @@ async function createDetailPage({ actions, graphql }) {
     context: { pageAllCount: allCount }, // This is optional and defaults to an empty object if not used
   });
   ([...result.data.allMarkdownRemark.edges]).forEach(({ node }) => {
+    const readingTime = node?.fields?.readingTime?.text
     createPage({
       path: node.frontmatter.path,
       component: path.resolve(`src/templates/post.js`),
+      context: { readingTime }
     })
   })
 }

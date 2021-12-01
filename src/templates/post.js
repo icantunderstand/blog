@@ -7,7 +7,8 @@ import { useSiteData } from '../hooks/site-data'
 import './style.css'
 import { sendPagePv } from '../utils'
 
-export default function Template({ data }) {
+export default function Template({ data, pageContext = {} }) {
+  const { readingTime } = pageContext
   const { title, description } = useSiteData()
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
@@ -18,6 +19,7 @@ export default function Template({ data }) {
     <div className="blog-post">
       <Header siteTitle={title} description={description} />
       <h1 className="blog-post-content">{frontmatter.title}</h1>
+      {readingTime && <div className="blog-post-content">{readingTime}</div>}
       <div
         className="blog-post-content"
         dangerouslySetInnerHTML={{ __html: html }}
