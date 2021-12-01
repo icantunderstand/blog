@@ -3,6 +3,7 @@ import Header from "../components/header"
 import { graphql } from "gatsby"
 import { useSiteData } from '../hooks/site-data'
 import { Link } from 'gatsby';
+import AdComponent from "../components/adComponent";
 import './style.css'
 
 export default function Template({ data, pageContext = { } }) {
@@ -24,6 +25,7 @@ export default function Template({ data, pageContext = { } }) {
           </div>
         })}
       </div>
+      <AdComponent />
     </div>
   )
 }
