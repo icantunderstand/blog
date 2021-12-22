@@ -9,7 +9,7 @@
 
 ## 近期计划
 1. 工程化相关 
-   微前端方案 https://www.yuque.com/kuitos/gky7yw/uyp6wi 掘金小册
+   微前端方案 https://www.yuque.com/kuitos/gky7yw/uyp6wi 掘金小册  singleSpa源码
    k8s
    monorepo
    前端监控平台
@@ -18,9 +18,18 @@
    flutter
 3. 服务端
     node  nestjs
-    go
+    go  https://github.com/rogchap/v8go
 4. react框架学习
+   react server component
    next.js
+   表单方案
+   https://github.com/jaredpalmer/formik
+   请求方案
+   react-query
+   状态管理
+   xstate
+   recoil
+   teaful
 
 ## 问题todo
 服务端渲染 模式 SSR   SSG(编译时生成html) 
