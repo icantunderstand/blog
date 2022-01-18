@@ -20,16 +20,31 @@
     node  nestjs
     go  https://github.com/rogchap/v8go
 4. react框架学习
-   react server component
-   next.js
-   表单方案
-   https://github.com/jaredpalmer/formik
+   把react框架相关的代码部分在熟悉下
+   react query relay
+   表单方案(https://formik.org/ antd formik react-hook-form)
+   https://github.com/jaredpalmer/formik  formik和form组合干了啥
+   
    请求方案
    react-query
+
    状态管理
-   xstate
+   xstate  xstate代码的逻辑性
    recoil
    teaful
+
+   微前端  
+   https://juejin.cn/post/6862661545592111111
+   https://juejin.cn/post/6885212507837825038
+   https://single-spa.js.org/docs/ecosystem-react/  single-spa-react
+   https://testudy.cc/tech/2017/12/23/webpack-for-umd.html
+   https://github.com/micro-zoe/micro-app/issues/17 从零开始写一个微前端框架
+   https://github.com/fengshi123/blog/issues/21
+   https://blog.csdn.net/cangdu123/article/details/119387554
+   https://blog.yuanziwen.cn/2019/12/18/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%97%B6%E4%BB%A3%E8%90%BD%E5%9C%B0%E5%89%8D%E7%9A%84%E6%80%9D%E8%80%83/#%E9%80%82%E5%90%88%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%9C%BA%E6%99%AF
+5. 通用 
+   设计模式
+   DDD
 
 ## 问题todo
 服务端渲染 模式 SSR   SSG(编译时生成html) 
@@ -44,18 +59,13 @@ http://www.ayqy.net/blog/csr-vs-ssr-vs-prerendering-vs-hydration/
 
 // 近期计划
 // 想一想在过三年后的状态
-一年后能到达啥程度 专业能力强 + 思考能力 还希望自己瘦一些
+一年后能到达啥程度 专业能力强 + 思考能力
 专业技术 + 思考深度
 专业能力 
 web能力  web
 横向能力  服务端 系统架构  项目管理
 思考深度 给自己定个小目标 => 一个月一本书 非技术类 
 
-健身
-一周锻炼 3次+ 
-到2021年底 到100kg
-到2022年3月  到90kg
-到2022年6月  到85kg(肌肉维度)
 
 ## 需要关注的点
 
@@ -64,8 +74,65 @@ web能力  web
 3. 具体做的事情(业务 + 技术) => 长期的视角
 4. 个人成长( 技术 领域知识  => 晋升) 
 
+日常:
+1. 健身
+一周锻炼 4-5次 
+到2022年3月  到95kg 现在距离目标10kg
+到2022年6月  到90kg(肌肉维度)
+2. 读书
+每月2本书 晚上回家看书 + 学习
 
-在团队中除了业务需求上 自己能做的事
+一些长期思考的点
+1. 一些能产生复利的事(投资 分享写作) 
+2. 2022 长期想做的一件事是啥(多想想)
+
+
+
+
+日常疑问
+
+
+模块联邦(梳理下)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
