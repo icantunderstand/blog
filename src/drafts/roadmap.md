@@ -34,14 +34,12 @@
    teaful
 
    微前端  
-   https://juejin.cn/post/6862661545592111111
    https://juejin.cn/post/6885212507837825038
-   https://single-spa.js.org/docs/ecosystem-react/  single-spa-react
    https://testudy.cc/tech/2017/12/23/webpack-for-umd.html
    https://github.com/micro-zoe/micro-app/issues/17 从零开始写一个微前端框架
    https://github.com/fengshi123/blog/issues/21
    https://blog.csdn.net/cangdu123/article/details/119387554
-   https://blog.yuanziwen.cn/2019/12/18/%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%97%B6%E4%BB%A3%E8%90%BD%E5%9C%B0%E5%89%8D%E7%9A%84%E6%80%9D%E8%80%83/#%E9%80%82%E5%90%88%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%9C%BA%E6%99%AF
+   system.js
 5. 通用 
    设计模式
    DDD
