@@ -21,7 +21,7 @@ path: /single-spa
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-微前端是应用组装的一种模式,本文从single-spa的使用方式入手逐步深入到single-spa的源码实现了解微前端的实现方式  
+微前端是应用组装的一种模式,本文从single-spa的使用方式入手逐步深入到single-spa的源码实现了解微前端的实现方式
 ##  1. <a name='single-spa'></a>single-spa简单用法  
 single-spa通过子应用与主应用约定交互协议实现微前端应用,在具体的交互中:
 * 子应用需要暴露应用生命周期方法,例如bootstrap、mount、unmount
@@ -30,7 +30,7 @@ single-spa通过子应用与主应用约定交互协议实现微前端应用,在
 下面的例子分别从子/主应用的角度梳理下single-spa实现微前端方案的配置方式,在例子中定义了一个主应用(baseapp), 两个子应用(app1, app2).
 
 ###  1.1. <a name=''></a>子应用配置  
-single-spa基于js Entry的方式实现微前端方案,在子应用导出的js模块中需要包含子应用的生命周期函数方法，这里的两个子应用都以create-react-app创建的react应用举例
+single-spa基于js Entry的方式实现微前端方案,在子应用导出的js模块中需要包含子应用的生命周期函数方法，这里的两个子应用都以create-react-app创建的react应用举例,实例代码已上传到[微前端demo](https://github.com/icantunderstand/microappdemo)  
 
 1. 使用create-react-app创建子应用 npx create-react-app app1 
 2. 进入到对应的目录 
