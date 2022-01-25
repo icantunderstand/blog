@@ -9,7 +9,6 @@
 
 ## 近期计划
 1. 工程化相关 
-   微前端方案 https://www.yuque.com/kuitos/gky7yw/uyp6wi 掘金小册  singleSpa源码
    k8s
    monorepo
    前端监控平台
@@ -17,16 +16,15 @@
    android
    flutter
 3. 服务端
-    node  nestjs
-    go  https://github.com/rogchap/v8go
+    node 
+    go(go语言学习)  https://github.com/rogchap/v8go
 4. react框架学习
    把react框架相关的代码部分在熟悉下
-   react query relay
    表单方案(https://formik.org/ antd formik react-hook-form)
    https://github.com/jaredpalmer/formik  formik和form组合干了啥
    
    请求方案
-   react-query
+   react-query(梳理下)
 
    状态管理
    xstate  xstate代码的逻辑性
@@ -37,8 +35,6 @@
    https://juejin.cn/post/6885212507837825038
    https://testudy.cc/tech/2017/12/23/webpack-for-umd.html
    https://github.com/micro-zoe/micro-app/issues/17 从零开始写一个微前端框架
-   https://github.com/fengshi123/blog/issues/21
-   https://blog.csdn.net/cangdu123/article/details/119387554
    system.js
 5. 通用 
    设计模式
