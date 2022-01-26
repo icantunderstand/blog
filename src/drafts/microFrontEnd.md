@@ -10,7 +10,6 @@ shadow dom(web components)
 
 乾坤 相关文档 https://www.yuque.com/kuitos/gky7yw/nwgk5a
 
-systemjs 怎么搞的
 single-spa的搞法
 可共享和复用的东西
 1. 受路由控制渲染的子应用（applications）
@@ -28,3 +27,10 @@ iframe:
 
 一个观点  技术或者技术的探索 要往前走一步 可以尝试的多尝试
         技术方案趋同 共同进步
+
+
+
+systemjs 相关  
+https://github.com/WICG/import-maps  
+
+

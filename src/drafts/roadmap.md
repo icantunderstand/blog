@@ -25,7 +25,6 @@
    
    请求方案
    react-query(梳理下)
-
    状态管理
    xstate  xstate代码的逻辑性
    recoil
@@ -84,9 +83,22 @@ web能力  web
 
 
 日常疑问
+得把mobx的用法好好梳理下  recoil的入门文章
+https://juejin.cn/post/6844903806946246669
+https://juejin.cn/post/6861390436175462414 去看一看源码
+https://github.com/unadlib/reactant
+
+mobx相比redux的优点 
+   数据流清晰 但是大项目中模板代码的增加 代码海洋  mobx能通过面向对象的方式 能小范围的集中代码逻辑
+mobx的缺点如何避免 
+   ...
+
+底部的相关文章 都看下 http://dmitrysoshnikov.com/ 
+   
 
 
-模块联邦(梳理下)
+
+
 
 
 
