@@ -1,6 +1,6 @@
 ---
 title: 当nestjs遇到nextjs
-date: "2021-11-23"
+date: "2022-02-07"
 tags: JavaScript
 path: /nestjs-with-nextjs
 

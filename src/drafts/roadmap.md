@@ -9,9 +9,6 @@
 
 ## 近期计划
 1. 工程化相关 
-   k8s
-   monorepo
-   前端监控平台
 2. 跨端能力
    android
    flutter
@@ -20,11 +17,12 @@
     go(go语言学习)  https://github.com/rogchap/v8go
 4. react框架学习
    把react框架相关的代码部分在熟悉下
-   表单方案(https://formik.org/ antd formik react-hook-form)
+   remix 学习下这个框架的原理部分
+   表单方案(https://formik.org/ formik react-hook-form)
    https://github.com/jaredpalmer/formik  formik和form组合干了啥
    
    请求方案
-   react-query(梳理下)
+   react-query(梳理下
    状态管理
    xstate  xstate代码的逻辑性
    recoil
@@ -86,7 +84,6 @@ web能力  web
 得把mobx的用法好好梳理下  recoil的入门文章
 https://juejin.cn/post/6844903806946246669
 https://juejin.cn/post/6861390436175462414 去看一看源码
-https://github.com/unadlib/reactant
 
 mobx相比redux的优点 
    数据流清晰 但是大项目中模板代码的增加 代码海洋  mobx能通过面向对象的方式 能小范围的集中代码逻辑
