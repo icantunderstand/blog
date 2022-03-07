@@ -1,0 +1,43 @@
+.progressBar {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 3px;
+    bottom: -2px;
+    background: yellow;
+}
+
+.headerContainer {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.45rem 1.0875rem;
+    position: relative;
+    background: rebeccapurple;
+    margin-bottom: 1.45rem;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.title {
+    font-size: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: 'center';
+}
+
+.desc {
+    font-size: 20;
+    margin-left: 20px;
+    color: white;
+}
+
+.category {
+    margin: 0;
+    display: inline-block;
+}

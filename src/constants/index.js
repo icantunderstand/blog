@@ -1,5 +1,6 @@
 const blogCategory = [
   { key: "JavaScript", meta: "" },
+  { key: "读书目录", meta: "" },
   { key:  "CSS", meta: "" },
   { key: "Go" },
   { key: "跨端技术" },

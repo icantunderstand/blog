@@ -18,7 +18,7 @@ export default function Template({ data, pageContext = {} }) {
   }, [])
   return (
     <div className="blog-post">
-      <Header siteTitle={title} description={description} />
+      <Header siteTitle={title} description={description} isDetailPage={true} />
       <h1 className="blog-post-content">{frontmatter.title}</h1>
       {readingTime && <div className="blog-post-content">{readingTime}</div>}
       <div
