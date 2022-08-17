@@ -11,7 +11,9 @@ const blogCategory = [
   { key: '源码解读' },
   { key: "React" },
   { key: "Node"},
-  { key: "前端快报", meta: "收录最近阅读的前端资料"}
+  { key: "前端快报", meta: "收录最近阅读的前端资料"},
+  { key: "年度总结" },
+
 ]
 
 module.exports = {

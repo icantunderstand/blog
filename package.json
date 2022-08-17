@@ -5,7 +5,6 @@
   "version": "0.1.0",
   "author": "noodles",
   "dependencies": {
-    "@fireworks-js/react": "^2.0.2",
     "gatsby": "^3.9.0",
     "gatsby-paginate": "^1.1.1",
     "gatsby-plugin-gatsby-cloud": "^2.9.0",

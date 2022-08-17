@@ -1,7 +1,7 @@
 ---
 title: 2020年总结
 date: "2021-02-01"
-tags: 思考
+tags: 年度总结
 path: /2020-summary
 ---
 

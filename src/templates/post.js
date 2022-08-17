@@ -1,6 +1,5 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
-import { Fireworks } from 'fireworks-js'
 import { StaticImage } from 'gatsby-plugin-image'
 
 import Header from "../components/header"
