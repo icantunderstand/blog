@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "noodles",
   "dependencies": {
+    "cursor-effects": "^1.0.4",
     "gatsby": "^3.9.0",
     "gatsby-paginate": "^1.1.1",
     "gatsby-plugin-gatsby-cloud": "^2.9.0",

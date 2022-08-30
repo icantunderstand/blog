@@ -1,6 +1,9 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { StaticImage } from 'gatsby-plugin-image'
+import {
+  fairyDustCursor
+} from 'cursor-effects'
 
 import Header from "../components/header"
 import Comment from '../components/comment'
@@ -16,6 +19,7 @@ export default function Template({ data, pageContext = {} }) {
   const { frontmatter, html } = markdownRemark
   useEffect(() => {
     sendPagePv()
+    new fairyDustCursor({colors: ["#ff0000", "#00ff00", "#0000ff"]})
   }, [])
   return (
     <div className="blog-post">

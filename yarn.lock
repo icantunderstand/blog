@@ -1096,13 +1096,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fireworks-js/react@^2.0.2":
-  version "2.0.2"
-  resolved "https://npm.corp.kuaishou.com/@fireworks-js%2freact/-/react-2.0.2.tgz#0ba9fc5cc4c6b6a1194fdcffc338b3ea3b75a48d"
-  integrity sha512-h+TCXIdzZ2Bha9SEPBBg/BoFjPppi20l74iCP+ZuudbjoGNEtEdWy0dFS/+tiOlxK9zt/GBjCuYr2eMZmo/JJg==
-  dependencies:
-    fireworks-js "2.0.0"
-
 "@gatsbyjs/reach-router@^1.3.6":
   version "1.3.7"
   resolved "https://npm.corp.kuaishou.com/@gatsbyjs%2freach-router/-/reach-router-1.3.7.tgz#d32029f2b4d91bb6977e7fd605237e3a5db20096"
@@ -4115,6 +4108,11 @@ csstype@^3.0.2:
   resolved "https://npm.corp.kuaishou.com/csstype/-/csstype-3.1.0.tgz#4ddcac3718d787cf9df0d1b7d15033925c8f29f2"
   integrity sha512-uX1KG+x9h5hIJsaKR9xHUeUraxf8IODOwq9JLNPq6BwB04a/xgpq3rcx47l5BZu5zBPlgD342tdke3Hom/nJRA==
 
+cursor-effects@^1.0.4:
+  version "1.0.4"
+  resolved "https://npm.corp.kuaishou.com/cursor-effects/-/cursor-effects-1.0.4.tgz#16cceac6cd40198dd96ca3ca5444107af887e8b5"
+  integrity sha512-LWcQHyHyeRfS0u4njd+cipaLUKoE1N9Jg4Rjon5h75TIB4Z4VxF+nX5c/QjXX795EMZoEz6jz8K+U+V4w5wy0A==
+
 d@1, d@^1.0.1:
   version "1.0.1"
   resolved "https://npm.corp.kuaishou.com/d/-/d-1.0.1.tgz#8698095372d58dbee346ffd0c7093f99f8f9eb5a"
@@ -5379,11 +5377,6 @@ find-up@^3.0.0:
   integrity sha1-SRafHXmTQwZG2mHsxa41XCHJe3M=
   dependencies:
     locate-path "^3.0.0"
-
-fireworks-js@2.0.0:
-  version "2.0.0"
-  resolved "https://npm.corp.kuaishou.com/fireworks-js/-/fireworks-js-2.0.0.tgz#c3355bfc3a92ccb3fddf626013954d49e763e461"
-  integrity sha512-HtTwD7EHsJ1jwiz/e3/nERLnApcczhRBRXE6CZfs58jU9qvuMXhnykcCdxX8LyFW2v/vKDXPBMKMKLkILTW3Tw==
 
 flat-cache@^3.0.4:
   version "3.0.4"
