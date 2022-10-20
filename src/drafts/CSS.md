@@ -18,6 +18,7 @@ categories: CSS
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    // 行数
     -webkit-line-clamp: 2;
     overflow: hidden;
 
@@ -84,7 +85,7 @@ BFC区域不与float区域重合
     }
 
 ### 双飞翼布局
-使用负margin可以让主体先加载
+使用负margin可以让主体先加载 其实是float的变式
 
     <div class="container">
       <div class="content">
@@ -367,7 +368,7 @@ function setRemUnit () {
 vw是根据视口的长度和宽度进行适配  
 1vw等于window.innerWidth的1%  如果设计稿是750 1vw相当于7.5px
 
-结合rem和vw实现是适配
+结合rem和vw实现适配
 给根元素大小设置随着视口变化而变化的vw单位，这样就可以实现动态改变其大小。 在根元素设置vw单位
 限制根元素字体大小的最大最小值，配合body加上最大宽度和最小宽度
 
