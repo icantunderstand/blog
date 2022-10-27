@@ -17,14 +17,11 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
+  padding-bottom: 10px;
 }
 .paginate-item {
   margin-left: 10px;
-}
-.paginate-input {
-  margin-left: 10px;
-  width: 40px;
-  height: 32px
 }
 
 .top-post {

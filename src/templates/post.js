@@ -1,42 +1,63 @@
 import React, { useEffect } from "react"
 import { graphql } from "gatsby"
 import { StaticImage } from 'gatsby-plugin-image'
-import {
-  fairyDustCursor
-} from 'cursor-effects'
+import { 
+  AppShell,
+  createStyles,
+} from '@mantine/core';
 
-import Header from "../components/header"
-import Comment from '../components/comment'
-import AdComponent from '../components/adComponent'
+import Comment from '@components/comment'
+import AdComponent from '@components/adComponent'
+import PageHeader from '@components/PageHeader'
 import { useSiteData } from '../hooks/site-data'
 import './style.css'
 import { sendPagePv } from '../utils'
 
+const useStyles = createStyles((theme) => ({
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingBottom: 70,
+  }
+}));
+
 export default function Template({ data, pageContext = {} }) {
   const { readingTime } = pageContext
-  const { title, description } = useSiteData()
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
+  const { classes } = useStyles();
+
   useEffect(() => {
     sendPagePv()
-    new fairyDustCursor({colors: ["#ff0000", "#00ff00", "#0000ff"]})
   }, [])
   return (
-    <div className="blog-post">
-      <Header siteTitle={title} description={description} isDetailPage={true} />
-      <h1 className="blog-post-content">{frontmatter.title}</h1>
-      {readingTime && <div className="blog-post-content">{readingTime}</div>}
-      <div
-        className="blog-post-content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
-      <div className="blog-footer">
-        <StaticImage src="../post/images/qrcode.jpg" alt="" />
-        <div>欢迎大家关注我的公众号-前端小板凳 一起学习进步！</div>
+    <AppShell
+        padding="md"
+        header={<PageHeader isDetailPage />}
+        styles={(theme) => ({
+          root: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+          main: { paddingTop: 20 }
+        })}
+    >
+      <div className={classes.content}>
+        <div className="blog-post">
+          <h1 className="blog-post-content">{frontmatter.title}</h1>
+          {readingTime && <div className="blog-post-content">{readingTime}</div>}
+          <div
+            className="blog-post-content"
+            dangerouslySetInnerHTML={{ __html: html }}
+          />
+          <div className="blog-footer">
+            <StaticImage src="../post/images/qrcode.jpg" alt="" />
+            <div>欢迎大家关注我的公众号-前端小板凳 一起学习进步！</div>
+          </div>
+          <Comment />
+          <AdComponent />
+        </div>
       </div>
-      <Comment />
-      <AdComponent />
-    </div>
+    </AppShell>
   )
 }
 

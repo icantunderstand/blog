@@ -6,6 +6,16 @@ module.exports = {
     siteUrl: `https://icantunderstand.cn`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@components": "src/components",
+        },
+        extensions: []
+      }
+    },
+    `gatsby-plugin-mantine`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-gatsby-cloud`,

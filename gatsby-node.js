@@ -15,7 +15,7 @@ function createCategoryPage({ actions, graphql }) {
         category: category.key,
         meta: category?.meta
       },
-      component: path.resolve(`src/templates/category.js`),
+      component: path.resolve(`src/templates/categoryDetail.js`),
     })
   }
 }
@@ -42,6 +42,7 @@ async function createDetailPage({ actions, graphql }) {
               tags
               path
               top
+              summary
             }
           }
         }
@@ -68,7 +69,7 @@ async function createDetailPage({ actions, graphql }) {
     edges: [...result.data.allMarkdownRemark.edges],
     createPage: createPage,
     pageTemplate: 'src/templates/index.js',
-    pageLength: 15, // This is optional and defaults to 10 if not used
+    pageLength: 6, // This is optional and defaults to 10 if not used
     pathPrefix: '', // This is optional and defaults to an empty string if not used
     context: { pageAllCount: allCount }, // This is optional and defaults to an empty object if not used
   });

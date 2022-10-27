@@ -1,67 +1,107 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { 
+  AppShell,
+  Navbar,
+  createStyles,
+  Footer,
+  MantineProvider,
+  Pagination,
+} from '@mantine/core';
+import { IconBoxMultiple0, IconBoxMultiple1 } from '@tabler/icons';
+import { fairyDustCursor } from 'cursor-effects'
+import { navigate } from "gatsby"
 import Link from 'gatsby-link'
-import Layout from '../components/layout';
+
+import ArticleCard from '@components/ArticleCard';
+import NavLink from '@components/NavLInk';
+import PageHeader from '@components/PageHeader'
 import { sendHomePv } from '../utils'
-
 import './style.css'
+import './reset.css'
 
-const NavLink = props => {
-  if (!props.test) {
-    return <Link to={props.url}>{props.text}</Link>
-  } else {
-    return <span>{props.text}</span>
+const useStyles = createStyles((theme) => ({
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingBottom: 70,
   }
-}
+}));
+
 
 const IndexPage = ({ pageContext }) => {
-  const { group, index, first, last, pageCount, pageAllCount } = pageContext
-  const previousUrl = index - 1 === 1 ? '' : (index - 1).toString()
-  const nextUrl = (index + 1).toString()
-  const [ nextPage, setNextPage ] = useState(nextUrl)
-  const [ jumpError, setJumpError ] = useState(false)
-  function setJumpPage(e) {
-    let transferNum = Number(e.target.value)
-    if(!isNaN(transferNum)) {
-      if(transferNum >= pageCount) {
-        transferNum = pageCount
-      }
-      if(transferNum <= 1) {
-        transferNum = ''
-      }
-      setJumpError(false)
-      setNextPage(`${transferNum}`)
+  const { group, index, pageCount, pageAllCount } = pageContext;
+  const { classes } = useStyles();
+  function setJumpPage(pageNum) {
+    if(pageNum === 1) {
+      navigate(`/`)
     } else {
-      setJumpError(true)
+      navigate(`/${pageNum}`)
     }
   }
   useEffect(() => {
     sendHomePv()
+    new fairyDustCursor({colors: ["#ff0000", "#00ff00", "#0000ff"]})
   }, [])
   return (
-    <Layout>
-      <div>
-      {group.map((data = {}) => {
-        const { frontmatter } = data.node || {}
-        return <div key={frontmatter.path} >
-          <Link to={frontmatter.path}>{frontmatter.title}</Link>
-          &nbsp;
-          <small>
-            {' '}
-            <em>published on</em> {frontmatter.date}
-          </small>
-          {frontmatter.top ? <div className="top-post"><em>置顶</em></div> : ''}
-        </div>
-      })}
-      <div className="paginate-container">
-        <div className="paginate-item">共 {pageAllCount} 篇文章 </div>
-        <NavLink test={first} url={`/${previousUrl}`} text="前一页" />
-        <NavLink test={last} url={`/${nextUrl}`} text="下一页" />
-        <div className="paginate-item">共{pageCount}页</div>
-        {jumpError ? <div className="paginate-item">跳转到</div> : <div className="paginate-item"><Link to={`/${nextPage}`}>跳转到</Link></div>}
-        <input onChange={setJumpPage} className="paginate-input" />
+    <AppShell
+        padding="md"
+        navbar={<Navbar 
+          width={{ base: 300 }}
+          height={1000}
+          p="xs"
+        >
+          <Navbar.Section>
+            <Link to="/">
+            <NavLink icon={<IconBoxMultiple0 size={16} color="blue" />} label="首页"  />
+            </Link>
+          </Navbar.Section>
+          <Navbar.Section>
+            <Link to='/category'>
+              <NavLink icon={<IconBoxMultiple1 size={16} color="teal"  />} label="分类" />
+            </Link>
+          </Navbar.Section>
+        </Navbar>}
+        footer={<Footer >
+          <div className="paginate-container">
+            <Pagination total={pageCount} onChange={setJumpPage} page={index} />
+            <div className="paginate-item">共 {pageAllCount} 篇文章 </div>
+          </div>
+        </Footer>}
+        header={<PageHeader />}
+        styles={(theme) => ({
+          root: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
+          main: { paddingTop: 20 }
+        })}
+    >
+      <div className={classes.content}>
+        {group.map((data = {}) => {
+          const { frontmatter } = data.node || {}
+          return <div key={frontmatter.path} >
+            <Link to={frontmatter.path}>
+              <ArticleCard 
+                title={frontmatter.title}
+                tags={frontmatter.tags}
+                isTop={frontmatter.top}
+                date={frontmatter.date}
+                summary={frontmatter.summary}
+              />
+            </Link>
+          </div>
+        })}
       </div>
-    </div>
-    </Layout>
+    </AppShell>
   )
 }
-export default IndexPage
+
+
+const HOME = ({ pageContext }) => {
+  return (
+    <MantineProvider withNormalizeCSS withGlobalStyles>
+      <IndexPage pageContext={pageContext} />
+    </MantineProvider>
+  );
+}
+
+export default HOME
