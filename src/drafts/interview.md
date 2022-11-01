@@ -203,6 +203,7 @@ categories:
 
     __proto__ 对象的原型
     prototype 函数的原型  Func.prototype.constructor === Func
+    对象属性的获取是顺着对象__proto__沿着原型链查找
 
 ## 实现继承的几种方式
 
@@ -214,7 +215,7 @@ categories:
     console.log(A.__proto__ === Function.prototype) // true
     console.log(Object.__proto__ === Function.prototype) //true
     const a = new A();
-    a.a(); // 无法执行
+    a.a(); // 无法执行 Object.__proto__是null
     a.b();
 
 ### 原型链继承
