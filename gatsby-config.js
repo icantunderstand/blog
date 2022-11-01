@@ -26,7 +26,7 @@ module.exports = {
         name: `blog`,
         short_name: `blog`,
         start_url: `/`,
-        icon: `src/post/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/static/icons/icon.jpg`, // This path is relative to the root of the site.
       },
     },
     `gatsby-transformer-remark`,

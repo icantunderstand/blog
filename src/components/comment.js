@@ -22,10 +22,10 @@ export default class Comment extends PureComponent {
             el: this._commentRef.current, // 如果是用id定位<div>，则这里填入id
             appId: "5UvRKnJtRpFNVsjwkIYxayN9-gzGzoHsz",
             appKey: "07PG3nQyrsrJCDmjzEUgy2R9",
-            path: window.location.pathname
+            path: window.location.pathname,
           })
     }
     render() {
-    return <div style={containerStyle} id="vcomment" ref={this._commentRef} />
+      return <div style={containerStyle} id="vcomment" ref={this._commentRef} />
     }
 }
