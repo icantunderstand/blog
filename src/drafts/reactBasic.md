@@ -131,7 +131,7 @@ react的diff基于以下三点:
 
 ## 高阶用法
 ### render prop
-为了逻辑共享
+定义方法返回JSX(或者children).为了逻辑共享和state的提升
 
   class Cat extends PureComponent {
     constructor(props) {
@@ -175,6 +175,10 @@ react的diff基于以下三点:
 #### 用处
 1. 高阶组件实现对共有逻辑的提取(组合逻辑)
 2. 添加新的逻辑
+
+#### 高阶组件&hooks
+高阶组件增加了组件的嵌套逻辑，为组件注入新的能力。逻辑修改统一不分散。需要考虑属性冲突的问题
+hooks为组件增加可复用的定制能力，修改了组件的属性等。
 
 ## react api
 

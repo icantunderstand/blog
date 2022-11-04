@@ -246,6 +246,23 @@ CommonJs循环加载时,属于加载时执行.即脚本代码在require的时�
     const { test } = require('./a.js')
     console.log(test); // undefined
 
+### 动态引入  
+可以通过按需引入模块来优化首屏代体积
+
+
+        import("module").then(module => {
+            module.default();
+            module.namedExport();
+        });
+
+        // Or with async/await
+        (async () => {
+            const module = await import("module");
+            module.default();
+            module.namedExport();
+        })();
+
+
 ## iterator(迭代器)
    在ES6中的可以使用数组解构,for of等语句遍历数组、Map、Set是因为在ES6中默认为这些结构创建了[Symbol.iterator]方法.通过这个方法的调用返回一个可以遍历该数据结构的对象(iterator),通过这个对象来遍历数据结构的属性.
   ![iterator](./ES6/iterator.png)  
