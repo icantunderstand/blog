@@ -4,7 +4,7 @@ import { createStyles, Card, Image, Avatar, Text, Group, Tooltip } from '@mantin
 
 const useStyles = createStyles((theme) => ({
   card: {
-    width: 700,
+    width: 600,
     marginBottom: 5,
     overflow: 'visible',
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
@@ -16,14 +16,18 @@ const useStyles = createStyles((theme) => ({
     lineHeight: 1.2,
   },
   summary: {
-    width: 140,
-    height: 140,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
+    maxWidth: 400,
+    marginLeft: 10,
     fontSize: 14,
-    padding: 10,
-    borderRight: '1px solid #dee2e6'
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+  horizontalContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   body: {
     padding: theme.spacing.md,
@@ -39,22 +43,10 @@ export default function ArticleCardVertical({
   isTop,
 }) {
   const { classes } = useStyles();
-  const showSummary = !!summary ? summary : '暂无摘要,点击查看内容';
+  const showSummary = !!summary ? summary : '';
   return (
     <Card withBorder radius="md" p={0} className={classes.card}>
       <Group noWrap spacing={0}>
-        <div className={classes.summary}>
-          <Tooltip
-            label={showSummary}
-            width={140}
-            multiline
-            position="bottom"
-          >
-            <Text color="dimmed" size="xs" lineClamp={3} >
-              {showSummary}
-            </Text>
-          </Tooltip>
-        </div>
         <div className={classes.body}>
           <Link to={`/${tags}`} >
             <Text transform="uppercase" color="dimmed" weight={700} size="xs">
@@ -64,9 +56,22 @@ export default function ArticleCardVertical({
           <Text className={classes.title} mt="xs" mb="md">
             {title}
           </Text>
-          <Text size="xs" color="dimmed">
-            {date}
-          </Text>
+          <div className={classes.horizontalContainer}>
+            <Text size="xs" color="dimmed">
+              {date}
+            </Text>
+            <div className={classes.summary}>
+              <Tooltip
+                label={showSummary}
+                multiline
+                position="bottom"
+              >
+                <Text color="dimmed" size="xs" lineClamp={3} >
+                  {showSummary}
+                </Text>
+              </Tooltip>
+            </div>
+          </div>
         </div>
       </Group>
     </Card>
