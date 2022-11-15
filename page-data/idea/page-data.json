@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-post-js",
+    "path": "/idea",
+    "result": {"data":{"markdownRemark":{"html":"<ul>\n<li>\n<p>要有刨根问底的精神</p>\n</li>\n<li>\n<p>多思考这件事为什么是这样</p>\n</li>\n<li>\n<p>提取事物相同的模式 从更上层或者多角度去看相似的问题</p>\n</li>\n<li>\n<p>有深度的刻意练习才能产生提高</p>\n</li>\n<li>\n<p>做技术 可以从技术角度去产生技术方案也可以从用户产品视角去思考技术 不要把这两个孤立开来</p>\n</li>\n</ul>","frontmatter":{"date":"2020-12-21","path":"/idea","title":"想法片段总结"}}},"pageContext":{"readingTime":"1 min read"}},
+    "staticQueryHashes": ["256249292"]}
