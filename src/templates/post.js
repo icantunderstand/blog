@@ -9,7 +9,6 @@ import {
 import Comment from '@components/comment'
 import AdComponent from '@components/adComponent'
 import PageHeader from '@components/PageHeader'
-import { useSiteData } from '../hooks/site-data'
 import './style.css'
 import { sendPagePv } from '../utils'
 

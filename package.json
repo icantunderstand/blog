@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "concurrently": "^6.2.1",
+    "gh-pages": "^4.0.0",
     "prettier": "2.3.2"
   },
   "keywords": [
@@ -45,12 +46,13 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "git@github.com:icantunderstand/blog.git"
   }
 }

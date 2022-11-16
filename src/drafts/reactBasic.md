@@ -130,7 +130,7 @@ react的diff基于以下三点:
     )
 
 ## 高阶用法
-### render prop
+### render props
 定义方法返回JSX(或者children).为了逻辑共享和state的提升
 
   class Cat extends PureComponent {
@@ -157,6 +157,9 @@ react的diff基于以下三点:
 
     function HOC(Wrapped) {
       return class extends Component {
+        componentDidMount() {
+          // 通用的业务逻辑
+        }
         render() {
           return (<Wrapped {...this.props} />)
         }

@@ -5,6 +5,7 @@ module.exports = {
     author: `noodles`,
     siteUrl: `https://icantunderstand.cn`,
   },
+  pathPrefix: '/blog',
   plugins: [
     {
       resolve: `gatsby-plugin-alias-imports`,
