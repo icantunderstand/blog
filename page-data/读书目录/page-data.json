@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-category-detail-js",
+    "path": "/读书目录",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"id":"983124c1-808b-5e13-bea1-17907d6cd08f","frontmatter":{"title":"读书目录-2022","date":"2022-03-01","tags":"读书目录","path":"/book-list-2022","top":null,"summary":null}}},{"node":{"id":"9cf87650-c261-51d7-b150-77bfa90feef5","frontmatter":{"title":"读书目录-2021","date":"2021-08-20","tags":"读书目录","path":"/book-list-2021","top":null,"summary":null}}}]}},"pageContext":{"category":"读书目录","meta":""}},
+    "staticQueryHashes": []}
