@@ -5,6 +5,9 @@ tags: react
 categories: react
 ---
 
+
+https://www.plasmic.app/blog/how-react-server-components-work
+
 ## MVC MVP MVVM概念
 ### MVC
 #### 客户端MVC  
