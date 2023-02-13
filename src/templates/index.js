@@ -72,10 +72,10 @@ const IndexPage = ({ pageContext }) => {
         header={<PageHeader />}
         styles={(theme) => ({
           root: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
-          main: { paddingTop: 20 }
+          main: { paddingTop: 20 },
         })}
     >
-      <div className={classes.content}>
+      <div className={classes.content} >
         {group.map((data = {}) => {
           const { frontmatter } = data.node || {}
           return <div key={frontmatter.path} >

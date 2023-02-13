@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <button id="button">button</button>
+  <script>
+      const button = document.getElementById('button');
+const controller = new AbortController();
+const { signal } = controller;
+
+button.addEventListener('click', () => console.log('clicked!'), { signal });
+controller.abort()
+  </script>
+</body>
+</html>
