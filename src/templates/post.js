@@ -6,6 +6,7 @@ import {
   createStyles,
 } from '@mantine/core';
 
+
 import Comment from '@components/comment'
 import AdComponent from '@components/adComponent'
 import PageHeader from '@components/PageHeader'
@@ -42,6 +43,7 @@ export default function Template({ data, pageContext = {} }) {
         })}
     >
       <div className={classes.content}>
+
         <div className="blog-post">
           <h1 className="blog-post-content">{frontmatter.title}</h1>
           {readingTime && <div className="blog-post-content">{readingTime}</div>}

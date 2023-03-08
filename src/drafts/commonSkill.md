@@ -1,4 +1,4 @@
-
+git branch | grep ‘dev*’ | xargs git branch -d
 
 ## nginx
 
