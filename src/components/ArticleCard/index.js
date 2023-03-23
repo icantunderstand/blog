@@ -9,7 +9,13 @@ const useStyles = createStyles((theme) => ({
     overflow: 'visible',
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
   },
-
+  searchCard: {
+    width: 200,
+    marginRight: 8,
+    marginBottom: 5,
+    overflow: 'visible',
+    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
+  },
   title: {
     fontWeight: 700,
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
@@ -41,11 +47,12 @@ export default function ArticleCardVertical({
   title,
   date,
   isTop,
+  isSearch
 }) {
   const { classes } = useStyles();
   const showSummary = !!summary ? summary : '';
   return (
-    <Card withBorder radius="md" p={0} className={classes.card}>
+    <Card withBorder radius="md" p={0} className={isSearch ? classes.searchCard : classes.card} >
       <Group noWrap spacing={0}>
         <div className={classes.body}>
           <Link to={`/${tags}`} >

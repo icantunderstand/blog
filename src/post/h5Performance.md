@@ -1,6 +1,6 @@
 ---
 title: web性能优化总结
-date: "2021-07-25"
+date: "2023-03-15"
 tags: 跨端技术
 path: /h5-performance
 ---
@@ -23,15 +23,20 @@ h5性能优化可以总结为如下的几个方向:
 * [离线包](https://icantunderstand.cn/cross-platform-offline) 通过离线包可以直接加载提前下载好的本地资源展示
 
 ## h5页面内优化
-* 预连接 dns-pretch, preconnect
+* 预连接 dns-prefetch, preconnect
 * 资源包拆分 框架和业务代码进行拆包，框架层使用更长的缓存策略来减少框架代码的请求
-* 页面资源加载 图片懒加载、路由懒加载、小图内联
-* js执行优化 缓存计算结果、WebWorker、GPU渲染、长列表  
+* 页面资源加载 图片懒加载、路由懒加载、小图内联、模块动态加载
+* js执行优化 缓存计算结果、WebWorker、GPU渲染、长列表优化 
 
 ## 服务端优化
 * api聚合服务 前端侧可以通过一个请求聚合多个后端请求，后端在内网完成数据的聚合
 * CDN容灾策略
-* 服务端渲染 可以完成数据请求组装和页面html的流式返回(renderToNodeStream)
+* 预渲染技术 
+    1. [SSR](https://www.patterns.dev/posts/server-side-rendering)(server-side rendering)服务端渲染,在服务端完成数据请求和html内容的生成返回给用户
+    2. [SSG](https://www.patterns.dev/posts/static-rendering)(static site generation)静态页面生成，SSG主要用于生成静态的网站比如博客等
+    3. [ISR](https://www.patterns.dev/posts/incremental-static-rendering)（Incremental Static Generation)渐进式静态内容生成，可以增量的方式在服务端生成新的内容和替换已有内容，对SSG的一种补充
+    4. [Selective Hydration](https://www.patterns.dev/posts/react-selective-hydration) 可选的注水 通过Suspense和pipeToNodeStream流式输入实现可选注水
+    5. [Islands Architecture](https://www.patterns.dev/posts/islands-architecture) 孤岛架构,可以实现静态和动态内容的分离渲染，可以对组件渲染更细粒度的控制
 
 ## 用户
 * 功能取舍 低端机放弃一些功能保证页面更流畅
