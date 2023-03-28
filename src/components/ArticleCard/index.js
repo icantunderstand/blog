@@ -10,7 +10,7 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,
   },
   searchCard: {
-    width: 200,
+    width: 300,
     marginRight: 8,
     marginBottom: 5,
     overflow: 'visible',

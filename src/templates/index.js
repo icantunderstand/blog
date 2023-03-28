@@ -8,7 +8,6 @@ import {
   Pagination,
   Input
 } from '@mantine/core';
-import { useDebouncedValue } from '@mantine/hooks'
 import { IconBoxMultiple0, IconBoxMultiple1 } from '@tabler/icons';
 import { fairyDustCursor } from 'cursor-effects'
 import { navigate } from "gatsby"
@@ -42,14 +41,17 @@ const useStyles = createStyles((theme) => ({
 
 let miniSearch = new MiniSearch({
   fields: ['title', 'html'], // fields to index for full-text search
-  storeFields: ['title', 'category', 'html', 'date', 'path', 'tags', 'summary'] // fields to return with search results
+  storeFields: ['title', 'category', 'html', 'date', 'path', 'tags', 'summary'], // fields to return with search results
+  searchOptions: {
+    fuzzy: 100,
+    boost: { title: 100 },
+  }
 })
 let hasAddDocument = false
 const IndexPage = ({ pageContext }) => {
   const { group, index, pageCount, pageAllCount, allPage } = pageContext;
   const [searchStr, setSearchStr] = useState('')
   const [searchResult, setSearchResult] = useState([])
-  const [debounceSearchStr] = useDebouncedValue(searchStr, 500)
   const { classes } = useStyles();
   const showSearchResult = searchStr && setSearchResult?.length > 0
   function setJumpPage(pageNum) {
@@ -70,13 +72,13 @@ const IndexPage = ({ pageContext }) => {
 
   useEffect(() => {
     // 查询函数
-    if(debounceSearchStr || typeof debounceSearchStr === 'string') {
-      const results = miniSearch.search(debounceSearchStr)
+    if(searchStr || typeof searchStr === 'string') {
+      const results = miniSearch.search(searchStr)
       if(results?.length) {
         setSearchResult(results)
       }
     }
-  }, [debounceSearchStr])
+  }, [searchStr])
 
   const onChangeSearch = (e) => {
     setSearchStr(e?.nativeEvent?.target?.value)
@@ -100,7 +102,6 @@ const IndexPage = ({ pageContext }) => {
   }, [group])
   const searchPageContent = useMemo(() => {
     return searchResult.map((data = {}) => {
-      console.log(data, '11')
       const {
         date = '',
         path = '',
