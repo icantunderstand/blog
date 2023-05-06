@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'gatsby'
+import { isMobile } from 'react-device-detect'
 import { createStyles, Card, Image, Avatar, Text, Group, Tooltip } from '@mantine/core';
 
 const useStyles = createStyles((theme) => ({
   card: {
-    width: 600,
+    width: isMobile ? '100%' : 700,
     marginBottom: 5,
     overflow: 'visible',
     backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[7] : theme.white,

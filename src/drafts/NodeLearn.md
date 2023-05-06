@@ -47,7 +47,7 @@ native module Node中以Javascript形式提供的模块
 ### module.exports && exports
 
 * 默认情况下module.exports和exports都指向要导出的内容
-* 直接修改module.exports会改变指向
+* 直接修改module.exports会改变exports的指向,导致exports的内容失效
 
 
     exports = module.exports = function (name, age) { this.name = name;
@@ -57,6 +57,7 @@ native module Node中以Javascript形式提供的模块
 
  
 
-
-https://blog.dingkewz.com/post/tech/google_v8_core_concepts_01/
-https://v8.dev/docs/embed
+## 参考
+[二向箔](https://blog.dingkewz.com/post/tech/google_v8_core_concepts_01/) 
+[Getting started with embedding V8](https://v8.dev/docs/embed)  
+[Understanding module.exports and exports in Node.js](https://www.sitepoint.com/understanding-module-exports-exports-node-js/)

@@ -66,7 +66,9 @@ async function createDetailPage({ actions, graphql }) {
     }
   })
   result.data.allMarkdownRemark.edges = resultArr
-  const searchContent = result.data.allMarkdownRemark.edges?.map((item, index) => ({ ...item.node, ...item?.node?.frontmatter}))
+  const searchContent = result.data.allMarkdownRemark.edges?.map((item, index) => {
+    return { ...item.node, ...item?.node?.frontmatter}
+  })
   createPaginatedPages({
     edges: [...result.data.allMarkdownRemark.edges],
     createPage: createPage,

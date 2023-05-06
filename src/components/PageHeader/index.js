@@ -7,17 +7,8 @@ import {
 import { IconGhost } from '@tabler/icons';
 
 import { Link } from "gatsby"
-import useReadingProgress from '../../hooks/useReadingProgress'
 
 const useStyles = createStyles(() => ({
-  progressBar: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    height: 3,
-    bottom: -2,
-    background: 'yellow',
-  },
   horizontalContainer: {
     display: 'flex',
     flexDirection: 'row',
@@ -28,13 +19,13 @@ const useStyles = createStyles(() => ({
   container: {
     position: 'sticky',
     width: '100%',
+    height: 70,
   },
 }))
 
 
 const PageHeader = ({ isDetailPage = false }) => {
   const { classes } = useStyles()  
-  const completion = useReadingProgress();
   return (
       <Header className={classes.container} height={70} p="xs"  >
           <Link to="/" >
@@ -43,12 +34,6 @@ const PageHeader = ({ isDetailPage = false }) => {
               <Text>noodles的笔记本</Text>
             </div>
           </Link>
-          {isDetailPage ? <span
-              style={{
-                transform: `translateX(${completion - 100}%)`,
-              }}
-              className={classes.progressBar}
-            ></span> : null}
       </Header>);
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react'
+import { isMobile } from 'react-device-detect'
 import { 
   AppShell,
   Navbar,
@@ -34,6 +35,12 @@ const useStyles = createStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     flexWrap: 'wrap',
+    alignItems: 'center',
+  },
+  linkStyle: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
   }
 }));
@@ -87,8 +94,12 @@ const IndexPage = ({ pageContext }) => {
   const normalPageContent = useMemo(() => {
     return group.map((data = {}) => {
       const { frontmatter } = data.node || {}
-      return <div key={frontmatter.path} >
-        <Link to={frontmatter.path}>
+      return (
+        <Link 
+          className={classes.linkStyle}
+          key={frontmatter.path}
+          to={frontmatter.path}
+        >
           <ArticleCard 
             title={frontmatter.title}
             tags={frontmatter.tags}
@@ -97,7 +108,7 @@ const IndexPage = ({ pageContext }) => {
             summary={frontmatter.summary}
           />
         </Link>
-      </div>
+      );
     })
   }, [group])
   const searchPageContent = useMemo(() => {
@@ -109,8 +120,12 @@ const IndexPage = ({ pageContext }) => {
         title = '',
         summary = '',
       } = data
-      return <div key={path} >
-        <Link to={path}>
+      return (
+        <Link 
+          className={classes.linkStyle} 
+          key={path} 
+          to={path}
+        >
           <ArticleCard 
             title={title}
             tags={tags}
@@ -119,33 +134,36 @@ const IndexPage = ({ pageContext }) => {
             isSearch={true}
           />
         </Link>
-      </div>
+      )
     })
   }, [searchResult])
-  return (
-    <AppShell
-        padding="md"
-        navbar={<Navbar 
-          width={{ base: 300 }}
-          height={1000}
-          p="xs"
-        >
-          <Navbar.Section>
-            <Link to="/">
-            <NavLink icon={<IconBoxMultiple0 size={16} color="blue" />} label="首页"  />
-            </Link>
-          </Navbar.Section>
-          <Navbar.Section>
-            <Link to='/category'>
-              <NavLink icon={<IconBoxMultiple1 size={16} color="teal"  />} label="分类" />
-            </Link>
-          </Navbar.Section>
-          <Navbar.Section>
+  const NavBarContent = (
+      <Navbar 
+        width={{ base: 300 }}
+        height={1000}
+        p="xs"
+      >
+        <Navbar.Section>
+          <Link to="/">
+          <NavLink icon={<IconBoxMultiple0 size={16} color="blue" />} label="首页"  />
+          </Link>
+        </Navbar.Section>
+        <Navbar.Section>
+          <Link to='/category'>
+            <NavLink icon={<IconBoxMultiple1 size={16} color="teal"  />} label="分类" />
+          </Link>
+        </Navbar.Section>
+        <Navbar.Section>
           <Input.Wrapper label="搜索内容">
             <Input value={searchStr} onChange={onChangeSearch} />
           </Input.Wrapper>
-          </Navbar.Section>
-        </Navbar>}
+        </Navbar.Section>
+      </Navbar>
+  );
+  return (
+    <AppShell
+        padding="md"
+        navbar={isMobile ? null : NavBarContent}
         footer={<Footer >
           {showSearchResult ? null : (
             <div className="paginate-container">
@@ -156,8 +174,8 @@ const IndexPage = ({ pageContext }) => {
         </Footer>}
         header={<PageHeader />}
         styles={(theme) => ({
-          root: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0] },
-          main: { paddingTop: 20 },
+          root: { backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0], width: '100%' },
+          main: { paddingTop: 20, width: '100%' },
         })}
     >
       <div className={showSearchResult ? classes.searchContent : classes.content} >
