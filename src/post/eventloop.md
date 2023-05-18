@@ -18,7 +18,7 @@ path: /event-loop
 
 1. macrotasks:
   * 定时器(timer) setTimeout setInterval setImmediate
-  * message channel  message channel执行的优先级高于timer
+  * message channel  (message channel执行的优先级高于timer)
   * I/O
   * UI rendering
 
@@ -30,7 +30,7 @@ path: /event-loop
   * queueMicrotask(fn)
     将Fn推入微任务执行队列
   * requestAnimationFrame  
-    通知浏览器在下次重绘之前调用传入的回调函数，回调函数默认传入执行函数回调的时刻参数.requestAnimationFrame不属于宏任务和微任务，在微任务执行之后执行
+    通知浏览器在下次重绘之前调用传入的回调函数，回调函数默认传入函数执行的时间戳.requestAnimationFrame不属于宏任务和微任务，在微任务执行之后执行
   * process.nextTick
     process.nextTick是node上的api，具体的执行时机是在微任务之前执行。
     ![nextTick](./eventloop/nextTick.png) 
@@ -68,9 +68,9 @@ path: /event-loop
 ## event loop in browser
   其实通过对上面相关的知识的介绍,已经可以大致的了解浏览器中事件循环的任务队列 主要有以下几种macrotasks队列
   1. 事件callback
-  2. I/0(xhr)
+  2. I/O(xhr)
   3. timers
-  4. UI渲染  
+  4. UI渲染  
 
 ![loop](./eventloop/loop.png)
 

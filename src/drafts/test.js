@@ -1,41 +1,18 @@
-const { func } = require("prop-types");
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
 
-function buildMaxHeap(arr) {
-  const len = arr.length;
-  for(let i = Math.floor(len /2); i >= 0; i--) {
-    heapify(arr, i, len);
-  }
-}
-function swap(arr, i, j) {
-  const temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-}
-function heapify(arr, i, len) {
-  const left = 2*i +1;
-  const right = 2*i +2;
-  let largest = i
-  if(left < len && arr[left] > arr[largest]) {
-    largest = left;
-  }
-  if(right < len && arr[right] > arr[largest]) {
-    largest = right;
-  }
-  if(largest !== i) {
-    swap(arr, i, largest);
-    heapify(arr, largest, len);
-  }
-}
-function heapSort(arr) {
-  buildMaxHeap(arr);
-  const len = arr.length;
-  for(let i = arr.length -1; i> 0;i--) {
-    swap(arr, 0, len);
-    len--;
-    heapify(arr, 0, len)
+/**
+ * @param {ListNode} list1
+ * @param {ListNode} list2
+ * @return {ListNode}
+ */
+var mergeTwoLists = function(list1, list2) {
 
-  }
-  return arr;
-}
+};
 
 

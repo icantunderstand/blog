@@ -499,14 +499,10 @@ return是当前程序处理完需要返回的fiber节点
     // 多优先级更新架构  
       1. 同一级别优先级的更新 一起更新
     // Fiber
-    // Scheduler 
     // lane模型 
 
+Server Component
 
-#### lane模型
-
-## react router实现自动化路由
-https://juejin.cn/post/6953933167321415716
 
 
 
