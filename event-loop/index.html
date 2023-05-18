@@ -43,7 +43,7 @@
 </ol>
 <ul>
 <li>定时器(timer) setTimeout setInterval setImmediate</li>
-<li>message channel  message channel执行的优先级高于timer</li>
+<li>message channel  (message channel执行的优先级高于timer)</li>
 <li>I/O</li>
 <li>UI rendering</li>
 </ul>
@@ -64,7 +64,7 @@
 </li>
 <li>
 <p>requestAnimationFrame<br>
-通知浏览器在下次重绘之前调用传入的回调函数，回调函数默认传入执行函数回调的时刻参数.requestAnimationFrame不属于宏任务和微任务，在微任务执行之后执行</p>
+通知浏览器在下次重绘之前调用传入的回调函数，回调函数默认传入函数执行的时间戳.requestAnimationFrame不属于宏任务和微任务，在微任务执行之后执行</p>
 </li>
 <li>
 <p>process.nextTick
@@ -167,9 +167,9 @@ window.requestIdleCallback(callback[, options])</p>
 <p>其实通过对上面相关的知识的介绍,已经可以大致的了解浏览器中事件循环的任务队列 主要有以下几种macrotasks队列</p>
 <ol>
 <li>事件callback</li>
-<li>I/0(xhr)</li>
+<li>I/O(xhr)</li>
 <li>timers</li>
-<li>UI渲染</li>
+<li>UI渲染</li>
 </ol>
 <p><span
       class="gatsby-resp-image-wrapper"
