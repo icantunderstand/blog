@@ -13,17 +13,17 @@
 <ul>
 <li>before mutation  此时dom节点还没有渲染到页面中,执行getSnapshotBeforeUpdate周期函数和useEffect钩子函数</li>
 <li>mutation  渲染DOM 根据effectList的tag标注进行dom元素的更新,删除,替换等</li>
-<li>layout 执行useLayoutEffect,componentDidMount,componentDidUpdate等相关逻辑  进行current和workInprogress的替换</li>
+<li>layout 执行useLayoutEffect等相关逻辑  进行current和workInprogress的替换</li>
 </ul>
 <h2>图解渲染</h2>
-<p>我们先假设我们的身份是React的好友,React是前端世界里面的一个一流的画师,我们希望他给我们画这样一幅画.
-<span
+<p>我们先假设我们的身份是React的好友,React是前端世界里面的一个一流的画师,我们希望他给我们画这样一幅画.</p>
+<p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 370px; "
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/bec0882c7e73e61b2e37a87e8db17ca0/1efb2/draft.png"
+    href="/blog/static/bec0882c7e73e61b2e37a87e8db17ca0/1efb2/draft.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -36,9 +36,9 @@
         class="gatsby-resp-image-image"
         alt="画的模板"
         title="画的模板"
-        src="/static/bec0882c7e73e61b2e37a87e8db17ca0/1efb2/draft.png"
-        srcset="/static/bec0882c7e73e61b2e37a87e8db17ca0/63868/draft.png 250w,
-/static/bec0882c7e73e61b2e37a87e8db17ca0/1efb2/draft.png 370w"
+        src="/blog/static/bec0882c7e73e61b2e37a87e8db17ca0/1efb2/draft.png"
+        srcset="/blog/static/bec0882c7e73e61b2e37a87e8db17ca0/63868/draft.png 250w,
+/blog/static/bec0882c7e73e61b2e37a87e8db17ca0/1efb2/draft.png 370w"
         sizes="(max-width: 370px) 100vw, 370px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -54,7 +54,7 @@ React大师稍加思索(babel)就把画的模板构想出下面的两张蓝图:<
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/15014ea5ae1e57d91a06216d3982962b/242e2/structDraft.png"
+    href="/blog/static/15014ea5ae1e57d91a06216d3982962b/242e2/structDraft.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -67,10 +67,10 @@ React大师稍加思索(babel)就把画的模板构想出下面的两张蓝图:<
         class="gatsby-resp-image-image"
         alt="语言表达"
         title="语言表达"
-        src="/static/15014ea5ae1e57d91a06216d3982962b/242e2/structDraft.png"
-        srcset="/static/15014ea5ae1e57d91a06216d3982962b/63868/structDraft.png 250w,
-/static/15014ea5ae1e57d91a06216d3982962b/0b533/structDraft.png 500w,
-/static/15014ea5ae1e57d91a06216d3982962b/242e2/structDraft.png 703w"
+        src="/blog/static/15014ea5ae1e57d91a06216d3982962b/242e2/structDraft.png"
+        srcset="/blog/static/15014ea5ae1e57d91a06216d3982962b/63868/structDraft.png 250w,
+/blog/static/15014ea5ae1e57d91a06216d3982962b/0b533/structDraft.png 500w,
+/blog/static/15014ea5ae1e57d91a06216d3982962b/242e2/structDraft.png 703w"
         sizes="(max-width: 703px) 100vw, 703px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -85,7 +85,7 @@ React大师稍加思索(babel)就把画的模板构想出下面的两张蓝图:<
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/9f629706c2e341539b8d92bc7a0db691/748b0/draw.png"
+    href="/blog/static/9f629706c2e341539b8d92bc7a0db691/748b0/draw.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -98,10 +98,10 @@ React大师稍加思索(babel)就把画的模板构想出下面的两张蓝图:<
         class="gatsby-resp-image-image"
         alt="元素结构"
         title="元素结构"
-        src="/static/9f629706c2e341539b8d92bc7a0db691/748b0/draw.png"
-        srcset="/static/9f629706c2e341539b8d92bc7a0db691/63868/draw.png 250w,
-/static/9f629706c2e341539b8d92bc7a0db691/0b533/draw.png 500w,
-/static/9f629706c2e341539b8d92bc7a0db691/748b0/draw.png 868w"
+        src="/blog/static/9f629706c2e341539b8d92bc7a0db691/748b0/draw.png"
+        srcset="/blog/static/9f629706c2e341539b8d92bc7a0db691/63868/draw.png 250w,
+/blog/static/9f629706c2e341539b8d92bc7a0db691/0b533/draw.png 500w,
+/blog/static/9f629706c2e341539b8d92bc7a0db691/748b0/draw.png 868w"
         sizes="(max-width: 868px) 100vw, 868px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -123,7 +123,7 @@ React真的是一个画术大师,他有两个最出色的技能:</p>
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/7d569de679597cd68a5ef34fc2a3c0cb/0c69d/fiberStruct.png"
+    href="/blog/static/7d569de679597cd68a5ef34fc2a3c0cb/0c69d/fiberStruct.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -136,10 +136,10 @@ React真的是一个画术大师,他有两个最出色的技能:</p>
         class="gatsby-resp-image-image"
         alt="fiber结构"
         title="fiber结构"
-        src="/static/7d569de679597cd68a5ef34fc2a3c0cb/0c69d/fiberStruct.png"
-        srcset="/static/7d569de679597cd68a5ef34fc2a3c0cb/63868/fiberStruct.png 250w,
-/static/7d569de679597cd68a5ef34fc2a3c0cb/0b533/fiberStruct.png 500w,
-/static/7d569de679597cd68a5ef34fc2a3c0cb/0c69d/fiberStruct.png 598w"
+        src="/blog/static/7d569de679597cd68a5ef34fc2a3c0cb/0c69d/fiberStruct.png"
+        srcset="/blog/static/7d569de679597cd68a5ef34fc2a3c0cb/63868/fiberStruct.png 250w,
+/blog/static/7d569de679597cd68a5ef34fc2a3c0cb/0b533/fiberStruct.png 500w,
+/blog/static/7d569de679597cd68a5ef34fc2a3c0cb/0c69d/fiberStruct.png 598w"
         sizes="(max-width: 598px) 100vw, 598px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -160,7 +160,7 @@ React: 我在作画的时候主要思考了两件事:</p>
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/6e618ddaea0eda1a9a47096488fb6ba9/efc66/renderPhase.png"
+    href="/blog/static/6e618ddaea0eda1a9a47096488fb6ba9/efc66/renderPhase.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -173,10 +173,10 @@ React: 我在作画的时候主要思考了两件事:</p>
         class="gatsby-resp-image-image"
         alt="render阶段"
         title="render阶段"
-        src="/static/6e618ddaea0eda1a9a47096488fb6ba9/efc66/renderPhase.png"
-        srcset="/static/6e618ddaea0eda1a9a47096488fb6ba9/63868/renderPhase.png 250w,
-/static/6e618ddaea0eda1a9a47096488fb6ba9/0b533/renderPhase.png 500w,
-/static/6e618ddaea0eda1a9a47096488fb6ba9/efc66/renderPhase.png 885w"
+        src="/blog/static/6e618ddaea0eda1a9a47096488fb6ba9/efc66/renderPhase.png"
+        srcset="/blog/static/6e618ddaea0eda1a9a47096488fb6ba9/63868/renderPhase.png 250w,
+/blog/static/6e618ddaea0eda1a9a47096488fb6ba9/0b533/renderPhase.png 500w,
+/blog/static/6e618ddaea0eda1a9a47096488fb6ba9/efc66/renderPhase.png 885w"
         sizes="(max-width: 885px) 100vw, 885px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"

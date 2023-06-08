@@ -13,7 +13,7 @@
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/030ae70f0fe588d9c5d6d53043bb3559/9685e/eventBrowser.png"
+    href="/blog/static/030ae70f0fe588d9c5d6d53043bb3559/9685e/eventBrowser.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -26,11 +26,11 @@
         class="gatsby-resp-image-image"
         alt="浏览器事件模型"
         title="浏览器事件模型"
-        src="/static/030ae70f0fe588d9c5d6d53043bb3559/00d43/eventBrowser.png"
-        srcset="/static/030ae70f0fe588d9c5d6d53043bb3559/63868/eventBrowser.png 250w,
-/static/030ae70f0fe588d9c5d6d53043bb3559/0b533/eventBrowser.png 500w,
-/static/030ae70f0fe588d9c5d6d53043bb3559/00d43/eventBrowser.png 1000w,
-/static/030ae70f0fe588d9c5d6d53043bb3559/9685e/eventBrowser.png 1336w"
+        src="/blog/static/030ae70f0fe588d9c5d6d53043bb3559/00d43/eventBrowser.png"
+        srcset="/blog/static/030ae70f0fe588d9c5d6d53043bb3559/63868/eventBrowser.png 250w,
+/blog/static/030ae70f0fe588d9c5d6d53043bb3559/0b533/eventBrowser.png 500w,
+/blog/static/030ae70f0fe588d9c5d6d53043bb3559/00d43/eventBrowser.png 1000w,
+/blog/static/030ae70f0fe588d9c5d6d53043bb3559/9685e/eventBrowser.png 1336w"
         sizes="(max-width: 1000px) 100vw, 1000px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -41,7 +41,7 @@
 <h3><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener">浏览器监听事件api</a></h3>
 <pre><code>target.addEventListener(type, listener, options)
 options
-* caputre Boolean true 在捕获阶段触发 false 在冒泡阶段触发
+* caputre Boolean true 在捕获阶段触发 false 在冒泡阶段触发 默认是冒泡阶段触发
 * once Boolean true表示该listener在添加之后只会被调用一次并且在调用之后会被移除
 * passive Boolean true表示该listener不用调用preventDefault()方法
 
@@ -55,7 +55,7 @@ target.addEventListener(type, listener, useCapture)
 <li>event.currentTarget 指向绑定事件的元素</li>
 </ul>
 <h2>React中的事件系统</h2>
-<p>一句话概括React的事件系统就是基于事件委托机制模拟浏览器事件系统来实现事件处理.</p>
+<p>一句话概括React事件系统就是基于事件委托机制模拟浏览器事件系统实现事件处理.</p>
 <h3><a href="https://github.com/facebook/react/blob/master/packages/react-dom/src/events/SyntheticEvent.js">合成事件</a></h3>
 <p>React通过SyntheticEvent来模拟底层事件实现,通过React传入对象的nativeEvent可以获取到底层的事件对象.</p>
 <ol>
@@ -73,7 +73,7 @@ target.addEventListener(type, listener, useCapture)
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/7d5649cb2af6891a5744b1b2e936c9c0/85ff8/registerEvent.png"
+    href="/blog/static/7d5649cb2af6891a5744b1b2e936c9c0/85ff8/registerEvent.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -86,9 +86,9 @@ target.addEventListener(type, listener, useCapture)
         class="gatsby-resp-image-image"
         alt="事件注册"
         title="事件注册"
-        src="/static/7d5649cb2af6891a5744b1b2e936c9c0/85ff8/registerEvent.png"
-        srcset="/static/7d5649cb2af6891a5744b1b2e936c9c0/63868/registerEvent.png 250w,
-/static/7d5649cb2af6891a5744b1b2e936c9c0/85ff8/registerEvent.png 467w"
+        src="/blog/static/7d5649cb2af6891a5744b1b2e936c9c0/85ff8/registerEvent.png"
+        srcset="/blog/static/7d5649cb2af6891a5744b1b2e936c9c0/63868/registerEvent.png 250w,
+/blog/static/7d5649cb2af6891a5744b1b2e936c9c0/85ff8/registerEvent.png 467w"
         sizes="(max-width: 467px) 100vw, 467px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -103,7 +103,7 @@ target.addEventListener(type, listener, useCapture)
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/9fdd9233135bc88c3ed3145fdf0ae8b5/0ef7e/rootListener.png"
+    href="/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/0ef7e/rootListener.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -116,12 +116,12 @@ target.addEventListener(type, listener, useCapture)
         class="gatsby-resp-image-image"
         alt="绑定事件"
         title="绑定事件"
-        src="/static/9fdd9233135bc88c3ed3145fdf0ae8b5/00d43/rootListener.png"
-        srcset="/static/9fdd9233135bc88c3ed3145fdf0ae8b5/63868/rootListener.png 250w,
-/static/9fdd9233135bc88c3ed3145fdf0ae8b5/0b533/rootListener.png 500w,
-/static/9fdd9233135bc88c3ed3145fdf0ae8b5/00d43/rootListener.png 1000w,
-/static/9fdd9233135bc88c3ed3145fdf0ae8b5/aa440/rootListener.png 1500w,
-/static/9fdd9233135bc88c3ed3145fdf0ae8b5/0ef7e/rootListener.png 1594w"
+        src="/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/00d43/rootListener.png"
+        srcset="/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/63868/rootListener.png 250w,
+/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/0b533/rootListener.png 500w,
+/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/00d43/rootListener.png 1000w,
+/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/aa440/rootListener.png 1500w,
+/blog/static/9fdd9233135bc88c3ed3145fdf0ae8b5/0ef7e/rootListener.png 1594w"
         sizes="(max-width: 1000px) 100vw, 1000px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -136,7 +136,7 @@ target.addEventListener(type, listener, useCapture)
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/2d77c3580045c4aec287855218f49bcd/6569d/addTrappedEvent.png"
+    href="/blog/static/2d77c3580045c4aec287855218f49bcd/6569d/addTrappedEvent.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -149,11 +149,11 @@ target.addEventListener(type, listener, useCapture)
         class="gatsby-resp-image-image"
         alt="绑定事件逻辑"
         title="绑定事件逻辑"
-        src="/static/2d77c3580045c4aec287855218f49bcd/00d43/addTrappedEvent.png"
-        srcset="/static/2d77c3580045c4aec287855218f49bcd/63868/addTrappedEvent.png 250w,
-/static/2d77c3580045c4aec287855218f49bcd/0b533/addTrappedEvent.png 500w,
-/static/2d77c3580045c4aec287855218f49bcd/00d43/addTrappedEvent.png 1000w,
-/static/2d77c3580045c4aec287855218f49bcd/6569d/addTrappedEvent.png 1328w"
+        src="/blog/static/2d77c3580045c4aec287855218f49bcd/00d43/addTrappedEvent.png"
+        srcset="/blog/static/2d77c3580045c4aec287855218f49bcd/63868/addTrappedEvent.png 250w,
+/blog/static/2d77c3580045c4aec287855218f49bcd/0b533/addTrappedEvent.png 500w,
+/blog/static/2d77c3580045c4aec287855218f49bcd/00d43/addTrappedEvent.png 1000w,
+/blog/static/2d77c3580045c4aec287855218f49bcd/6569d/addTrappedEvent.png 1328w"
         sizes="(max-width: 1000px) 100vw, 1000px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -180,10 +180,10 @@ target.addEventListener(type, listener, useCapture)
         class="gatsby-resp-image-image"
         alt="绑定事件逻辑"
         title="绑定事件逻辑"
-        src="/static/94e1459206a4767463eb204c53278e46/be86f/pageStruct.png"
-        srcset="/static/94e1459206a4767463eb204c53278e46/63868/pageStruct.png 250w,
-/static/94e1459206a4767463eb204c53278e46/0b533/pageStruct.png 500w,
-/static/94e1459206a4767463eb204c53278e46/be86f/pageStruct.png 662w"
+        src="/blog/static/94e1459206a4767463eb204c53278e46/be86f/pageStruct.png"
+        srcset="/blog/static/94e1459206a4767463eb204c53278e46/63868/pageStruct.png 250w,
+/blog/static/94e1459206a4767463eb204c53278e46/0b533/pageStruct.png 500w,
+/blog/static/94e1459206a4767463eb204c53278e46/be86f/pageStruct.png 662w"
         sizes="(max-width: 662px) 100vw, 662px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -204,10 +204,10 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
         class="gatsby-resp-image-image"
         alt="触发事件逻辑"
         title="触发事件逻辑"
-        src="/static/a2c6e09fbe8033f2e125bf216f32261e/5f4af/dispatcheEvent.png"
-        srcset="/static/a2c6e09fbe8033f2e125bf216f32261e/63868/dispatcheEvent.png 250w,
-/static/a2c6e09fbe8033f2e125bf216f32261e/0b533/dispatcheEvent.png 500w,
-/static/a2c6e09fbe8033f2e125bf216f32261e/5f4af/dispatcheEvent.png 665w"
+        src="/blog/static/a2c6e09fbe8033f2e125bf216f32261e/5f4af/dispatcheEvent.png"
+        srcset="/blog/static/a2c6e09fbe8033f2e125bf216f32261e/63868/dispatcheEvent.png 250w,
+/blog/static/a2c6e09fbe8033f2e125bf216f32261e/0b533/dispatcheEvent.png 500w,
+/blog/static/a2c6e09fbe8033f2e125bf216f32261e/5f4af/dispatcheEvent.png 665w"
         sizes="(max-width: 665px) 100vw, 665px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -228,10 +228,10 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
         class="gatsby-resp-image-image"
         alt="触发事件逻辑"
         title="触发事件逻辑"
-        src="/static/55b63edef27c0d88877678a01ccc9f9f/57dc1/dispatchEventSystem.png"
-        srcset="/static/55b63edef27c0d88877678a01ccc9f9f/63868/dispatchEventSystem.png 250w,
-/static/55b63edef27c0d88877678a01ccc9f9f/0b533/dispatchEventSystem.png 500w,
-/static/55b63edef27c0d88877678a01ccc9f9f/57dc1/dispatchEventSystem.png 718w"
+        src="/blog/static/55b63edef27c0d88877678a01ccc9f9f/57dc1/dispatchEventSystem.png"
+        srcset="/blog/static/55b63edef27c0d88877678a01ccc9f9f/63868/dispatchEventSystem.png 250w,
+/blog/static/55b63edef27c0d88877678a01ccc9f9f/0b533/dispatchEventSystem.png 500w,
+/blog/static/55b63edef27c0d88877678a01ccc9f9f/57dc1/dispatchEventSystem.png 718w"
         sizes="(max-width: 718px) 100vw, 718px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -251,11 +251,11 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
         class="gatsby-resp-image-image"
         alt="执行逻辑"
         title="执行逻辑"
-        src="/static/e0440598172879af25eb01e9f8c9a669/00d43/executeEvent.png"
-        srcset="/static/e0440598172879af25eb01e9f8c9a669/63868/executeEvent.png 250w,
-/static/e0440598172879af25eb01e9f8c9a669/0b533/executeEvent.png 500w,
-/static/e0440598172879af25eb01e9f8c9a669/00d43/executeEvent.png 1000w,
-/static/e0440598172879af25eb01e9f8c9a669/844cc/executeEvent.png 1306w"
+        src="/blog/static/e0440598172879af25eb01e9f8c9a669/00d43/executeEvent.png"
+        srcset="/blog/static/e0440598172879af25eb01e9f8c9a669/63868/executeEvent.png 250w,
+/blog/static/e0440598172879af25eb01e9f8c9a669/0b533/executeEvent.png 500w,
+/blog/static/e0440598172879af25eb01e9f8c9a669/00d43/executeEvent.png 1000w,
+/blog/static/e0440598172879af25eb01e9f8c9a669/844cc/executeEvent.png 1306w"
         sizes="(max-width: 1000px) 100vw, 1000px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -270,7 +270,7 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/bfd20cce2d61ca856d8376ebf0e428b5/c5bb3/listenEvent.png"
+    href="/blog/static/bfd20cce2d61ca856d8376ebf0e428b5/c5bb3/listenEvent.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -283,10 +283,10 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
         class="gatsby-resp-image-image"
         alt="绑定事件"
         title="绑定事件"
-        src="/static/bfd20cce2d61ca856d8376ebf0e428b5/c5bb3/listenEvent.png"
-        srcset="/static/bfd20cce2d61ca856d8376ebf0e428b5/63868/listenEvent.png 250w,
-/static/bfd20cce2d61ca856d8376ebf0e428b5/0b533/listenEvent.png 500w,
-/static/bfd20cce2d61ca856d8376ebf0e428b5/c5bb3/listenEvent.png 680w"
+        src="/blog/static/bfd20cce2d61ca856d8376ebf0e428b5/c5bb3/listenEvent.png"
+        srcset="/blog/static/bfd20cce2d61ca856d8376ebf0e428b5/63868/listenEvent.png 250w,
+/blog/static/bfd20cce2d61ca856d8376ebf0e428b5/0b533/listenEvent.png 500w,
+/blog/static/bfd20cce2d61ca856d8376ebf0e428b5/c5bb3/listenEvent.png 680w"
         sizes="(max-width: 680px) 100vw, 680px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -301,7 +301,7 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/1b810a3edf897d125d9dd2ca3ad70d1e/d9b5d/eventSimulation.png"
+    href="/blog/static/1b810a3edf897d125d9dd2ca3ad70d1e/d9b5d/eventSimulation.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -314,11 +314,11 @@ click事件在响应过程中的优先级对应的是<a href="https://github.com
         class="gatsby-resp-image-image"
         alt="事件触发"
         title="事件触发"
-        src="/static/1b810a3edf897d125d9dd2ca3ad70d1e/00d43/eventSimulation.png"
-        srcset="/static/1b810a3edf897d125d9dd2ca3ad70d1e/63868/eventSimulation.png 250w,
-/static/1b810a3edf897d125d9dd2ca3ad70d1e/0b533/eventSimulation.png 500w,
-/static/1b810a3edf897d125d9dd2ca3ad70d1e/00d43/eventSimulation.png 1000w,
-/static/1b810a3edf897d125d9dd2ca3ad70d1e/d9b5d/eventSimulation.png 1224w"
+        src="/blog/static/1b810a3edf897d125d9dd2ca3ad70d1e/00d43/eventSimulation.png"
+        srcset="/blog/static/1b810a3edf897d125d9dd2ca3ad70d1e/63868/eventSimulation.png 250w,
+/blog/static/1b810a3edf897d125d9dd2ca3ad70d1e/0b533/eventSimulation.png 500w,
+/blog/static/1b810a3edf897d125d9dd2ca3ad70d1e/00d43/eventSimulation.png 1000w,
+/blog/static/1b810a3edf897d125d9dd2ca3ad70d1e/d9b5d/eventSimulation.png 1224w"
         sizes="(max-width: 1000px) 100vw, 1000px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"

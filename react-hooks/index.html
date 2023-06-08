@@ -5,7 +5,7 @@
 <ol>
 <li>Fiber节点的连接结构,在组件更新时候需要依赖这些属性</li>
 <li>动态的运行数据(updateQueue,memoizedState)等,在渲染更新的时候会利用这些属性存储需要更新的操作和数据.Hooks的实现就是依赖这块的结构.</li>
-<li>Lanes 这里主要定义任务的优先级,Fiber Reconciler实现了一套新的优先级更新机制,这块在之后的文章会重新介绍.</li>
+<li>Lanes 这里主要定义任务的优先级,Fiber Reconciler实现了一套新的优先级更新机制,这块在之后的文章会再介绍.</li>
 </ol>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -13,7 +13,7 @@
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/e25e72a540b8d4ed7997271e175c0bff/9516f/Fiber.png"
+    href="/blog/static/e25e72a540b8d4ed7997271e175c0bff/9516f/Fiber.png"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -26,10 +26,10 @@
         class="gatsby-resp-image-image"
         alt="Fiber结构"
         title="Fiber结构"
-        src="/static/e25e72a540b8d4ed7997271e175c0bff/9516f/Fiber.png"
-        srcset="/static/e25e72a540b8d4ed7997271e175c0bff/63868/Fiber.png 250w,
-/static/e25e72a540b8d4ed7997271e175c0bff/0b533/Fiber.png 500w,
-/static/e25e72a540b8d4ed7997271e175c0bff/9516f/Fiber.png 538w"
+        src="/blog/static/e25e72a540b8d4ed7997271e175c0bff/9516f/Fiber.png"
+        srcset="/blog/static/e25e72a540b8d4ed7997271e175c0bff/63868/Fiber.png 250w,
+/blog/static/e25e72a540b8d4ed7997271e175c0bff/0b533/Fiber.png 500w,
+/blog/static/e25e72a540b8d4ed7997271e175c0bff/9516f/Fiber.png 538w"
         sizes="(max-width: 538px) 100vw, 538px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -38,7 +38,7 @@
   </a>
     </span></p>
 <h3>update</h3>
-<p>react在处理更新中引入了update的概念,在触发更新的时候React将update插入到对应的updateQueue中然后调度页面的渲染更新.最后通过updateQueue的执行来完成更新的实现.</p>
+<p>react在处理更新中引入了update的概念,在触发更新的时候React将update插入到对应的updateQueue中然后调度页面的渲染更新.最后通过updateQueue的执行来完成更新.</p>
 <h3>React Fiber Reconciler</h3>
 <p>React为了实现更新可中断等特性,在具体的渲染过程中会维护两个数据结构:</p>
 <ol>
@@ -64,9 +64,9 @@
         class="gatsby-resp-image-image"
         alt="hook的数据结构"
         title="hook的数据结构"
-        src="/static/c3abb96049ba35de696bfaeac50d17b8/d743b/hook.png"
-        srcset="/static/c3abb96049ba35de696bfaeac50d17b8/63868/hook.png 250w,
-/static/c3abb96049ba35de696bfaeac50d17b8/d743b/hook.png 477w"
+        src="/blog/static/c3abb96049ba35de696bfaeac50d17b8/d743b/hook.png"
+        srcset="/blog/static/c3abb96049ba35de696bfaeac50d17b8/63868/hook.png 250w,
+/blog/static/c3abb96049ba35de696bfaeac50d17b8/d743b/hook.png 477w"
         sizes="(max-width: 477px) 100vw, 477px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -87,10 +87,10 @@
         class="gatsby-resp-image-image"
         alt="挂载不同的hook"
         title="挂载不同的hook"
-        src="/static/79d42a604971a40c38b3cd9a50682d77/410f3/different_hook.png"
-        srcset="/static/79d42a604971a40c38b3cd9a50682d77/63868/different_hook.png 250w,
-/static/79d42a604971a40c38b3cd9a50682d77/0b533/different_hook.png 500w,
-/static/79d42a604971a40c38b3cd9a50682d77/410f3/different_hook.png 561w"
+        src="/blog/static/79d42a604971a40c38b3cd9a50682d77/410f3/different_hook.png"
+        srcset="/blog/static/79d42a604971a40c38b3cd9a50682d77/63868/different_hook.png 250w,
+/blog/static/79d42a604971a40c38b3cd9a50682d77/0b533/different_hook.png 500w,
+/blog/static/79d42a604971a40c38b3cd9a50682d77/410f3/different_hook.png 561w"
         sizes="(max-width: 561px) 100vw, 561px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -109,10 +109,10 @@
         class="gatsby-resp-image-image"
         alt="mount阶段hook"
         title="mount阶段hook"
-        src="/static/55b46db6b69afb0beaa46bd58608e2fb/55811/mountHookCode.png"
-        srcset="/static/55b46db6b69afb0beaa46bd58608e2fb/63868/mountHookCode.png 250w,
-/static/55b46db6b69afb0beaa46bd58608e2fb/0b533/mountHookCode.png 500w,
-/static/55b46db6b69afb0beaa46bd58608e2fb/55811/mountHookCode.png 501w"
+        src="/blog/static/55b46db6b69afb0beaa46bd58608e2fb/55811/mountHookCode.png"
+        srcset="/blog/static/55b46db6b69afb0beaa46bd58608e2fb/63868/mountHookCode.png 250w,
+/blog/static/55b46db6b69afb0beaa46bd58608e2fb/0b533/mountHookCode.png 500w,
+/blog/static/55b46db6b69afb0beaa46bd58608e2fb/55811/mountHookCode.png 501w"
         sizes="(max-width: 501px) 100vw, 501px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -131,9 +131,9 @@
         class="gatsby-resp-image-image"
         alt="update阶段hook"
         title="update阶段hook"
-        src="/static/25312134b5bc77843da2562709c24e6e/44c61/updateHookCode.png"
-        srcset="/static/25312134b5bc77843da2562709c24e6e/63868/updateHookCode.png 250w,
-/static/25312134b5bc77843da2562709c24e6e/44c61/updateHookCode.png 485w"
+        src="/blog/static/25312134b5bc77843da2562709c24e6e/44c61/updateHookCode.png"
+        srcset="/blog/static/25312134b5bc77843da2562709c24e6e/63868/updateHookCode.png 250w,
+/blog/static/25312134b5bc77843da2562709c24e6e/44c61/updateHookCode.png 485w"
         sizes="(max-width: 485px) 100vw, 485px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -149,7 +149,7 @@
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/38746c08a5fcd5ae402c6fdb39b40b99/a6d32/MountHook.jpg"
+    href="/blog/static/38746c08a5fcd5ae402c6fdb39b40b99/a6d32/MountHook.jpg"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -162,10 +162,10 @@
         class="gatsby-resp-image-image"
         alt="Mount阶段hook逻辑"
         title="Mount阶段hook逻辑"
-        src="/static/38746c08a5fcd5ae402c6fdb39b40b99/a6d32/MountHook.jpg"
-        srcset="/static/38746c08a5fcd5ae402c6fdb39b40b99/0479a/MountHook.jpg 250w,
-/static/38746c08a5fcd5ae402c6fdb39b40b99/41099/MountHook.jpg 500w,
-/static/38746c08a5fcd5ae402c6fdb39b40b99/a6d32/MountHook.jpg 652w"
+        src="/blog/static/38746c08a5fcd5ae402c6fdb39b40b99/a6d32/MountHook.jpg"
+        srcset="/blog/static/38746c08a5fcd5ae402c6fdb39b40b99/0479a/MountHook.jpg 250w,
+/blog/static/38746c08a5fcd5ae402c6fdb39b40b99/41099/MountHook.jpg 500w,
+/blog/static/38746c08a5fcd5ae402c6fdb39b40b99/a6d32/MountHook.jpg 652w"
         sizes="(max-width: 652px) 100vw, 652px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -180,7 +180,7 @@ Update阶段Hooks的实现逻辑<br>
     >
       <a
     class="gatsby-resp-image-link"
-    href="/static/acf124ecaccb1c0fb4fe2140077cba9c/0a2b8/updateHook.jpg"
+    href="/blog/static/acf124ecaccb1c0fb4fe2140077cba9c/0a2b8/updateHook.jpg"
     style="display: block"
     target="_blank"
     rel="noopener"
@@ -193,10 +193,10 @@ Update阶段Hooks的实现逻辑<br>
         class="gatsby-resp-image-image"
         alt="Mount阶段hook逻辑"
         title="Mount阶段hook逻辑"
-        src="/static/acf124ecaccb1c0fb4fe2140077cba9c/0a2b8/updateHook.jpg"
-        srcset="/static/acf124ecaccb1c0fb4fe2140077cba9c/0479a/updateHook.jpg 250w,
-/static/acf124ecaccb1c0fb4fe2140077cba9c/41099/updateHook.jpg 500w,
-/static/acf124ecaccb1c0fb4fe2140077cba9c/0a2b8/updateHook.jpg 685w"
+        src="/blog/static/acf124ecaccb1c0fb4fe2140077cba9c/0a2b8/updateHook.jpg"
+        srcset="/blog/static/acf124ecaccb1c0fb4fe2140077cba9c/0479a/updateHook.jpg 250w,
+/blog/static/acf124ecaccb1c0fb4fe2140077cba9c/41099/updateHook.jpg 500w,
+/blog/static/acf124ecaccb1c0fb4fe2140077cba9c/0a2b8/updateHook.jpg 685w"
         sizes="(max-width: 685px) 100vw, 685px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -220,10 +220,10 @@ Update阶段Hooks的实现逻辑<br>
         class="gatsby-resp-image-image"
         alt="mountState代码逻辑"
         title="mountState代码逻辑"
-        src="/static/52a5be7aa726b705f79a180697dd6fe8/a58fe/mountState.png"
-        srcset="/static/52a5be7aa726b705f79a180697dd6fe8/63868/mountState.png 250w,
-/static/52a5be7aa726b705f79a180697dd6fe8/0b533/mountState.png 500w,
-/static/52a5be7aa726b705f79a180697dd6fe8/a58fe/mountState.png 548w"
+        src="/blog/static/52a5be7aa726b705f79a180697dd6fe8/a58fe/mountState.png"
+        srcset="/blog/static/52a5be7aa726b705f79a180697dd6fe8/63868/mountState.png 250w,
+/blog/static/52a5be7aa726b705f79a180697dd6fe8/0b533/mountState.png 500w,
+/blog/static/52a5be7aa726b705f79a180697dd6fe8/a58fe/mountState.png 548w"
         sizes="(max-width: 548px) 100vw, 548px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -249,9 +249,9 @@ mountState主要做了:</p>
         class="gatsby-resp-image-image"
         alt="dispatchAction代码逻辑"
         title="dispatchAction代码逻辑"
-        src="/static/ffb63f0539dcde4bca5e0f77c2ba284d/44c61/dispatchAction.png"
-        srcset="/static/ffb63f0539dcde4bca5e0f77c2ba284d/63868/dispatchAction.png 250w,
-/static/ffb63f0539dcde4bca5e0f77c2ba284d/44c61/dispatchAction.png 485w"
+        src="/blog/static/ffb63f0539dcde4bca5e0f77c2ba284d/44c61/dispatchAction.png"
+        srcset="/blog/static/ffb63f0539dcde4bca5e0f77c2ba284d/63868/dispatchAction.png 250w,
+/blog/static/ffb63f0539dcde4bca5e0f77c2ba284d/44c61/dispatchAction.png 485w"
         sizes="(max-width: 485px) 100vw, 485px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
@@ -271,10 +271,10 @@ mountState主要做了:</p>
         class="gatsby-resp-image-image"
         alt="dispatchAction代码逻辑"
         title="dispatchAction代码逻辑"
-        src="/static/275788fe27b5e1522a0d62b15f3b7910/432e7/updateReducer.png"
-        srcset="/static/275788fe27b5e1522a0d62b15f3b7910/63868/updateReducer.png 250w,
-/static/275788fe27b5e1522a0d62b15f3b7910/0b533/updateReducer.png 500w,
-/static/275788fe27b5e1522a0d62b15f3b7910/432e7/updateReducer.png 570w"
+        src="/blog/static/275788fe27b5e1522a0d62b15f3b7910/432e7/updateReducer.png"
+        srcset="/blog/static/275788fe27b5e1522a0d62b15f3b7910/63868/updateReducer.png 250w,
+/blog/static/275788fe27b5e1522a0d62b15f3b7910/0b533/updateReducer.png 500w,
+/blog/static/275788fe27b5e1522a0d62b15f3b7910/432e7/updateReducer.png 570w"
         sizes="(max-width: 570px) 100vw, 570px"
         style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
         loading="lazy"
