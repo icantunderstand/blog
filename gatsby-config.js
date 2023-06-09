@@ -3,7 +3,7 @@ module.exports = {
     title: `noodles的笔记本`,
     description: `让技术更有趣`,
     author: `noodles`,
-    siteUrl: `https://icantunderstand.cn`,
+    siteUrl: `https://icantunderstand.github.io/blog/`,
   },
   pathPrefix: '/blog',
   plugins: [

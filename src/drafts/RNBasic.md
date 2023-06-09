@@ -58,61 +58,6 @@ React 启动流程梳理  http://www.ayqy.net/blog/react-native-architecture-ove
 2.  在业务包中排查主要的依赖 只打入当前的资源内容
 
 
-# 动画
-
-### Animated
-动画值需要支持动画的组件上(Animated.createAnimatedComponent)
-
-### 手势
-
-    onScroll={Animated.event(
-      [{nativeEvent: {contentOffset: {x: this._scrollX}}}]
-      {listener},          // Optional async listener
-    )
-
-### 插值
-    scroll.interpolate({
-      inputRange: [],
-      outputRange: [],
-      extrapolate: 'clamp', 'extend'
-      extrapolateRight:
-      extrapolateLeft:
-    })
-
-### 基础api
-    // parallel timing delay
-    Animated.timing(this._animatedValue, {
-      toValue: 100,
-      duration: 500
-    }).start()
-
-    // 不能直接修改动画的值,只能setValue
-    addListener({ value } => { })
-
-
-
-
-### 布局动画LayoutAnimation
-
-
-    LayoutAnimation.configureNext({
-      duration: time,
-      create?: Anim,
-      update?: Anim,
-      delete?: Anim,
-    })
-
-    const animType = PropTypes.shape({
-        duration: PropTypes.number,
-        delay: PropTypes.number,
-        springDamping: PropTypes.number,
-        initialVelocity: PropTypes.number,
-        type: PropTypes.oneOf(Object.keys(Types)).isRequired,
-        property: PropTypes.oneOf(
-          // Only applies to create/delete
-          Object.keys(Properties),
-        ),
-    });
 
 ## RN的通信方式
 ![RN通信方式](RNBasic/RNBridge.png)
