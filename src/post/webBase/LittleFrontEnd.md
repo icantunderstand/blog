@@ -1,5 +1,5 @@
 ---
-title: 前端小知识
+title: 知识梳理
 date: "2021-11-03"
 tags: JavaScript
 path: /know-little-more

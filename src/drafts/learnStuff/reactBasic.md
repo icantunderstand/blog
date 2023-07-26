@@ -5,26 +5,23 @@ tags: react
 categories: react
 ---
 
-
-https://www.plasmic.app/blog/how-react-server-components-work
-
 ## MVC MVP MVVM概念
 ### MVC
 #### 客户端MVC  
 用户操作view后,将处理权转交给controller(pass calls)  Controller对来自view的数据进行预处理,调用model的接口,当model变更的时候通过观察者模式通知view,
 view通过观察者模式收到model的消息,重新更新界面
-![MVC客户端交互](reactBasic/MVC.png)  
+![MVC客户端交互](./reactBasic/MVC.png)  
 ### 服务端MVC
 服务端收到来自客户端的请求,服务端通过路由规则把这个请求交给特定的Controller进行处理,Controller执行相应的应用逻辑,对model进行操作.model执行业务逻辑,渲染模板返回给客户端
-![服务端MVC](reactBasic/ServerMVC.png) 
+![服务端MVC](./reactBasic/ServerMVC.png) 
 ### MVP(Passive View)
 用户对view的操作从view转移给Presenter,Presenter会执行相应的应用程序逻辑,并且对model进行相应的操作,model执行完业务逻辑后,通过观察者模式将变更通知给Presenter.Presenter获取model的变更后通过view提供的接口更新界面.
-![服务端MVC](reactBasic/MVP.png) 
+![服务端MVC](./reactBasic/MVP.png) 
 
 ### MVVM 
 Model-View-ViewModel
 ViewModel是model of view  包括领域模型(domain model)和视图的状态(state) ViewModel更适合描述view.
-![MVVM](reactBasic/MVVM.png) 
+![MVVM](./reactBasic/MVVM.png) 
 
 ## react理念(我对react的一些认识)
   1. V = F(data(View Modal)) 数据驱动视图
@@ -60,18 +57,18 @@ react的diff基于以下三点:
 1. tree diff react对虚拟DOM进行分层的比较
 2. Component diff  不同类型的组件直接替换 相同类型的组件可以通过showComponentUpdate来判断是否更新
 3. element diff  
-![elementDiff](reactBasic/elementDiff.png)
+![elementDiff](./reactBasic/elementDiff.png)
 
 ### 统一层级相同类别diff
 
 ### without key
 当相同类别的节点没有唯一标识的时候,react会按照原来的思路进行替换操作.当在B和C中插入F的时候,C更新成F,D更新成C,E更新成D,最后插入E.  
-![withoutKeyBefore](reactBasic/withoutKey.png)  
-![withoutKeyAfter](reactBasic/withoutKeyAfter.png)
+![withoutKeyBefore](./reactBasic/withoutKey.png)  
+![withoutKeyAfter](./reactBasic/withoutKeyAfter.png)
 ### with key
-![withKey](reactBasic/withKey.png)
+![withKey](./reactBasic/withKey.png)
 
-## React组件生命周期
+## React组件生命周期(老的生命周期)
 1. 挂载  
 
     constructor()  
@@ -124,67 +121,6 @@ react的diff基于以下三点:
    4. 在客户端执行hydrate  在对应的位置找到节点进行复用  在commit阶段尝试更新(完成生命周期的执行等)
   
 
-### React 其他api
-
-    React.createElement(
-      type, 
-      [props],
-      [...children]
-    )
-
-## 高阶用法
-### render props
-定义方法返回JSX(或者children).为了逻辑共享和state的提升
-
-  class Cat extends PureComponent {
-    constructor(props) {
-      super(props)
-      this.state = { name: 111 }
-    }
-    render() {
-      return this.props.render(this.state)
-    }
-  }
-  class App extends Component {
-    render() {
-      return (
-      <Cat render={params => (<div>{params.name}</div>)} />
-      )
-    }
-  }
-  export default App;
-
-### 高阶组件
-
-#### 属性代理
-
-    function HOC(Wrapped) {
-      return class extends Component {
-        componentDidMount() {
-          // 通用的业务逻辑
-        }
-        render() {
-          return (<Wrapped {...this.props} />)
-        }
-      }
-    }
-
-#### 反向继承
-
-    function HOC2(Wrapped) {
-      return class extends Wrapped {
-        render() {
-          return super.render();
-        }
-      }
-    }
-#### 用处
-1. 高阶组件实现对共有逻辑的提取(组合逻辑)
-2. 添加新的逻辑
-
-#### 高阶组件&hooks
-高阶组件增加了组件的嵌套逻辑，为组件注入新的能力。逻辑修改统一不分散。需要考虑属性冲突的问题
-hooks为组件增加可复用的定制能力，修改了组件的属性等。
 
 ## react api
 
@@ -293,71 +229,7 @@ useEffect(() => {
     return [count, changeRresh]
   }
 
-#### useContext
-通过useContext可以实现redux类的状态共享
 
-    // 父组件  全局的state都放到外层provider 需要进行context的拆分 减少重复的渲染
-    function App() {
-      const [ value, setValue ]  = useState(1)
-      function changeValue() {
-        setValue(value + 1)
-      }
-      return (
-        <div className="App">
-          <MyContext.Provider value={{ changeValue, value }}>
-            <ChildA />
-            <ChildB />
-          </MyContext.Provider>
-        </div>
-      );
-    }
-    // 子组件
-    function ChildA(props) {
-      const { value, changeValue } = useContext(MyContext)
-      return <div onClick={changeValue}>
-        {value}
-      </div>
-    }
-
-#### useMemo
-相比React.memo(Component, compore)  shouldComponentUpdate
-useMemo能实现组件内部的局部控制更新
-
-#### useReducer 
-通过useReducer和useContext 是实现类redux的状态管理
-
-    // reducer
-    export const initValue = { value: 1 }
-    export const reducer = (state, action) => {
-      console.log(action)
-      switch(action) {
-        case 'update': 
-          return { ...state, value: state.value + 1 }
-        default: 
-          return state
-      }
-    }
-    // 父组件
-    function App() {
-      const [ state, dispatch ] = useReducer(reducer, initValue)
-      return (
-        <div className="App">
-          <MyContext.Provider value={{ state, dispatch }} >
-            <ChildA />
-          </MyContext.Provider>
-            
-        </div>
-      );
-    }  
-    // 子组件
-    function ChildA(props) {
-      const { state, dispatch } = useContext(MyContext)
-      return <div 
-        onClick={() => { console.log('change'); dispatch('update') }}
-      >
-        {state.value}
-      </div>
-    } 
 
 ## react 源码学习
 新的架构分为3个部分:
@@ -390,12 +262,89 @@ return是当前程序处理完需要返回的fiber节点
   * mutation(执行DOM操作)
   * layout阶段(执行DOM操作之后)
 
-
-#### react的更新流程
 * 触发状态更新
 * 创建update对象
 * 从当前fiber节点查询到rootFiber
 * 调度更新(render阶段 + commit阶段)
+
+
+### Server Component
+* server component运行在服务端 client component不能引入(import)server component  但是可以通过props.children这种方式
+
+
+      export default function OuterServerComponent() {
+        return (
+          <ClientComponent>
+            <ServerComponent />
+          </ClientComponent>
+        )
+      }
+
+渲染Server Component的过程
+* 序列化 根元素to JSON(属性 需要可序列化)
+
+   
+      function SomeServerComponent() {
+        // server onClick函数不可序列化
+        return <button onClick={() => alert('OHHAI')}>Click me!</button>
+      }
+      function ClientComponent1({children}) {
+        // It is okay to pass a function as prop from client to
+        // client components
+        // 不会运行ClientComponent1 所以这样ok
+        return <ClientComponent2 onChange={...}>{children}</ClientComponent2>;
+      }
+
+
+  1. 基础type(div) 已经序列化
+  2. server component 就执行server component 目标转化成基础的标签(div p)
+  3. client component 遇到client组件的时候 type属性是一个模块引用的对象 
+
+
+          {
+            $$typeof: Symbol(react.element),  
+            // The type field  now has a reference object,
+            // instead of the actual component function  
+            
+            type: {
+              $$typeof: Symbol(react.module.reference),
+              // ClientComponent is the default export...
+              name: "default",
+              // from this file!
+              filename: "./src/ClientComponent.client.js"
+            },
+            props: { children: "oh my" },
+          }
+
+* 浏览器构建react tree
+server component返回结构  
+
+
+      M1:{"id":"./src/ClientComponent.client.js","chunks":["client1"],"name":""}
+      J0:["$","@1",null,{"children":["$","span",null,{"children":"Hello from server land"}]}]
+      JO的$属性 标识它被M1引用
+
+
+      import { createFromFetch } from 'react-server-dom-webpack'
+      function ClientRootComponent() {
+        // fetch() from our RSC API endpoint.  react-server-dom-webpack
+        // can then take the fetch result and reconstruct the React
+        // element tree
+        const response = createFromFetch(fetch('/rsc?...'))
+        return <Suspense fallback={null}>{response.readRoot() /* Returns a React element! */}</Suspense>
+      }
+
+思考点:
+1. 对比请求api 然后client渲染内容  取决于请求的数据和js数量
+
+* 更新 server component 会重新请求 重新渲染
+
+
+### SSR过程
+
+* 流式的
+
+
 
 ### hooks的原理
 
@@ -494,14 +443,29 @@ return是当前程序处理完需要返回的fiber节点
     // update 会创建update 并且插入对应的hook的updateQueue中 触发根组件的更新
     // 在更新的时候 执行到函数组件的时候 会执行Update Hook处理函数 将之前的update执行 返回
 
-### 对Fiber整体架构的一些梳理
-    
-    // 多优先级更新架构  
-      1. 同一级别优先级的更新 一起更新
-    // Fiber
-    // lane模型 
 
-Server Component
+## react相关习题
+
+
+    import { useEffect, useRef, useState } from "react";
+
+    const useDebounce = (value, delay = 500) => {
+      const [debouncedValue, setDebouncedValue] = useState("");
+      const timerRef = useRef();
+
+      useEffect(() => {
+        timerRef.current = setTimeout(() => setDebouncedValue(value), delay);
+
+        return () => {
+          clearTimeout(timerRef.current);
+        };
+      }, [value, delay]);
+
+      return debouncedValue;
+    };
+
+
+
 
 
 
@@ -510,5 +474,6 @@ Server Component
 [React Fiber算法介绍](https://indepth.dev/posts/1008/inside-fiber-in-depth-overview-of-the-new-reconciliation-algorithm-in-react)
 [build your own react](https://pomb.us/build-your-own-react/)
 [React Concurrent Mode介绍](https://juejin.cn/post/6891848244972748807)
+[How React server components work: an in-depth guide](https://www.plasmic.app/blog/how-react-server-components-work)
 
 
