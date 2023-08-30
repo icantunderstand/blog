@@ -14,28 +14,30 @@ WebSocket建立在TCP协议之上，通过HTTP协议完成握手升级。默认�
 4. 支持扩展,可以实现自定义的子协议
 
 
-    // 创建连接
-    const socket = new WebSocket("ws://localhost:8080");
-    // 监听open事件发送消息
-    socket.addEventListener("open", (event) => {
-        socket.send("Hello Server!");
-    });
-    // 监听message事件接收消息
-    socket.addEventListener("message", (event) => {
-        console.log("Message from server ", event.data);
-    });
+        // 创建连接
+        const socket = new WebSocket("ws://localhost:8080");
+        // 监听open事件发送消息
+        socket.addEventListener("open", (event) => {
+            socket.send("Hello Server!");
+        });
+        // 监听message事件接收消息
+        socket.addEventListener("message", (event) => {
+            console.log("Message from server ", event.data);
+        });
 
 ### websocket属性  
 | 名字 | 含义 | 值 |
 | ------ | ------ | ------ | 
-| WebSocket.binaryType | 数据传输格式 | 'blob'(默认)/'arraybuffer'
-| WebSocket.readyState | WebSocket连接状态 | CONNECTING/0-连接中 OPEN/1-打开，可以发送消息 CLOSING/2-关闭中 CLOSED/3-关闭态或者不能被打开
-| WebSocket.bufferedAmount | 返回没有被传输到服务端的入队数据 | 只读值
+| WebSocket.binaryType | 数据传输格式 | 'blob'(默认)/'arraybuffer' |
+| WebSocket.readyState | WebSocket连接状态 | CONNECTING/0-连接中 OPEN/1-打开，可以发送消息  CLOSING/2-关闭中 CLOSED/3-关闭态或者不能被打开 |
+| WebSocket.bufferedAmount | 返回没有被传输到服务端的入队数据 | 只读值 |  
+
 ### 实例方法  
 | 名字 | 含义 |
 | ------ | ------ |
 | WebSocket.close() | 关闭连接 | 
 | WebSocket.send() | 将数据送进发送队列等待发送 | 
+
 ### 事件  
 | 名字 | 含义 |
 | ------ | ------ |
@@ -48,20 +50,19 @@ WebSocket建立在TCP协议之上，通过HTTP协议完成握手升级。默认�
 
 1. 客户端申请协议升级
 
-
-    GET ws://example.com/ HTTP/1.1  
-    Connection: Upgrade  //升级协议
-    Upgrade: websocket  // 升级websocket
-    Origin: http://example.com  
-    Sec-WebSocket-Version: 13  // 指定websocket版本 如果服务端不支持服务端会返回支持的版本
-    Sec-WebSocket-Key: d4egt7snxxxxxx2WcaMQlA==  // 与服务端的返回头Sec-WebSocket-Accept相匹配，提供保护防止恶意连接等
+        GET ws://example.com/ HTTP/1.1  
+        Connection: Upgrade  //升级协议
+        Upgrade: websocket  // 升级websocket
+        Origin: http://example.com  
+        Sec-WebSocket-Version: 13  // 指定websocket版本 如果服务端不支持服务端会返回支持的版本
+        Sec-WebSocket-Key: d4egt7snxxxxxx2WcaMQlA==  // 与服务端的返回头Sec-WebSocket-Accept相匹配，提供保护防止恶意连接等
 
 2. 服务端响应协议升级
 
-HTTP/1.1 101 Switching Protocols // 101切换协议
-Connection:Upgrade
-Upgrade: websocket
-Sec-WebSocket-Accept: Oy4NRAQ13jhfONC7bP8dTKb4PTU= // 根据请求Sec-WebSocket-key生成
+        HTTP/1.1 101 Switching Protocols // 101切换协议
+        Connection:Upgrade
+        Upgrade: websocket
+        Sec-WebSocket-Accept: Oy4NRAQ13jhfONC7bP8dTKb4PTU= // 根据请求Sec-WebSocket-key生成
 
 ### 连接保持  
 1. 发送方->接收方：ping
@@ -69,14 +70,14 @@ Sec-WebSocket-Accept: Oy4NRAQ13jhfONC7bP8dTKb4PTU= // 根据请求Sec-WebSocket-
 
 ## 三次握手
 通过三次握手建立TCP连接，三次握手为了确认双方传输的序列号
-![三次握手](./javascriptBaseStatic/baseWebSummary/threeShake.png)  
+![三次握手](./baseWebSummary/threeShake.png)  
 1. 客户端在向服务端请求连接的时候，会向服务端发送一个SYN报文段。会随机选取一个client_isn作为序号字段放置在该SYN报文中。
 2. 服务端在收到该报文后，会发送给客户端一个报文并且设置TCP的缓存和变量。该报文的ack字段是client_isn + 1,序号字段为server_isn,SYN比特为设置成1.代表当前服务器已经准备接收数据
 3. 客户端在接收服务端的确认报文后会创建TCP的缓存和变量并且向服务端继续发送报文(此时的报文可以携带上数据),其中ack字段是server_isn + 1,序号字段是client_isn + 1,SYN字段为0(此后的报文中SYN字段都为0).至此TCP连接建立成功。
 
 ## 四次挥手 
 通过四次挥手，中断双方的TCP连接。通过四次可以确定双方都可以中断连接
-![四次挥手](./javascriptBaseStatic/baseWebSummary/fourClose.png)  
+![四次挥手](./baseWebSummary/fourClose.png)  
 1. 终止方向另一端发送一个TCP报文，其FIN比特位被设置成1
 2. 接收方回复一个ACK报文并且发送一个FIN报文
 3. 终止端回复一个ACK报文，至此两方为了维持TCP连接的缓存和变量都将清除(接受FIN端需要把自己剩余的信息发送完 才能发送FIN报文)
@@ -101,7 +102,7 @@ Sec-WebSocket-Accept: Oy4NRAQ13jhfONC7bP8dTKb4PTU= // 根据请求Sec-WebSocket-
 9. 实现安全对称加密，使用对话密钥进行通信
 
 ## 图解不同协议
-![不同协议](./javascriptBaseStatic/baseWebSummary/differentProtocol.jpg) 
+![不同协议](./baseWebSummary/differentProtocol.jpg) 
 
 ## 常用请求状态码
 | 状态码值 | 含义 |
@@ -157,7 +158,7 @@ xss是一种代码注入攻击。 攻击者通过在目标网站上注入恶意�
 ## 单点登录(Single Sign On)
 单点登录SSO指在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统
 SSO一般都需要一个独立的认证中心（passport），子系统的登录均得通过passport，子系统本身将不参与登录操作，当一个系统成功登录以后，passport将会颁发一个令牌给各个子系统，子系统可以拿着令牌会获取各自的受保护资源，为了减少频繁认证，各个子系统在被passport授权以后，会建立一个局部会话，在一定时间内可以无需再次向passport发起认证
-![sso](./javascriptBaseStatic/baseWebSummary/sso.png) 
+![sso](./baseWebSummary/sso.png) 
 
 ## 跨域资源共享（Cross-origin resource sharing）
 跨域资源共享是W3C标准，规定了浏览器和服务器可以通过交互来确认跨域请求是否安全的方式。
@@ -241,7 +242,7 @@ SSO一般都需要一个独立的认证中心（passport），子系统的登录
 ### http 1.1
 超文本传输协议(HyperText Transfer Protocol-http)
 http1.1三种连接方式:
-![http 1.1 三种连接模式](./javascriptBaseStatic/baseWebSummary/http1.1.png)
+![http 1.1 三种连接模式](./baseWebSummary/http1.1.png)
 * 短连接模式(Short-lived Connection): Connection: close 
 * 长连接模式(Persistent Connection): 长连接模式能减少TCP传输慢启动和握手时间
 
@@ -253,7 +254,7 @@ http1.1三种连接方式:
 
 ### http2
 http2通过二进制分帧层，将需要发送的数据拆分成帧，通过帧的首部的流标识信息组装成信息。
-![二进制分帧层](./javascriptBaseStatic/baseWebSummary/binaryFrame.svg)
+![二进制分帧层](./baseWebSummary/binaryFrame.svg)
 
 http2对比http1.1有如下的优势:
 * 报头压缩 在HTTP2中使用首部表来跟踪和存储之前发送的键值对。相同的数据不会在每次请求和响应中发送，新的首部键追加到末尾或者替换之前的值。减少冗余数据的发送
@@ -279,6 +280,6 @@ http2对比http1.1有如下的优势:
 回流(重排)指Render Tree中部分或者全部元素的尺寸发生改变，浏览器需要重新渲染部分或者全部文档的过程  
 可以通过css相关属性，让对应的元素渲染在自己的图层上，减少整体的重排
 ## 参考
-[WebSocket协议：5分钟从入门到精通 ](https://www.cnblogs.com/chyingp/p/websocket-deep-in.html)
-[渲染页面：浏览器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)
+[WebSocket协议：5分钟从入门到精通 ](https://www.cnblogs.com/chyingp/p/websocket-deep-in.html)  
+[渲染页面：浏览器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)  
 [Web 性能优化-CSS3 硬件加速(GPU 加速)](https://lz5z.com/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-CSS3%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F/)

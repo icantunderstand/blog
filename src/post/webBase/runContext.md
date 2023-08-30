@@ -10,9 +10,9 @@ path: /javascript-call
 
 ## 基础知识
 ### 执行栈
-执行栈是存储javascript执行上下文的一种结构,它具有先入先出的特点.javascript在执行的时候会创建全局的执行上下文.在执行到函数代码的时候,会创建新的执行上下文,执行完对应函数的时候,会退出当前的上下文回到之前的执行上下文继续代码的执行.
+执行栈是存储javascript执行上下文的一种结构,它具有后进先出的特点.javascript在执行的时候会创建全局的执行上下文.在执行到函数代码的时候,会创建新的执行上下文,执行完对应函数的时候,会退出当前的上下文回到之前的执行上下文继续代码的执行.
 ### 声明提升
-javascript在创建执行上下文的时候,会对当前执行环境声明的变量进行绑定(初始化存储位置),这个在一定程度上也解决了函数声明的先后顺序问题,下面这段代码是可以正常执行的
+javascript在创建执行上下文的时候,会对当前执行环境声明的变量进行绑定(初始化存储位置),这在一定程度上解决了函数声明的先后顺序问题,下面这段代码是可以正常执行的
 
     console.log(a);// undefined
     var a = 0;
@@ -36,7 +36,8 @@ javascript在创建执行上下文的时候,会对当前执行环境声明的变
       VariableEnvironment: {} // VariableEnvironment和LexicalEnvironment是相似的概念下面会单独进行讲解
     }
 ### this
-this是指调用函数的caller.在进入函数执行的时候会创建新的执行上下文并且对this进行绑定(**箭头函数使用的是Lexical this，即这个函数被创建时的this就是函数内部的this** **箭头函数不能通过new地调用**).
+this是指调用函数的caller.在进入函数执行的时候会创建新的执行上下文并且对this进行绑定  
+**箭头函数使用的是Lexical this，即这个函数被创建时的this就是函数内部的this** **箭头函数不能通过new地调用**.
 #### 如何确定this
     const obj = {
       name: 100,
@@ -88,9 +89,6 @@ VariableEnvironment是创建执行上下文的时候进行变量的初始化绑�
 (Closure is when a function remembers and accesses variables from outside of its own scope, even when that function is executed in a different scope.)
 ## 参考   
 [VariableEnvironment和LexicalEnvironment的区别](https://stackoverflow.com/questions/15031667/clarity-on-the-difference-between-lexicalenvironment-and-variableenvironment)  
-
 [lexical-environments-ecmascript-implementation](http://dmitrysoshnikov.com/ecmascript/es5-chapter-3-2-lexical-environments-ecmascript-implementation/)  
-
-[ECMAScript2017](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-intro) 
-
+[ECMAScript2017](https://www.ecma-international.org/ecma-262/8.0/index.html#sec-intro)  
 [how-to-understand-js-realms](https://stackoverflow.com/questions/49832187/how-to-understand-js-realms)

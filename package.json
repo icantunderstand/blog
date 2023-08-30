@@ -51,13 +51,14 @@
   ],
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public -b master",
+    "deploy": "gatsby clean && gatsby build --prefix-paths && gh-pages -d public -b master",
     "lint": "eslint src",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "push": "git push -u origin main"
   },
   "repository": {
     "type": "git",

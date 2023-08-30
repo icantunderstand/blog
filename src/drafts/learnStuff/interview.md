@@ -1,10 +1,11 @@
 
 ---
-title: 相关资料总结
+title: 复习资料总结
 date: 2018-10-10 07:30:00  
 tags: 
 categories: 
 ---
+
 
 ## 进程和线程
 1. 进程是操作系统资源调度的基本单位，线程是任务的调度执行的基本单位
@@ -99,30 +100,6 @@ categories:
     return result;
   }
 
-### 判断两个对象是否相等
-    
-    // 两个对象是否相等
-    function shallEqual(objA, objB) {
-      if(Object.is(objA, objB)) {
-        return true;
-      }
-
-      if(typeof objA !== 'object' || objA === null || typeof objB !== 'object' || objB === null) {
-        return false;
-      }
-      const keysA = Object.keys(objA);
-      const keysB = Object.keys(objB);
-      if(keysA.length !== keysB.length) {
-        return false;
-      }
-
-      for(let i = 0;i < keysA.length;i++) {
-        if(!Object.hasOwnPorperty.call(objB, keysA[i]) || !is(objB[keysA[i]], objA[keysA[i]])) {
-          return false;
-        }
-      }
-      return true;
-    }
 
 ## 模拟async await的实现过程
 
@@ -378,10 +355,6 @@ categories:
           return id;
     };
 
-## ts中type和interface的区别
-type和interface都可以描述类型和函数，进行扩展等
-1. type可以声明别名 type Name = string
-2. interface有声明合并 type没有
 
 ## 移动端事件 
 touchstart 当用户在触摸平面上放置了一个触点时触发

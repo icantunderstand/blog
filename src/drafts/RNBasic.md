@@ -4,9 +4,7 @@ date: 2020-4-16 09:00:00
 tags: 跨端开发
 categories: 
 ---
-
-这里会系统的梳理react native的基础原理 react native未必是一个完善的跨端框架 只要是通过梳理关键点 了解跨端框架的实现方式并通过系统的梳理能对现有的框架进行优化或者在现有的技术方案上可迁移的点
-
+hao
 ## react native新架构
 
 
@@ -23,7 +21,7 @@ categories:
 * RCT_EXPORT_VIEW_PROPERTY暴露属性
 
 ## React Native渲染过程 
-这个今个理一下
+
 
 
 ## React Native通信过程

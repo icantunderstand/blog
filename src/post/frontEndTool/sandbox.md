@@ -5,34 +5,18 @@ tags: JavaScript
 path: /sandbox
 ---
 
-<!-- vscode-markdown-toc -->
-* 1. [前置概念](#)
-	* 1.1. [沙盒](#-1)
-	* 1.2. [Proxy](#Proxy)
-	* 1.3. [with](#with)
-* 2. [沙盒的实现方式](#-1)
-	* 2.1. [ProxySandbox(单实例沙盒)](#ProxySandbox)
-	* 2.2. [snapshotSandbox(单实例沙盒)](#snapshotSandbox)
-	* 2.3. [多实例沙盒](#-1)
-* 3. [附录](#-1)
-
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
 
 不同的微前端框架会提供沙盒环境来实现不同微前端应用的隔离.本文梳理JavaScript中沙盒的实现方式，有助于学习微前端方案的技术细节.
 
-##  1. <a name=''></a>前置概念
+## 前置概念
 
-###  1.1. <a name='-1'></a>沙盒
+### 沙盒
 沙盒是一种安全机制可以为程序提供隔离的执行环境，沙盒中提供用后即回收的磁盘及内存空间，在沙盒中对网络访问、对真实系统的访问、对输入设备的读取通常被禁止或是被严格限制的.JavaScript沙盒是通过语法层面的限制来实现代码执行的隔离.
 
-###  1.2. <a name='Proxy'></a>Proxy
+### Proxy
 [Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)可以实现对对象属性访问的代理，通过Proxy的使用可以实现JavaScript代码执行的沙盒模式
 
-###  1.3. <a name='with'></a>with  
+### with  
 [with](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/with)语句可以扩展当前的执行上下文
 
     const a = { name: 1111 }
@@ -41,12 +25,12 @@ path: /sandbox
     }
 
 
-##  2. <a name='-1'></a>沙盒的实现方式
+## 沙盒的实现方式
 沙盒的实现方式上主要分为:
 * 单实例沙盒: 同一个时刻只有一个微应用实例存在，当前资源被这个应用独占，需要解决的主要问题是应用切换的时候变量污染清理和再次启动时的变量恢复  
 * 多实例沙盒: 资源不是应用独占，需要解决资源共享、通信等问题
 
-###  2.1. <a name='ProxySandbox'></a>ProxySandbox(单实例沙盒)
+### ProxySandbox(单实例沙盒)
 基于Proxy的拦截和设置功能，通过Proxy拦截对全局对象的修改记录，在应用切换的时候还原全局对象
 
 
@@ -123,7 +107,7 @@ path: /sandbox
         newSandBox.active()
         console.log(window.appName, proxyWindow.appName) // app app
 
-###  2.2. <a name='snapshotSandbox'></a>snapshotSandbox(单实例沙盒)
+### snapshotSandbox(单实例沙盒)
 快照沙盒是在不支持Proxy的环境下，通过将window对象属性都复制到快照对象上然后再激活和卸载的时候对激活期间的diff进行添加或者回退.这个方案的对比方案较复杂，比如考虑到原型链的修改与还原问题，一般不作为沙盒方案的首选.
 
 
@@ -174,7 +158,7 @@ path: /sandbox
     sandbox.inactive();
     console.log(proxyWindow.appName, window.appName) // undefined undefined
 
-###  2.3. <a name='-1'></a>多实例沙盒
+### 多实例沙盒
 多实例沙盒是Proxy实现的单实例的变种版，在Proxy实现的单实例沙盒中，Proxy的handler的get/set是直接操作的全局对象,多实例版本在handler的get/set中操作沙盒自己维护的对象，从而实现多实例模式
 
 
@@ -219,7 +203,7 @@ path: /sandbox
     console.log(newSandBox1.globalData, newSandBox2.globalData) // abc abc
 
 
-##  3. <a name='-1'></a>附录
+## 附录
 [字节跳动的微前端沙盒实践](https://juejin.cn/post/6844904066225537037)  
 [前端微服务在字节跳动的打磨与应用](https://mp.weixin.qq.com/s/iLdAH9p2-S8pFyZrNzYaNg)  
 [谈谈微前端领域的js沙箱实现机制](https://cloud.tencent.com/developer/article/1748172)

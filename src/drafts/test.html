@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+    #container {
+      display: table;
+      width: 100%;
+    }
+    #left, #right, #main {
+      display: table-cell;
+    }
+    #left {
+      width: 100px;
+    }
+    #right {
+      width: 100px;
+    }
   </style>
 </head>
 <body>
-  <button id="button">button</button>
-  <script>
-      const button = document.getElementById('button');
-const controller = new AbortController();
-const { signal } = controller;
-
-button.addEventListener('click', () => console.log('clicked!'), { signal });
-controller.abort()
-  </script>
+  <div id="container">
+    <div id="left">left</div>    
+    <div id="main">main</div>
+    <div id="right">right</div>
+  </div>
 </body>
 </html>
