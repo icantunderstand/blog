@@ -58,7 +58,8 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "push": "git push -u origin main"
+    "push": "git push -u origin main",
+    "commit": "sh test.sh"
   },
   "repository": {
     "type": "git",
