@@ -12,8 +12,8 @@ path: /code-refactor
 ## 基础层
 
 ### 性能建设
-拆包: 大文件扫描
-按需加载
+拆包/按需加载 @babel/plugin-syntax-dynamic-import
+大文件扫描
 页面性能
 
 ### 约束防劣化卡口
