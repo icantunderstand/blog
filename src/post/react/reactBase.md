@@ -110,6 +110,9 @@ reconciler分为render阶段和commit阶段
 [setState源码分析](https://icantunderstand.github.io/blog/react-setstate)  
 [从Scheduler包来看React的任务调度](https://icantunderstand.github.io/blog/react-scheduler)
 
+## react server component
+[How React server components work: an in-depth guide](https://www.plasmic.app/blog/how-react-server-components-work)
+
 ## 参考
 
 [react 中 ReactElement 与 Fiber 的关系](https://juejin.cn/post/7099810539315920926)  

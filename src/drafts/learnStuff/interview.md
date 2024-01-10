@@ -16,7 +16,6 @@ categories:
 ### 防抖函数
     
     // debounce 多次触发只有最后一次执行  
-    // 第一次点就执行的情况
     function debounce(fn, delay, mustRun) {
       let timer = null
       let lastTime = null
@@ -28,6 +27,7 @@ categories:
           lastTime = curr
         }
         clearTimeout(timer)
+        // 增加了必须执行的逻辑
         if(curr - lastTime >= mustRun) {
           lastTime = curr
           return fn.apply(context, args);
@@ -36,6 +36,7 @@ categories:
           lastTime = +new Date()
           return fn.apply(context, args)
         }, realDelay)
+        // 这里是处理只点一下就执行的情况
         if(realDelay === 0) {
           realDelay = delay
         }
@@ -43,20 +44,23 @@ categories:
     }
 
 ### 节流
-    // 多长时间必须执行对应的函数  限制目标函数的执行频率
-    // 最后要执行呀
-    function throttle(func, wait = 50) {
-        let lastRunTime = Date.now() - 2 * t
+    // 多长时间必须执行对应的函数 
+    // 写复杂了
+    function throttle(func, t = 50) {
+        let lastRunTime = null
         let timer = null;
         return function (...args) {
-            const now = Date.now()
-            if (now >= lastRunTime + t) {
+            const now = +new Date()
+            if(!lastRunTime) {
+              lastRunTime = now
+            }
+            if (now - lastRunTime >= t) {
                 lastRunTime = now
                 fn(...args)
             } else {
                 clearTimeout(timer)
                 timer = setTimeout(() => {
-                    lastRunTime = Date.now()
+                    lastRunTime = +new Date()
                     fn(...args)
                 }, lastRunTime + t - now)
             }
@@ -64,41 +68,36 @@ categories:
     }
 
 ### 深拷贝  
-  function isObject(value) {
-    if(!!value &&(typeof value === 'function' || typeof value === 'object')) {
-      return true;
-    }
-    return false;
-  }
-  Function.prototype.clone = function clone() {
-    const that = this;
-    const temp = function(...args) { return that.apply(this,...args) };
-    for(let key in this) {
-      temp[key] = this[key];
-    }
-    return temp;
-  }
-  // 传递过去hash是为了防止迭代到同样的变量 解决环的问题 
-  function deepClone(obj, hash = new WeakMap()) {
-    if(hash.has(obj))  return hash.get(obj);
-    const type = Object.prototype.toString.call(obj);
-    let result = null;
-    if(type === '[object Function]') {
-      result = obj.clone();
-    } else {
-      if(type === '[object Array]') {
-        result = [...obj];
+
+
+    Function.prototype.clone = function clone() {
+      const that = this;
+      const temp = function(...args) { return that.apply(this,...args) };
+      for(let key in this) {
+        temp[key] = this[key];
       }
-      if(type === '[object Object]') {
-        result = {...obj};
-      }
+      return temp;
     }
-    hash.set(obj, result);
-    for(let key in obj) {
-      result[key] = isObject(obj[key]) ? deepClone(obj[key], hash)  : obj[key]; 
+    function deepClone(obj, hash = new WeakMap()) {
+        if (obj === null) return obj; // 如果是null或者undefined我就不进行拷贝操作
+        if (obj instanceof Date) return new Date(obj);
+        if (obj instanceof RegExp) return new RegExp(obj);
+        if(Object.prototype.toString.call(obj) === '[object Function]') return obj.clone()
+        // 可能是对象或者普通的值  如果是函数的话是不需要深拷贝
+        if (typeof obj !== "object") return obj;
+        // 是对象的话就要进行深拷贝
+        if (hash.get(obj)) return hash.get(obj);
+        let cloneObj = new obj.constructor();
+        // 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身
+        hash.set(obj, cloneObj);
+        for (let key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            // 实现一个递归拷贝
+            cloneObj[key] = deepClone(obj[key], hash);
+          }
+        }
+        return cloneObj;  
     }
-    return result;
-  }
 
 
 ## 模拟async await的实现过程

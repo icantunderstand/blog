@@ -396,6 +396,59 @@ BFC不与float区域重合
     td:nth-child(2n+1) // 奇数行
     td:nth-child(2n) // 偶数行
 
+## 用css画图形
+
+    <div id="container">
+    </div>
+
+    // css画出个圆形
+    #container {
+      width: 100px;
+      height: 100px;
+      background: blue;
+      border-radius: 50%;
+    }
+
+    // css画一个半圆
+    #container {
+      width: 100px;
+      height: 50px;
+      border-radius: 100px 100px 0 0;
+      background: blue;
+    }
+
+    // css画一个四分之一圆
+    #container {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px 0 0 0;
+      background: blue;
+    }
+    // css 画一个椭圆
+    #container {
+      width: 100px;
+      height: 50px;
+      background: blue;
+      border-radius: 100px/50px;
+    }
+
+    // css画一个三角形
+    #container {
+      width: 0px;
+      height: 0px;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid black;
+    }
+
+    // css画一个左上三角
+     #container {
+      width: 0px;
+      height: 0px;
+      border-top: 100px solid red;
+      border-right: 100px solid transparent; 
+    }
+
    
 
 
