@@ -80,6 +80,7 @@ categories:
     }
     function deepClone(obj, hash = new WeakMap()) {
         if (obj === null) return obj; // 如果是null或者undefined我就不进行拷贝操作
+        // instanceof 这里注意
         if (obj instanceof Date) return new Date(obj);
         if (obj instanceof RegExp) return new RegExp(obj);
         if(Object.prototype.toString.call(obj) === '[object Function]') return obj.clone()
@@ -114,9 +115,11 @@ categories:
             } catch(e) {
                 reject(e)
             }
+            // done的场景
             if(next.done) {
                 resolve(next.value)
             }
+            //  往下走的场景
             Promise.resolve(next.value).then(function(v) {
                 step(function(){ return itr.next(v) });
             }, function(v) {
@@ -132,6 +135,7 @@ categories:
 ### apply
 
     Function.prototype.myApply = function(context, args) {
+      // apply接受数组
       context.fn = this;
       const result = context.fn(...args); // 已传入的context调用函数 作为调用的this
       delete context.fn;
@@ -164,13 +168,14 @@ categories:
 ## 理解new操作符
 1. 以构造器的原型为属性创建新对象
 2. 将新对象作为this调用构造器
-3. 如果构造器返回的是对象则返回否则返回第一步创建的对象
+3. 如果构造器返回的是对象则返，否则返回第一步创建的对象
 
 ### 实现一个new
 
     function myNew(Con, ...args) {
+      // 这里需要注意
       const obj = Object.create(Con.prototype);
-      const ret = Con.call(obj, args);
+      const ret = Con.call(obj, ...args);
       if(ret instanceof Object && ret !== null) {
         return ret;
       }
@@ -196,6 +201,7 @@ categories:
     const a = new A();
     a.a(); // 无法执行 原型链顺序 A.prototype (__proto__) => Object.prototype (__proto__) => null 
     a.b();
+    // 重新理解这里
     // https://juejin.cn/post/6844903839070421000
 
     function Function() {}
@@ -210,7 +216,7 @@ categories:
     // 会导致父类的属性被所有实例所共享
 
     function Parent(age) {
-      this.name = age
+      this.age = age
     }
     function Child(name) {
       this.name = name
@@ -244,6 +250,8 @@ categories:
 
     Child.prototype = new Parent()
     Child.prototype.constructor = Child
+    // 原型链上存在多余的属性
+    // 调用两次构造函数
 
 
 ### 寄生组合式继承
@@ -316,14 +324,12 @@ categories:
       }
 
       script.onerror = function() { // 异常处理，也是很多人漏掉的部分
-          window[fnName] = function() {
           callback && callback(
             'something error hanppend!'
           )
           container.removeChild(script);
           delete window[fnName];
         }
-      }
     }
 
 
@@ -341,18 +347,6 @@ categories:
       console.log(n) // 输出1 
     });
 
-## requestAnimationFrame
-
-  
-    if (!window.requestAnimationFrame)
-      window.requestAnimationFrame = function(callback, element) {
-          var currTime = new Date().getTime();
-          var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
-          var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
-            timeToCall);
-          lastTime = currTime + timeToCall;
-          return id;
-    };
 
 
 ## 移动端事件 
@@ -360,8 +354,6 @@ touchstart 当用户在触摸平面上放置了一个触点时触发
 touchend 当一个触点被用户从触摸平面上移除（即用户的一个手指或手写笔离开触摸平面）时触发
 touchmove 当用户在触摸平面上移动触点时触发
 touchcancel 当触点由于某些原因被中断时触发
-
-移动端300ms延迟问题 是为了双击缩放问题才导致的
 
 禁止缩放 并且是响应式可以解决
 <meta name="viewport" content="user-scalable=no">
