@@ -157,11 +157,12 @@ Plugin主要职责 基于webpack构建的hooks来增强构建能力
 
 ## 相关概念
 parcel 内置插件 + 并行编译  小型项目
-rollup npm包
+rollup tree shaking 适合打包es6模块
 webpack 大型项目
 
 ### sourceMap
-//# sourceURL=/path/to/file.js.map 浏览器会通过sourceURL获取映射文件,通过解析器解析后实现源码和混淆代码之间的映射.
+//# sourceMappingURL=xxx.js.map
+ 浏览器会通过sourceURL获取映射文件,通过解析器解析后实现源码和混淆代码之间的映射.
 
 
 
