@@ -4,9 +4,9 @@ import {
 	AppShell,
 	Grid,
   } from '@mantine/core';
-import PageHeader from '@components/PageHeader'
-import AdComponent from "@components/adComponent";
-import CategoryCard from "@components/CategoryCard";
+import PageHeader from '../components/PageHeader'
+import AdComponent from "../components/adComponent";
+import CategoryCard from "../components/CategoryCard";
 
 import PageConstants from '../constants/'
 

@@ -156,7 +156,7 @@ Plugin主要职责 基于webpack构建的hooks来增强构建能力
 [三十分钟掌握Webpack性能优化](https://juejin.cn/post/6844903651291447309)
 
 ## 相关概念
-parcel 内置插件 + 并行编译  小型项目
+parcel 内置插件 + 并行编译  小型项目,缺乏灵活性
 rollup tree shaking 适合打包es6模块
 webpack 大型项目
 

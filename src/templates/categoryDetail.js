@@ -7,9 +7,9 @@ import {
   Pagination
 } from '@mantine/core';
 
-import AdComponent from "@components/adComponent";
-import PageHeader from '@components/PageHeader';
-import ArticleCard from '@components/ArticleCard';
+import AdComponent from "../components/adComponent";
+import PageHeader from '../components/PageHeader';
+import ArticleCard from '../components/ArticleCard';
 
 import './style.css'
 

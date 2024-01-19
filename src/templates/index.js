@@ -13,9 +13,9 @@ import { fairyDustCursor } from 'cursor-effects'
 import { navigate } from "gatsby"
 import Link from 'gatsby-link'
 
-import ArticleCard from '@components/ArticleCard';
-import NavLink from '@components/NavLInk';
-import PageHeader from '@components/PageHeader'
+import ArticleCard from '../components/ArticleCard';
+import NavLink from '../components/NavLInk';
+import PageHeader from '../components/PageHeader'
 import { sendHomePv } from '../utils'
 import './style.css'
 import './reset.css'

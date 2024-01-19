@@ -208,7 +208,7 @@ categories:
     Function.prototype (__proto__) => Object.prototype
 
     构造函数的__proto__(包括Function和Object)都指向Function.prototype。
-    原型对象的__proto__都指向Object.prototype
+    对象的__proto__都指向Object.prototype
 
 ### 原型链继承
 

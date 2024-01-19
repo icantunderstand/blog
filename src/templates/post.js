@@ -7,9 +7,9 @@ import {
 } from '@mantine/core';
 
 
-import Comment from '@components/comment'
-import AdComponent from '@components/adComponent'
-import PageHeader from '@components/PageHeader'
+import Comment from '../components/comment'
+import AdComponent from '../components/adComponent'
+import PageHeader from '../components/PageHeader'
 import './style.css'
 import { sendPagePv } from '../utils'
 
