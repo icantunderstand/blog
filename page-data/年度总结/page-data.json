@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-category-detail-js","path":"/年度总结","result":{"data":{"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"id":"4cf57e5c-235a-5434-99e0-3ff79238a9aa","frontmatter":{"title":"2022年终总结","date":"2022-10-20","tags":"年度总结","path":"/2022-summary","top":null,"summary":"2022年总结-回顾了工作、生活和自身的一些思考"}}},{"node":{"id":"76e654f7-5c52-5b12-8d13-55f5aa101acc","frontmatter":{"title":"2020年总结","date":"2021-02-01","tags":"年度总结","path":"/2020-summary","top":null,"summary":null}}}]}},"pageContext":{"category":"年度总结"}},"staticQueryHashes":[]}
+{
+    "componentChunkName": "component---src-templates-category-detail-js",
+    "path": "/年度总结",
+    "result": {"data":{"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"id":"1224740f-299a-521f-a9e7-31da0ea4f8b2","frontmatter":{"title":"2022年终总结","date":"2022-10-20","tags":"年度总结","path":"/2022-summary","top":null,"summary":"2022年总结-回顾了工作、生活和自身的一些思考"}}},{"node":{"id":"c83363a8-bd4d-5a04-b221-33360dc009dd","frontmatter":{"title":"2020年总结","date":"2021-02-01","tags":"年度总结","path":"/2020-summary","top":null,"summary":null}}}]}},"pageContext":{"category":"年度总结"}},
+    "staticQueryHashes": []}
