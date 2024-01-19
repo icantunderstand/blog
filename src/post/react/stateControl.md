@@ -146,7 +146,7 @@ applyMiddleware是redux提供对外部进行扩展的途径,通常情况下dispa
       console.log(1);
       return { type: action_type };
     });
-通过上面的例子,dispatch就能接受函数类型并且执行对应的函数,下面来了解appleMiddleware的源码是怎样实现的.applyMiddleware返回的是store的enhancer,在createStore的代码部,在传入enhancer的时候,执行的是enhancer(createStore)(reducer, preloadedState).
+通过上面的例子,dispatch就能接受函数类型并且执行对应的函数,下面来了解appleMiddleware的源码是怎样实现的。applyMiddleware返回的是store的enhancer,在createStore的代码部,在传入enhancer的时候,执行的是enhancer(createStore)(reducer, preloadedState).
     
     function compose(...funcs) {
       if (funcs.length === 0) {

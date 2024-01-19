@@ -153,4 +153,5 @@ render props能一定程度的实现代码逻辑的封装和复用.在定义组�
 ## 总结
 react通过组件之间的组合来生成页面,通过高阶组件的可以复用已有的逻辑并且减少对原来代码的入侵性.在进行系统的设计的时候,也应该考虑对原有逻辑的改造问题.如何能让剔除业务逻辑的其他相关组件之前依赖性降低是一个值得好好考虑的问题.
 ## 参考
-[Render Props](https://reactjs.org/docs/render-props.html)[React Components, Elements, and Instances](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html)
+[Render Props](https://reactjs.org/docs/render-props.html)  
+[React Components, Elements, and Instances](https://reactjs.org/blog/2015/12/18/react-components-elements-and-instances.html)

@@ -12,9 +12,9 @@ path: /code-refactor
 ## 基础层
 
 ### 性能建设
-拆包/按需加载 @babel/plugin-syntax-dynamic-import
-大文件扫描
-页面性能
+拆包/按需加载 @babel/plugin-syntax-dynamic-import  
+大文件扫描(针对build结果扫描)
+页面性能  
 
 ### 约束防劣化卡口
 * 文件强约束(max-len卡口/complexity复杂度卡口)
@@ -30,7 +30,7 @@ path: /code-refactor
       if [[ $1 ]]; then
           COMPARE=$1
       fi
-      array=$(git diff $COMPARE --name-only)
+      array=$(git diff --quite $COMPARE --name-only)
       resultArr=()
       echo $LINE
 

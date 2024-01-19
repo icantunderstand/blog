@@ -36,7 +36,7 @@ path: /base-react-summary
 ![mvp](./reactBase/mvp.png)  
 1. 用户操作页面，调用Presenter
 2. Presenter直接调用Model接口更新数据
-3. Model更新后通过观察着模式通知Presenter
+3. Model更新后通过观察者模式通知Presenter
 4. Presenter接受更新通知后调用View接口更新视图
 
 ### MVVM(Model-View-ViewModel)   
@@ -59,11 +59,12 @@ react的diff策略基于以下三点:
 
 ## react fiber reconciler过程
 reconciler分为render阶段和commit阶段
+* 任务调度-scheduler阶段  通过调度器的requestIdleCallback或requestAnimationFrame在浏览器空闲时执行任务
 * render阶段利用已有的fiber tree生成workInprogressFiber render阶段可以被高优先打断
 * commit阶段是更新阶段，将render阶段需要更新的操作执行，commit阶段有三个主要阶段钩子
-    1. before mutation(执行DOM操作前)  
-    2. mutation(执行DOM操作)
-    3. layout阶段(执行DOM操作之后)
+    1. before mutation-执行DOM操作前执行，会执行getSnapshotBeforeUpdate/componentDidUpdate
+    2. mutation-执行DOM操作
+    3. layout阶段(执行DOM操作之后) 尺寸变化会触发页面重排
 
 
 ## 自定义hook实现
