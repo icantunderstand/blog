@@ -12,11 +12,14 @@ categories: webpack
 * 能力扩展 通过plugin扩展模块打包和编译兼容的能力
 
 ## webpack打包流程  
-* 读取webpack配置参数
-* 启动webpack,创建Compiler对象并开始解析项目
-* 从入口文件(entry)开始解析,递归遍历分析形成依赖关系树
-* 对不同文件类型的依赖模块使用对应的Loader进行编译最终转化为JavaScript文件
-* 整个过程中webpack会通过发布订阅模式,向外抛出hooks而webpack的插件通过监听这些关键事件节点执行插件任务来达到干预输出的目的
+
+* 初始化 webpack会从配置文件中读取配置参数，生成compiler对象(插件注册)
+* 编译 从入口模块开始递归构建整个依赖关系图
+* 解析 根据模块的依赖关系，解析模块的路径
+* 生成chunk 将模块组合成一个或者多个chunk,每个chunk包含了一组模块的代码和模块之间的依赖关系
+* 模块的转换与代码生成 对模块使用相应的加载器进行转换，将其转换成浏览器可以执行的代码
+* 输出 将生成的chunk输出到指定路径，生成静态资源文件
+* 完成构建
 
 ### compiler && compilation
 compiler是一个全局单例,负责把控整个webpack打包的构建流程
@@ -27,11 +30,17 @@ compilation对象是每一次构建的上下文对象,包含当次构建的所�
 webpack只能处理js模块代码,Loader可以将非js文件类型的文件转化成js进行后续的打包逻辑
 
 #### Loader的执行顺序
+
 Loader是通过数组进行配置的,loader-runner会从配置的末尾依次执行对应loader的处理逻辑(compose)
 [a,b,c]
 a pitch => b pitch => c pitch =>  c loader normal execution => b loader normal execution => a loader normal execution
 [a,b,c] 如果b loader的pitch返回了结果
 a pitch => b pitch => a loader normal execution
+
+1. pitch能对loader进行顺序调整
+2. loader协同工作
+3. 请求重写 pitch可以返回新的请求，从而修改模块的请求
+4. 支持异步 
 
 #### Loader开发
 * this.callback 一个可以同步或者异步调用的可以返回多个结果的函数
@@ -47,7 +56,7 @@ a pitch => b pitch => a loader normal execution
 
 ##### 同步loader
 
-
+    // content 内容
     module.exports = function(content, map, meta) {
       return someDealFunc(content) // 直接返回同步执行逻辑
     }
@@ -71,15 +80,14 @@ a pitch => b pitch => a loader normal execution
 ### Plugin
 Plugin主要职责 基于webpack构建的hooks来增强构建能力
 * compiler暴露的webpack整个生命周期相关的钩子
-  * run 在读取records之前调用
-  * beforeRun 编译前hook
-  * beforeCompile compilation的参数创建后hook
-  * compile 在compilation创建完之前执行
-  * make 在执行完compilation前的hook
-  * afterCompile 完成compilation的hook
+  * beforeRun 在开始构建任务之前触发
+  * run 在开始构建任务时触发
+  * beforeCompile 在开始编译之前触发
+  * compile 在创建新的Compilation对象之前触发
+  * make 在开始创建chunk之前出发
   * emit 输出文件前hook
-* compilation暴露了模块与依赖有关的钩子
-  * seal  compilation不在新增依赖
+  * afterEmit 在完成资源输出之后触发
+
 
 #### 开发plugin
 * 插件必须是一个函数或者一个包含apply方法的对象

@@ -23,7 +23,6 @@ hao
 ## React Native渲染过程 
 
 
-
 ## React Native通信过程
 
 // 准备工作
