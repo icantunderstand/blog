@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-category-detail-js",
     "path": "/Go",
-    "result": {"data":{"allMarkdownRemark":{"totalCount":3,"edges":[{"node":{"id":"c4477a41-6c19-592e-baa3-b2d12e6afb32","frontmatter":{"title":"go语言入门之-函数和方法","date":"2019-04-19","tags":"Go","path":"/go-func","top":null,"summary":null}}},{"node":{"id":"5b717f34-345a-5b75-af23-cbb47b6c80c3","frontmatter":{"title":"go数据类型初识","date":"2019-04-01","tags":"Go","path":"/go-type","top":null,"summary":null}}},{"node":{"id":"6d8f2d50-0ac7-5d5c-b988-189b925a41b2","frontmatter":{"title":"go入门课-简介","date":"2019-03-26","tags":"Go","path":"/go-basic","top":null,"summary":null}}}]}},"pageContext":{"category":"Go"}},
+    "result": {"data":{"allMarkdownRemark":{"totalCount":3,"edges":[{"node":{"id":"8ffc1de2-ace1-5c44-a4a5-a422b43a1af7","frontmatter":{"title":"go语言入门之-函数和方法","date":"2019-04-19","tags":"Go","path":"/go-func","top":null,"summary":null}}},{"node":{"id":"7e5d1f2a-ee54-59e1-a3fd-71ffbe5c68a5","frontmatter":{"title":"go数据类型初识","date":"2019-04-01","tags":"Go","path":"/go-type","top":null,"summary":null}}},{"node":{"id":"570eee31-e50d-5468-bf5e-ed48bc58dde3","frontmatter":{"title":"go入门课-简介","date":"2019-03-26","tags":"Go","path":"/go-basic","top":null,"summary":null}}}]}},"pageContext":{"category":"Go"}},
     "staticQueryHashes": []}

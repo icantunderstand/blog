@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-category-detail-js",
     "path": "/CSS",
-    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"id":"e10d11aa-0d36-50ac-be6f-0f5ee8264275","frontmatter":{"title":"CSS基础总结","date":"2023-08-08","tags":"CSS","path":"/css-basic","top":null,"summary":null}}}]}},"pageContext":{"category":"CSS","meta":""}},
+    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"id":"4e0a2370-65e7-5150-acb4-0d6001cad4b2","frontmatter":{"title":"CSS基础总结","date":"2023-08-08","tags":"CSS","path":"/css-basic","top":null,"summary":null}}}]}},"pageContext":{"category":"CSS","meta":""}},
     "staticQueryHashes": []}
