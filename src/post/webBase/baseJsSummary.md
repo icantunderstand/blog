@@ -16,6 +16,7 @@ path: /base-js-summary
 | ------ | ------ | ------ |  
 | let/const | Temporal Dead Zone | 块级作用域 |  
 | var | 提升 | 函数作用域, 进入到声明该变量的函数作用域分配空间并且初始化值为undefined,执行到赋值语句后进行赋值 |  
+
 ### var
 在进入声明该变量的函数作用域的时候,会为其分配空间并且初始化值为undefined,在执行到对var赋值的语句的时候会对该变量进行赋值(如果没有赋值就是undefined)  
 ### let 
@@ -314,14 +315,13 @@ CommonJs循环加载时,属于加载时执行.即脚本代码在require的时候
 3. next方法也可以接受参数，使用参数调用将会用参数值替换上一条yield表达式的左值，然后执行并返回当前yield表达式的右值  
 
 
-    function* func() {
-      const y = yield 1;
-      yield 2 + y;
-
-    }
-    const generator = func();
-    generator.next() // { value: 1, done: false }
-    generator.next(100) // { value: 102, done: false }  
+        function* func() {
+            const y = yield 1;
+            yield 2 + y;
+        }
+        const generator = func();
+        generator.next() // { value: 1, done: false }
+        generator.next(100) // { value: 102, done: false }  
 
 ## async function
 async function是ES7提出的对异步调用的一种解决方案.通常可以通过下面的方式生成async function

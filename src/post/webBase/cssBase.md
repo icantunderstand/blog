@@ -139,22 +139,22 @@ position相关属性及含义
 * css方案: keyframes
 
 
-    // 声明关键帧动画
-    @keyframes slidein {
-      // 起始
-      from {
-        transform: translateX(0%);
-      }
+      // 声明关键帧动画
+      @keyframes slidein {
+        // 起始
+        from {
+          transform: translateX(0%);
+        }
 
-      to {
-        transform: translateX(100%);
+        to {
+          transform: translateX(100%);
+        }
       }
-    }
-    // 使用动画
-    p {
-      animation-duration: 3s;
-      animation-name: slidein;
-    }
+      // 使用动画
+      p {
+        animation-duration: 3s;
+        animation-name: slidein;
+      }
 
 ## 移动端适配方案
 
