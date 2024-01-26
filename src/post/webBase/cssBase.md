@@ -453,12 +453,12 @@ BFC不与float区域重合
 
 
 ## 参考链接
-[浏览器的工作原理:新式网络浏览器幕后揭幕](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#4_1)
-[css脱离文档流是什么意思](https://www.zhihu.com/question/24529373/answer/29135021)
-CSS权威指南
-[Visual formatting model](https://www.w3.org/TR/CSS21/visuren.html)
-[关于CSS-BFC深入理解](https://juejin.im/post/5909db2fda2f60005d2093db) 
-[移动端适配的5种方案](https://juejin.cn/post/6953091677838344199)
+[浏览器的工作原理:新式网络浏览器幕后揭幕](https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#4_1)  
+[css脱离文档流是什么意思](https://www.zhihu.com/question/24529373/answer/29135021)  
+CSS权威指南  
+[Visual formatting model](https://www.w3.org/TR/CSS21/visuren.html)  
+[关于CSS-BFC深入理解](https://juejin.im/post/5909db2fda2f60005d2093db)   
+[移动端适配的5种方案](https://juejin.cn/post/6953091677838344199)  
 
 
 

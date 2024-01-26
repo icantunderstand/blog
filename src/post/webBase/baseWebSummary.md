@@ -152,8 +152,8 @@ xss是一种代码注入攻击。 攻击者通过在目标网站上注入恶意�
 
 ### csrf的防护策略
 * 令牌同步模式 服务端生成令牌Token，再次请求的时候携带Token
-* 检查Referer字段
-* 添加校验token 区分来源
+* 检查Referer字段(同源策略)
+* SameSite Cookie  将SameSite 设置为Strict或者Lax可以减少CSRF风险 Strict模式可以完全阻止第三方网站访问cookie.Lax模式相对宽松，导航到目标网站的GET请求还是会发送cookie
 
 ## 单点登录(Single Sign On)
 单点登录SSO指在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统
