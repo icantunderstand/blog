@@ -459,7 +459,93 @@ WeakMap与Map类似。
 | WeakMap.prototype.has(value) | 返回一个布尔值, 表示该值是否在WeakMap中 | 
 | WeakMap.prototype.get(key) | 读取对应key的键值，没有key返回undefined | 
 
+## node中模块加载机制
+
+* 路径解析(Resolution) 根据模块标识找出对应模块入口的绝对路径
+    * 如果是文件，会自动按照后缀.js、.json、.node进行文件后缀补齐
+    * 如果是目录 会查找目录下的package.json,读取main字段并加载指定的模块，如果没有package.json就尝试加载目录下的index.js、index.json、index.node
+    * 非文件路径 非原生模块会按照node_modules目录逐级查找，在查找全局目录
+* 加载(Loading) 如果是JSON或者js文件,将文件读入内存。如果是内置原生模块将其动态链接库加载动当前Node.js进程
+* 包装(Wrapping) 将文件内容包装进一个函数，建立模块作用域，将exports, require, module等作为参数注入
+   
+
+        (function(exports, require, module, __filename, __dirname) {
+            // Module code actually lives in here
+        });
+
+* 执行(Evaluation) 传入参数，执行包装得到的参数
+* 缓存(Caching) 函数执行完毕后，将module缓存起来，并将module.exports作为require的返回值
+
+## monorepo
+monorepo是一种单一仓库的软件开发结构，通过将相同业务的多个项目集合一个项目中进行版本控制。主要解决了以下的问题: 
+ * 代码共享 对于跨项目的共享模块、组件、库有好处
+ * 一致的构建和部署 monorepo为项目提供一致的构建和部署流程，减少项目之间的差异
+ * 统一的版本控制 所用项目共享相同的版本控制历史，使得跨项目的版本控制更好管理能统一的进行版本回退等
+ * 原子提交 提交是原子性的，避免了跨项目的不一致性
+ * 协同开发 开发者可以很容易的访问和修改整个仓库的代码，提供了工作的效率
+ * 统一的依赖管理 monorepo允许仓库级别的管理依赖项，确保所有版本使用相同的依赖项版本
+ * 一体化测试 可以实施一体化测试
+
+
+## webpack模块联邦
+模块联邦用于解决模块的共享和加载的问题。它允许你在不同的webpack构建之间共享JavaScript模块，相比npm包管理的方式它实现更加灵活的代码共享方式，可以实现动态加载并减少的依赖管理等问题
+
+
+    // 主应用
+    const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
+    module.exports = {
+        // ...
+        plugins: [
+            new ModuleFederationPlugin({
+                name: "mainApp", // 主应用的名字
+                remotes: { // 远程模块配置 名称入口文件
+                    remoteApp: "remoteApp@http://localhost:3001/remoteEntry.js",
+                },
+                // 共享模块
+                shared: ["lodash"],
+            }),
+        ],
+    };
+
+    // 远程应用
+    const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+
+    module.exports = {
+        // ...
+        plugins: [
+            new ModuleFederationPlugin({
+                name: "remoteApp", // 远程应用的名字
+                filename: "remoteEntry.js", // 远程应用的入口文件
+                exposes: { // 指定要共享出去的模块
+                    "./Button": "./src/Button",
+                },
+                // 共享模块
+                shared: ["lodash"],
+            }),
+        ],
+    };
+
+    // 主应用中的代码 动态加载远程模块
+
+    const remoteApp = import("remoteApp/Button");
+
+    remoteApp.then((Button) => {
+        // 使用远程模块
+        const button = new Button();
+        document.body.appendChild(button);
+    });
+
+### webpack模块联邦的优势
+* 动态加载模块 模块联邦可以在运行时加载模块，从而实现更加灵活的模块加载
+* 模块共享 不需要通过npm管理依赖项，降级了项目依赖关系的复杂性同时提高的构建效率
+* 独立部署和自治  不同应用可独立部署和自治
+* 可细粒度控制 选择性的共享模块
+
+
+
 
 ## 参考
-[Async functions](http://exploringjs.com/es2016-es2017/ch_async-functions.html)
-[async函数的实现原理](https://es6.ruanyifeng.com/#docs/async#async-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)
+[Async functions](http://exploringjs.com/es2016-es2017/ch_async-functions.html)  
+[async函数的实现原理](https://es6.ruanyifeng.com/#docs/async#async-%E5%87%BD%E6%95%B0%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86)  
+[Node模块加载机制](http://www.ayqy.net/blog/node%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/)
