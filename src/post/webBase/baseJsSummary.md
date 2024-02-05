@@ -542,6 +542,14 @@ monorepo是一种单一仓库的软件开发结构，通过将相同业务的多
 * 独立部署和自治  不同应用可独立部署和自治
 * 可细粒度控制 选择性的共享模块
 
+## babel编译React代码生成AST的过程
+
+* 词法分析(Lexical Analysis) 将源代码字符串分解成一系列令牌，包括JSX语法中的标签、属性等
+* 语法分析(Parsing) 将令牌序列转换成抽象语法树(AST),其中每个节点代表JSX的元素属性等
+* 转换(Transformation) 对AST进行遍历修改，将JSX语法转换成对应的JavaScript代码(这里可以添加babel插件,  @babel/preset-env  @babel/preset-react @babel/plugin-transform-runtime)
+* 生成(Code Generation) 将修改后的AST装换成最终的JavaScript代码
+
+
 
 
 

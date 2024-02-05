@@ -366,3 +366,20 @@ JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE 7
 0.1 + 0.2 转换成2进制 然后对阶运算
 
 
+
+## webpack面试题
+
+### webpack的path
+
+* output.publicPath
+用户配置打包结果资源引用的位置
+
+* output.path
+影响生成文件存放的目录和引用 比如path设置path.resolve(__dirname, 'dist') 在html中引用的时候要使用'dist/bundle.js'
+
+* devServer publicPath
+在开发模式下，通过webpack-dev-server启动一个本地服务器，在内存中动态打包文件，用于控制开发模式下的资源访问，默认‘/’
+
+
+
+

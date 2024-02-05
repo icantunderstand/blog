@@ -26,7 +26,7 @@ compiler是一个全局单例,负责把控整个webpack打包的构建流程
 compilation对象是每一次构建的上下文对象,包含当次构建的所有信息
 
 ### Loader
-主要职责 文件转换
+loader可以将不同类型的文件转换成JavaScript模块
 webpack只能处理js模块代码,Loader可以将非js文件类型的文件转化成js进行后续的打包逻辑
 
 #### Loader的执行顺序
@@ -167,6 +167,9 @@ Plugin主要职责 基于webpack构建的hooks来增强构建能力
 parcel 内置插件 + 并行编译  小型项目,缺乏灵活性
 rollup tree shaking 适合打包es6模块
 webpack 大型项目
+
+## webpack中chunk的概念
+
 
 ### sourceMap
 //# sourceMappingURL=xxx.js.map

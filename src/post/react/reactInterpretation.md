@@ -1,6 +1,6 @@
 ---
 title: 图说React渲染流程
-date:  "2021-03-25"
+date:  "2024-02-05"
 tags: React
 path: /react-render-interpretation
 ---
@@ -48,3 +48,14 @@ React: 我在作画的时候主要思考了两件事:
 * 在开始作画之前他要喝一杯酒,他私下跟我说这杯酒会影响之后的作画([before mutation](https://github.com/facebook/react/blob/148f8e497c7d37a3c7ab99f01dec2692427272b1/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1800)阶段 周期函数钩子),我心想也是喝多了肯定不能画了吧  
 * 在作画中,他又老能搞出一些新花样([mutation](https://github.com/facebook/react/blob/148f8e497c7d37a3c7ab99f01dec2692427272b1/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1818) [layout](https://github.com/facebook/react/blob/148f8e497c7d37a3c7ab99f01dec2692427272b1/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1842) 组件添加到视图 生命周期函数执行),正是这些每次不同的新奇花样让他成为一个出色的画师
 * 在绘画后脑海中那个构思图成为了真实的画([workInprogress => current](https://github.com/facebook/react/blob/148f8e497c7d37a3c7ab99f01dec2692427272b1/packages/react-reconciler/src/ReactFiberWorkLoop.new.js#L1829))
+
+
+## fiber链表结构
+fiber单链表结构的一些优点:
+* 可中断和恢复的任务 单链表结构允许React在多个帧中中断和恢复渲染任务，通过将任务切分小的单元，这样有助于提高用户界面响应性和避免出现卡顿
+* 优先级控制 可以通过链表实现高优先级任务的优先执行
+* 轻量化和内存管理 单链表对比双链表相对轻量，降低内存的占用
+
+
+## 参考
+[React Fiber不就是个链表么](https://juejin.cn/post/7159118990999191582)
