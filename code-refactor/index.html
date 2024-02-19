@@ -120,7 +120,7 @@ fi
     </span>
 使用MVC模型之后，将原本糅合在数据层的页面逻辑分离，可维护性增加，调用逻辑也更加清晰</p>
 <h3>统一弹层方法</h3>
-<p>通过统一的弹层方法，约束弹层内容的按需加载(lazy/Suspense/@babel/plugin-syntax-dynamic-import)并且在方法内部管理显影状态</p>
+<p>通过统一的弹层方法，约束弹层内容的按需加载(lazy/Suspense/@babel/plugin-syntax-dynamic-import)并且在方法内部管理显隐状态</p>
 <h2>数据层</h2>
 <h3>store模块依赖注入</h3>
 <p>比较简单的方案是在模块初始化时传入依赖的模块去减少查询依赖的代码逻辑，也可以借助一些实现依赖注入的库<a href="https://github.com/wessberg/DI">DI</a>等实现依赖的管理</p>
