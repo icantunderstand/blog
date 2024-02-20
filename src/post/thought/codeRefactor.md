@@ -72,7 +72,7 @@ path: /code-refactor
 
 
 ### 统一弹层方法
-通过统一的弹层方法，约束弹层内容的按需加载(lazy/Suspense/@babel/plugin-syntax-dynamic-import)并且在方法内部管理显影状态
+通过统一的弹层方法，约束弹层内容的按需加载(lazy/Suspense/@babel/plugin-syntax-dynamic-import)并且在方法内部管理显隐状态
 
 ## 数据层
 
