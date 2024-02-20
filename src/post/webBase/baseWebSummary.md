@@ -279,6 +279,17 @@ http2对比http1.1有如下的优势:
 
 回流(重排)指Render Tree中部分或者全部元素的尺寸发生改变，浏览器需要重新渲染部分或者全部文档的过程  
 可以通过css相关属性，让对应的元素渲染在自己的图层上，减少整体的重排
+
+## web性能指标
+
+| 名字 | 连接性 | 
+| ------ | ------ | 
+| 首次有效绘制时间(FMP) | 浏览器首次绘制主要内容的时间点 | 
+| 可交互时间(TTI)| 页面可交互时间 | 
+| 首次内容渲染时间(FCP)| 浏览器首次绘制来自DOM内容的时间点 | 
+| 页面完全加载时间(Load Time)| 页面上所有资源加载完成并且 DOM 加载完毕的时间点 | 
+
+
 ## 参考
 [WebSocket协议：5分钟从入门到精通 ](https://www.cnblogs.com/chyingp/p/websocket-deep-in.html)  
 [渲染页面：浏览器的工作原理](https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work)  

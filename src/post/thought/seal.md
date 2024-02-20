@@ -47,4 +47,7 @@ path: /seal-code
 * 在封装的实现上 可以逐渐的从项目内共享 -> 跨项目共享等
 * 在分发共享逻辑上，有[monorepo](https://zh.wikipedia.org/wiki/Monorepo)、[模块联邦](https://webpack.js.org/concepts/module-federation/)、[npm包](https://www.npmjs.com/)、[微前端](https://www.amazonaws.cn/knowledge/what-is-micro-frontends/)等方式.
 
+-- 写在最后 --
+
+以上就是自己在业务代码优化上的一些实践和思考。代码的优化并不是一蹴而就的，是渐进式的。最开始的设计相当于建筑的地基，这个地基的好坏能一定程度上为项目保驾护航。代码的优化则是自身对业务理解梳理，对功能实现的总结思考，相当于对建筑的添砖加瓦，是个有意思的过程。
 
