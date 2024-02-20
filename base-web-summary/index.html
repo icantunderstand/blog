@@ -571,6 +571,33 @@ http1.1三种连接方式:
 </ol>
 <p>回流(重排)指Render Tree中部分或者全部元素的尺寸发生改变，浏览器需要重新渲染部分或者全部文档的过程<br>
 可以通过css相关属性，让对应的元素渲染在自己的图层上，减少整体的重排</p>
+<h2>web性能指标</h2>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>连接性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>首次有效绘制时间(FMP)</td>
+<td>浏览器首次绘制主要内容的时间点</td>
+</tr>
+<tr>
+<td>可交互时间(TTI)</td>
+<td>页面可交互时间</td>
+</tr>
+<tr>
+<td>首次内容渲染时间(FCP)</td>
+<td>浏览器首次绘制来自DOM内容的时间点</td>
+</tr>
+<tr>
+<td>页面完全加载时间(Load Time)</td>
+<td>页面上所有资源加载完成并且 DOM 加载完毕的时间点</td>
+</tr>
+</tbody>
+</table>
 <h2>参考</h2>
 <p><a href="https://www.cnblogs.com/chyingp/p/websocket-deep-in.html">WebSocket协议：5分钟从入门到精通 </a><br>
 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Performance/How_browsers_work">渲染页面：浏览器的工作原理</a><br>
