@@ -45,7 +45,7 @@ categories:
 
 ### 节流
     // 多长时间必须执行对应的函数 
-    // 写复杂了
+    // 需要注意时间处理那块
     function throttle(func, t = 50) {
         let lastRunTime = null
         let timer = null;

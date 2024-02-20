@@ -35,7 +35,7 @@ path: /seal-code
 通过将相关的逻辑都聚合到模块封装的内部，就能较低其他模块对不相关逻辑的感知，也就做到了解耦。在下面的例子中，通过将A逻辑的关联逻辑都封装进A模块中，降低了功能模块对封装逻辑的感知。
 ![内部封装](./thoughtStatic/seal/innerSeal.jpg)  
 相关例子: 
-* 在[ahooks](https://ahooks.js.org/hooks/use-request/index)中的useRequest中，就通过对请求状态和数据的操作就行封装，将数据相关操作做到了内聚，减轻了视图层的负担
+* 在[ahooks](https://ahooks.js.org/hooks/use-request/index)中的useRequest中，就通过对请求状态和数据的操作进行封装，将数据相关操作做到了内聚，减轻了视图层的负担
 * [Antd pro components](https://procomponents.ant.design/components/table#protable)的table
 
 ## 分层
@@ -49,5 +49,5 @@ path: /seal-code
 
 -- 写在最后 --
 
-以上就是自己在业务代码优化上的一些实践和思考。代码的优化并不是一蹴而就的，是渐进式的。最开始的设计相当于建筑的地基，这个地基的好坏能一定程度上为项目保驾护航。代码的优化则是自身对业务理解梳理，对功能实现的总结思考，相当于对建筑的添砖加瓦，是个有意思的过程。
+代码的优化或者设计是应该在理解业务的基础上，从相对大的视角出发来看的。在实际做的时候容易出现缺少全局视角的设计缺失和不完善，也容易出现过度设计，需要仔细去把握这个度量。
 

@@ -117,4 +117,5 @@ reconciler分为render阶段和commit阶段
 ## 参考
 
 [react 中 ReactElement 与 Fiber 的关系](https://juejin.cn/post/7099810539315920926)  
-[How React server components work: an in-depth guide](https://www.plasmic.app/blog/how-react-server-components-work)  
+[How React server components work: an in-depth guide](https://www.plasmic.app/blog/how-react-server-components-work) 
+[React Fiber不就是个链表么](https://juejin.cn/post/7159118990999191582)  
