@@ -200,7 +200,7 @@ SSO一般都需要一个独立的认证中心（passport），子系统的登录
     Content-Type: application/xml
 
 
-### 复杂请求跨域交互
+#### 复杂请求跨域交互
 
 请求端预检请求
 
@@ -228,7 +228,14 @@ SSO一般都需要一个独立的认证中心（passport），子系统的登录
     Keep-Alive: timeout=2, max=100
     Connection: Keep-Alive
 
-在完成预检请求后进行正常的请求交互响应
+在完成预检请求后进行正常的请求交互响应 
+
+#### 跨域解决方案
+
+* CROS 通过设置响应头Access-Control-Allow-Origin字段允许跨域请求
+* JSONP 通过动态script标签实现跨域数据获取
+* 代理 通过代理服务器转发请求
+* WebSocket协议 使用WebSocket协议通信
 
 ## TCP/UDP
 
