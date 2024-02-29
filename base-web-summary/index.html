@@ -437,7 +437,7 @@ Connection: Keep-Alive
 Transfer-Encoding: chunked
 Content-Type: application/xml
 </code></pre>
-<h3>复杂请求跨域交互</h3>
+<h4>复杂请求跨域交互</h4>
 <p>请求端预检请求</p>
 <pre><code>OPTIONS /doc HTTP/1.1
 Host: bar.other
@@ -463,6 +463,13 @@ Keep-Alive: timeout=2, max=100
 Connection: Keep-Alive
 </code></pre>
 <p>在完成预检请求后进行正常的请求交互响应</p>
+<h4>跨域解决方案</h4>
+<ul>
+<li>CROS 通过设置响应头Access-Control-Allow-Origin字段允许跨域请求</li>
+<li>JSONP 通过动态script标签实现跨域数据获取</li>
+<li>代理 通过代理服务器转发请求</li>
+<li>WebSocket协议 使用WebSocket协议通信</li>
+</ul>
 <h2>TCP/UDP</h2>
 <table>
 <thead>
