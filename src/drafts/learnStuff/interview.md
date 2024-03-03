@@ -30,6 +30,7 @@ categories:
         // 增加了必须执行的逻辑
         if(curr - lastTime >= mustRun) {
           lastTime = curr
+          // 这里的context重要
           return fn.apply(context, args);
         }
         timer = setTimeout(() => {
@@ -51,17 +52,18 @@ categories:
         let timer = null;
         return function (...args) {
             const now = +new Date()
+            const context = this
             if(!lastRunTime) {
               lastRunTime = now
             }
             if (now - lastRunTime >= t) {
                 lastRunTime = now
-                fn(...args)
+                return fn.apply(context,args)
             } else {
                 clearTimeout(timer)
                 timer = setTimeout(() => {
                     lastRunTime = +new Date()
-                    fn(...args)
+                    return fn.apply(context,args)
                 }, lastRunTime + t - now)
             }
         }
@@ -189,9 +191,9 @@ categories:
 
 ![原型](./pic/proto.jpg)
 
-## 实现继承的几种方式
 
-### 原型链面试问题
+
+## 原型链面试问题
 
     Function.prototype.a = () => console.log(1);
     Object.prototype.b = () => console.log(2); 
@@ -209,6 +211,8 @@ categories:
 
     构造函数的__proto__(包括Function和Object)都指向Function.prototype。
     对象的__proto__都指向Object.prototype
+
+## 实现继承的几种方式
 
 ### 原型链继承
 

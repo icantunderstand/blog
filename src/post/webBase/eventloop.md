@@ -10,7 +10,8 @@ path: /event-loop
 ## 基本概念
 1. javascript程序的执行机制是通过栈来管理的.当进入一个函数,就创建了这个函数的执行环境并将这个执行环境推入栈顶,执行完当前的函数后,从栈顶移除对应的执行环境,进入到外层的执行环境.
 ![stack](./javascriptBaseStatic/eventloop/stack.gif) 
-2. javascript的执行是单线程的.但是由于整个事件循环的调度,赋予了javascript对异步任务的强大处理能力.对于异步任务(网络请求,按钮点击)javascript代码调用宿主环境提供的api,将异步任务交给其他的线程去完成.当对应的异步任务完成的时候,将回调函数添加到回调函数的队列中,由事件循环来实现会回调函数的调用.
+2. javascript的执行是单线程的.但是由于整个事件循环的调度,赋予了javascript对异步任务的强大处理能力.对于异步任务(网络请求,按钮点击)javascript代码调用宿主环境提供的api,将异步任务交给其他的线程去完成.当对应的异步任务完成的时候,将回调函数添加到
+回调函数的队列中,由事件循环来实现会回调函数的调用.
 ![loop](./javascriptBaseStatic/eventloop/loop.png)
 
 ## marcotasks microtasks

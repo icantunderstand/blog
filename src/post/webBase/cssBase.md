@@ -108,7 +108,7 @@ position相关属性及含义
 | offsetWidth | 与offsetWidth相似 | 只读 |  
 | scrollHeight | 当出现滚动时,scrollHeight代表元素内容的高度(包括在不在内容区域的内容)  当一个元素出现滚动, 它的相关属性 判读元素是否滚动到底部 scrollHeight - scrollTop === clientHeight | 只读 |
 | scrollTop | 当元素出现滚动的时候,scrollTop代表元素可见内容距离该元素顶部的高度.不存在滚动条的时候,scrollTop为0 | 可读可写 |
-|offsetTop | 获取当前元素跟offsetParent父元素顶部(position不为static的父元素)的距离,不随滚动变化 | 只读 |
+| offsetTop | 获取当前元素跟offsetParent父元素顶部(position不为static的父元素)的距离,不随滚动变化 | 只读 |
 
 ### 实现滚动的思路
 1. 锚点 通过在页面中设置锚点能在实现跳转到页面相应位置的目的,这种方式也比较好操作.缺点是需要在url中添加其他信息

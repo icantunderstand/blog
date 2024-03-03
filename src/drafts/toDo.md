@@ -6,7 +6,7 @@ react server Component
 
 midjourney 试试
 
-联系表达
+练习表达
 
-axios得取消
-async  await
+
+
