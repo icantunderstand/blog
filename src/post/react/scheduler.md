@@ -1,3 +1,11 @@
+<!--
+ * @Author: sunhao12 sunhao12@kuaishou.com
+ * @Date: 2023-08-01 15:39:16
+ * @LastEditors: sunhao12 sunhao12@kuaishou.com
+ * @LastEditTime: 2024-03-11 20:05:07
+ * @FilePath: /blog/src/post/react/scheduler.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 ---
 title: 从Scheduler包来看React的任务调度
 date:  "2021-03-15" 
@@ -48,6 +56,15 @@ wookLoop是实现任务调用的核心逻辑,它主要实现了如下几件事:
 
 抛开源码可以简单的理解Scheduler的调度任务实现思路如下图,它正好实现了任务调度切片,优先级,高优任务插入等逻辑.
 ![Scheduler整体的思路](./reactStatic/scheduler/how_scheduler_work.jpg)  
+
+## 一些小的值得思考的点
+
+### frameYieldMs为什么是5ms
+这样能保证每帧内切片的任务执行之间不超过5ms，从而保证页面整体的流畅性
+
+### 使用Message Channel 为什么没有使用定时器或者其他的方案来实现整体的任务调度
+![Scheduler在不同环境的调度方案](./reactStatic/scheduler/scheduler_environment.png)  
+
 
 
 ## 参考链接

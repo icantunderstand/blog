@@ -1,3 +1,11 @@
+<!--
+ * @Author: sunhao12 sunhao12@kuaishou.com
+ * @Date: 2024-03-01 00:57:53
+ * @LastEditors: sunhao12 sunhao12@kuaishou.com
+ * @LastEditTime: 2024-03-11 19:23:40
+ * @FilePath: /blog/src/post/thought/thoughtAboutResource.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 ---
 title: 趣说web资源加载
 date: "2024-02-29"
@@ -43,7 +51,7 @@ path: /load-resource
 说到资源缓存，其实在上面的预渲染技术中就可以用到。可以有如下的思路
 * 服务段资源缓存 服务端动态生成的资源缓存/计算数据缓存
 * 资源缓存设置 区分不同资源做不同的缓存时间设置
-* CDN 多点部署资源
+* CDN 多点部署资源/CDN资源预热
 * 客户端缓存 
     * 通过缓存协商来实现
     * 客户端动态做数据资源拉取,比如WebView的复用/Webview预加载/[离线包](https://icantunderstand.github.io/blog/cross-platform-offline)/[数据预取](https://icantunderstand.github.io/blog/cross-platform-prefetch)

@@ -1,3 +1,11 @@
+<!--
+ * @Author: sunhao12 sunhao12@kuaishou.com
+ * @Date: 2023-08-01 15:39:16
+ * @LastEditors: sunhao12 sunhao12@kuaishou.com
+ * @LastEditTime: 2024-03-11 19:21:49
+ * @FilePath: /blog/src/post/computerBase/store.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 ---
 title: 缓存那些事
 date: "2018-10-28" 
@@ -53,7 +61,7 @@ Etag的出现更像是为了弥补last-modified的不足.例如:
 2. 一个资源的频繁修改但是内容并没有修改  
 
 ## 存储-协商存储
-协商存储就是根据上面学习的相关字段来决定获取到的资源是否可以被存储被下次请求使用的策略.上文已经对响应的字段进行了说明.
+协商存储就是根据上面学习的相关字段来决定获取到的资源是否可以被存储被下次请求使用的策略.上文已经对相应的字段进行了说明.
 
 ## CDN
 ### CDN简介
@@ -82,6 +90,7 @@ Etag的出现更像是为了弥补last-modified的不足.例如:
 1. 资源或者服务的尽快到达和可用
 2. 解决网络带宽问题和服务负载
 3. 减少网络流量,让流量做更加有意义的事  
+
   
 ## 思考
 缓存能给应用带来一定的好处,同时也给服务增加了一些负载(保证资源的更新,增加缓存的成本等等).在对系统的一些基础服务做修改的时候,先要把这些有可能出现问题的点考虑清楚或者为什么这么做想好,在去做事.
