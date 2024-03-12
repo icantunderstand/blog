@@ -183,6 +183,12 @@ newSandBox2.appName = 'app2'
 console.log(newSandBox1.appName, newSandBox2.appName, window.appName) // app1 app2 undefined
 console.log(newSandBox1.globalData, newSandBox2.globalData) // abc abc
 </code></pre>
+<h2>css隔离方案</h2>
+<ul>
+<li>css模块化 将CSS的作用域隔离</li>
+<li>css-in-js 样式代码直接内嵌到JavaScript代码中</li>
+<li>Shadow Dom 实现样式隔离</li>
+</ul>
 <h2>附录</h2>
 <p><a href="https://juejin.cn/post/6844904066225537037">字节跳动的微前端沙盒实践</a><br>
 <a href="https://mp.weixin.qq.com/s/iLdAH9p2-S8pFyZrNzYaNg">前端微服务在字节跳动的打磨与应用</a><br>
