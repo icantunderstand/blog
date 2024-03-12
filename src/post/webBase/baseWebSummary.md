@@ -244,9 +244,8 @@ SSO一般都需要一个独立的认证中心（passport），子系统的登录
 | TCP| 面向连接 | 可靠 | http/https/ftp/telnet | 
 | UDP | 无连接可直接发送数据 | 不可靠，容易丢包报文乱序等 | dns/tftp | 
 
-## http2.0/http1.1
 
-### http 1.1
+## http 1.1
 超文本传输协议(HyperText Transfer Protocol-http)
 http1.1三种连接方式:
 ![http 1.1 三种连接模式](./baseWebSummary/http1.1.png)
@@ -259,7 +258,7 @@ http1.1三种连接方式:
 
 * 管道模式(Pipelining): 在建立的一个连接上发送多个请求不必等到上个结果返回，返回结果需要按照发送的顺序返回，Pipelining模式需要逐个响应存在队首阻塞问题、易被攻击等问题，已被http2的多路复用所替代
 
-### http2
+## http2
 http2通过二进制分帧层，将需要发送的数据拆分成帧，通过帧的首部的流标识信息组装成信息。
 ![二进制分帧层](./baseWebSummary/binaryFrame.svg)
 
@@ -268,6 +267,15 @@ http2对比http1.1有如下的优势:
 * 多路复用 在同一个连接上处理请求和响应，根据帧首部的流标识在服务端进行重组
 * 可以设置请求优先级
 * 可以实现服务端推送
+
+## http2升级
+* 服务器软件升级和配置
+* TSL/SSL加密
+* 客户端支持
+* 代理服务器的升级与配置
+
+## http3
+http3是基于QUIC协议的，他有延续了http2的一些优势，比如多路复用，头部压缩等，由于QUIC是基于UDP协议之上的，相对http2在连接建立、头部阻塞上有有优势
 
 ## 浏览器渲染原理
 1. 导航(navigation)

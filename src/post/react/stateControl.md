@@ -127,7 +127,7 @@ combineReucer(reducer)可以将多个reducer函数组合起来,接受action并�
     }
 
 ####  1.3.3. <a name='applyMiddleware'></a>applyMiddleware
-applyMiddleware是redux提供对外部进行扩展的途径,通常情况下dispacth只能接受一个对象来对状态进行修改,通过添加不同的中间件,对dispatch进行增强,可以使它接受更多的类型(function, promise)和实现更多的功能, 下面先从一个使用中间件的实例来了解appleMiddleware到底做了什么.
+applyMiddleware是redux提供对外部进行扩展的途径,通常情况下dispatch只能接受一个对象来对状态进行修改,通过添加不同的中间件,对dispatch进行增强,可以使它接受更多的类型(function, promise)和实现更多的功能, 下面先从一个使用中间件的实例来了解appleMiddleware到底做了什么.
 
     function thunkMiddleware({ dispatch, getState }) {
       return  next => action => {
@@ -347,6 +347,10 @@ Observable会根据传入的值类型包装生成代理，在对观察值获取�
       }
 
 这样当observable更改的时候会触发对应的Reaction执行从而达到组件刷新的目的
+
+### mobx响应式更新与MVVM
+* MVVM是一种用于构建页面的软件架构。通过ViewModel实现视图与数据模型的绑定关系，从而实现数据更新自动映射到视图层
+* mobx是一个状态管理库，在与React结合的过程中通过mobx-react实现Derivations的生成，在observable值变化的时候触发Derivations的更新从而达到视图更新的目的。
 
 
 在业务开发中最开始引入状态管理是为了实现组件之间的状态共享，而使用Redux或者Mobx是引入不同的编程范式来实现这种共享的行为。不同的编程范式能给予项目一定的约束从而实现业务开发的规范。但是范式的引入也一定程度上增加了项目的复杂度，比如redux的依赖管理、中间件概念、mobx跟踪性较弱的更新逻辑等。在考虑引入具体方案的时候应该考虑整个项目的现状和成本，是不是有更轻量化的实现，比如React Hooks。

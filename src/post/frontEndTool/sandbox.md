@@ -202,6 +202,11 @@ path: /sandbox
     console.log(newSandBox1.appName, newSandBox2.appName, window.appName) // app1 app2 undefined
     console.log(newSandBox1.globalData, newSandBox2.globalData) // abc abc
 
+## css隔离方案
+* css模块化 将CSS的作用域隔离
+* css-in-js 样式代码直接内嵌到JavaScript代码中
+* Shadow Dom 实现样式隔离
+
 
 ## 附录
 [字节跳动的微前端沙盒实践](https://juejin.cn/post/6844904066225537037)  

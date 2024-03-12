@@ -476,6 +476,11 @@ WeakMap与Map类似。
 * 执行(Evaluation) 传入参数，执行包装得到的参数
 * 缓存(Caching) 函数执行完毕后，将module缓存起来，并将module.exports作为require的返回值
 
+## node部署实现大规模并发处理
+* 容器化技术 使用Docker或者Kubernetes部署多个Node.js实例
+* 使用反向代理技术将请求转发给多个Node.js实例
+* 使用PM2(cluster)管理node.js进程的启动, PM2会创建多个子进程来运行同一个应用程序的多个实现，每个子进程会监听相同的端口
+
 ## monorepo
 monorepo是一种单一仓库的软件开发结构，通过将相同业务的多个项目集合一个项目中进行版本控制。主要解决了以下的问题: 
  * 代码共享 对于跨项目的共享模块、组件、库有好处

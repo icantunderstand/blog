@@ -2,7 +2,7 @@
  * @Author: sunhao12 sunhao12@kuaishou.com
  * @Date: 2023-08-01 15:39:16
  * @LastEditors: sunhao12 sunhao12@kuaishou.com
- * @LastEditTime: 2024-03-11 20:05:07
+ * @LastEditTime: 2024-03-12 20:14:34
  * @FilePath: /blog/src/post/react/scheduler.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -64,6 +64,22 @@ wookLoop是实现任务调用的核心逻辑,它主要实现了如下几件事:
 
 ### 使用Message Channel 为什么没有使用定时器或者其他的方案来实现整体的任务调度
 ![Scheduler在不同环境的调度方案](./reactStatic/scheduler/scheduler_environment.png)  
+
+* Scheduler在node.js或者老的IE浏览器中会使用setImmediate。因为这样才能打破在当前环境的事件循环。
+* 在浏览器环境或者Worker调度任务场景，使用MessageChannel,这里没有使用定时器，是因为定时的最小间隔是4ms,这样会导致一些时间的浪费
+* 在其他非浏览器场景，会使用SetTimeout 
+
+## MessageChannel的使用方式
+Scheduler使用MessageChannel完成当前上下文的切换-react的调度任务和浏览器其他任务的切换
+
+    const channel = new MessageChannel();
+    const port = channel.port2;
+    channel.port1.onmessage = (message) => { console.log(message.data) };
+    port.postMessage(111)
+
+
+## 对scheduler包的理解
+Scheduler是一个实现任务调度的库，它里面实现了多种环境的任务调度能力。可以理解它赋予了JavaScript'多线程'的能力，可以完成当前执行任务的上下文切换和恢复执行。在一些细节考量上也非常细致，比如每帧任务最大的执行时间是5ms/setTimeout的使用等。
 
 
 
