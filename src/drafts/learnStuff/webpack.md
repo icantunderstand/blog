@@ -91,7 +91,7 @@ Plugin主要职责 基于webpack构建的hooks来增强构建能力
 #### 开发plugin
 * 插件必须是一个函数或者一个包含apply方法的对象
 * 传递给插件的compiler和compilation对象是同一个引用,修改对应的对象会对后面的插件有影响
-* 异步事件需要插件调用回调函数通知webpack进入下一个流程
+* 异步事件需要插件调用回调函数通知webpack进入下一个流程(会阻塞)
 
       // 同步钩子
       class MyPlugin {
