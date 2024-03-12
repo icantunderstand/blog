@@ -1,11 +1,3 @@
-<!--
- * @Author: sunhao12 sunhao12@kuaishou.com
- * @Date: 2023-08-01 15:39:16
- * @LastEditors: sunhao12 sunhao12@kuaishou.com
- * @LastEditTime: 2024-03-12 20:14:34
- * @FilePath: /blog/src/post/react/scheduler.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
 ---
 title: 从Scheduler包来看React的任务调度
 date:  "2021-03-15" 
