@@ -1,3 +1,11 @@
+<!--
+ * @Author: sunhao12 sunhao12@kuaishou.com
+ * @Date: 2024-03-12 20:53:24
+ * @LastEditors: sunhao12 sunhao12@kuaishou.com
+ * @LastEditTime: 2024-03-14 17:28:52
+ * @FilePath: /blog/src/drafts/learnStuff/interview.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 
 ---
 title: 复习资料总结
@@ -368,6 +376,39 @@ fastclick的原理 是在touchend之后出发一个click事件
 ## js中0.1 + 0.2 !== 0.3的问题
 JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE 754 标准 通过64位来表示一个数字
 0.1 + 0.2 转换成2进制 然后对阶运算
+
+
+
+## 相关题  
+
+    // let obj = {
+	    "A.B.C.D":1,
+	    "A.B.E.F":2
+      }
+    function parseObj(obj) {
+        const ret = {}
+        for(const [key, value] of Object.entries(obj)) {
+            const arr = key.split('.')
+            // 前面的值
+            let prev = ret
+            for(let i = 0; i < arr.length;i++) {
+                if(i < arr.length - 1) {
+                    if(prev[arr[i]]) {
+                        prev = prev[arr[i]]
+                        continue
+                    } else {
+                        prev[arr[i]] = {}
+                        prev = prev[arr[i]]
+                    }
+                } else if(i === arr.length - 1) {
+                    prev[arr[i]] = value
+                }
+                          
+            }
+        }
+
+        return ret
+    }
 
 
 
