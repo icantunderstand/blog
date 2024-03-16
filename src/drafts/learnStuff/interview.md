@@ -2,7 +2,7 @@
  * @Author: sunhao12 sunhao12@kuaishou.com
  * @Date: 2024-03-12 20:53:24
  * @LastEditors: sunhao12 sunhao12@kuaishou.com
- * @LastEditTime: 2024-03-14 17:28:52
+ * @LastEditTime: 2024-03-15 10:37:38
  * @FilePath: /blog/src/drafts/learnStuff/interview.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -408,6 +408,22 @@ JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE 7
         }
 
         return ret
+    }
+
+    // 实现类似koa中间件的处理逻辑
+    function onionMiddle(...middlewares) {
+       return (next) => {
+          let index = -1
+          function dispatch(i) {
+            if(i <= index) throw new Error('next() called multiple time')
+            index = i
+            let fn = middlewares(i)
+            if(i === middlewares.length) fn = next
+            if(!fn) return 
+            return fn(() => dispatch(i+ 1))
+          }
+          return dispatch(0)
+       }
     }
 
 
