@@ -554,6 +554,36 @@ monorepo是一种单一仓库的软件开发结构，通过将相同业务的多
 * 转换(Transformation) 对AST进行遍历修改，将JSX语法转换成对应的JavaScript代码(这里可以添加babel插件,  @babel/preset-env  @babel/preset-react @babel/plugin-transform-runtime)
 * 生成(Code Generation) 将修改后的AST装换成最终的JavaScript代码
 
+## 造成内存泄露一些情况
+* 未释放的事件监听器 当DOM元素被删除和替换时，未移除相应事件的监听器，导致相应的DOM节点无法回收
+
+
+        var element = document.getElementById('example');
+        element.addEventListener('click', function() {
+            // 一些处理代码
+        });
+
+        // 移除DOM元素
+        document.body.removeChild(element);
+
+* 循环引用 两个对象相互引用，当对象不在使用的时候但是他们的引用关系让JavaScript引擎认为他们仍在使用中，所以不会被回收
+
+
+        let obj1 = {};
+        let obj2 = {};
+
+        obj1.ref = obj2;
+        obj2.ref = obj1;
+
+        // 解除引用
+        obj1 = null;
+        obj2 = null;
+
+* 定时器/IntersectionObserver/ResizeObserver/MutationObserver 等在不需要的时候 需要清除
+* Promises，Observables，EventEmitters 设置监听器的模型都有可能造成内存泄露
+* 全局对象存储 相当于不断增加内存
+* 新增DOM结构  
+
 
 ## 参考
 [Async functions](http://exploringjs.com/es2016-es2017/ch_async-functions.html)  
