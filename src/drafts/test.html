@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .flex-container {
+      display: flex;
+      align-items: flex-start; /* 或者 align-items: stretch; */
+      height: 200px;
+    }
+
+    .flex-item {
+      width: 100px;
+      height: 100px;
+      border: 2px solid black;
+    }
+
+    .item1 {
+      align-self: flex-start;
+    }
+
+    .item2 {
+      align-self: center;
+    }
+
+    .item3 {
+      align-self: flex-end;
+    }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-item item1">Item 1</div>
+        <div class="flex-item item2">Item 2</div>
+        <div class="flex-item item3">Item 3</div>
+      </div>
+</body>
+</html>

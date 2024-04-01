@@ -1,12 +1,3 @@
-<!--
- * @Author: sunhao12 sunhao12@kuaishou.com
- * @Date: 2024-03-12 20:53:24
- * @LastEditors: sunhao12 sunhao12@kuaishou.com
- * @LastEditTime: 2024-03-15 10:37:38
- * @FilePath: /blog/src/drafts/learnStuff/interview.md
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
--->
-
 ---
 title: 复习资料总结
 date: 2018-10-10 07:30:00  
@@ -98,7 +89,7 @@ categories:
         if (typeof obj !== "object") return obj;
         // 是对象的话就要进行深拷贝
         if (hash.get(obj)) return hash.get(obj);
-        let cloneObj = new obj.constructor();
+        let cloneObj = new obj.constructor(); // 这里注意
         // 找到的是所属类原型上的constructor,而原型上的 constructor指向的是当前类本身
         hash.set(obj, cloneObj);
         for (let key in obj) {
@@ -218,7 +209,7 @@ categories:
     Function.prototype (__proto__) => Object.prototype
 
     构造函数的__proto__(包括Function和Object)都指向Function.prototype。
-    对象的__proto__都指向Object.prototype
+    对象的__proto__都指向Object.prototype  在理解一次
 
 ## 实现继承的几种方式
 
@@ -272,7 +263,7 @@ categories:
     }
 
     function Cat(age) {
-      // 别忘了这里的借用构造函数
+      // 别忘了这里的借用构造函数 这里需要注意
       Animal.call(this,age)
       this.age = age;
     }
@@ -417,7 +408,7 @@ JavaScript使用Number类型表示数字（整数和浮点数），遵循 IEEE 7
           function dispatch(i) {
             if(i <= index) throw new Error('next() called multiple time')
             index = i
-            let fn = middlewares(i)
+            let fn = middlewares[i]
             if(i === middlewares.length) fn = next
             if(!fn) return 
             return fn(() => dispatch(i+ 1))
