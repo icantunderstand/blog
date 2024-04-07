@@ -10,7 +10,7 @@ React在函数组件中引入了Hooks机制使函数组件拥有了类组件的�
 ## 前置知识
 ### Fiber
 React为了实现时间切片,将页面的组件节点都进行了新的抽象-Fiber.通过引入Fiber结构React可以更好的实现组件更新的调度.Fiber结构主要有以下几种类型的结构:
-1. Fiber节点的连接结构,在组件更新时候需要依赖这些属性
+1. Fiber节点的链表连接结构,在组件更新时候需要依赖这些属性
 2. 动态的运行数据(updateQueue,memoizedState)等,在渲染更新的时候会利用这些属性存储需要更新的操作和数据.Hooks的实现就是依赖这块的结构.
 3. Lanes 这里主要定义任务的优先级,Fiber Reconciler实现了一套新的优先级更新机制,这块在之后的文章会再介绍.
 ![Fiber结构](./reactStatic/reactHooks/Fiber.png)

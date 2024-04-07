@@ -59,7 +59,7 @@ react的diff策略基于以下三点:
 
 ## react fiber reconciler过程
 reconciler分为render阶段和commit阶段
-* 任务调度-scheduler阶段  通过调度器的requestIdleCallback或requestAnimationFrame在浏览器空闲时执行任务
+* 任务调度-scheduler阶段  
 * render阶段利用已有的fiber tree生成workInprogressFiber render阶段可以被高优先打断
 * commit阶段是更新阶段，将render阶段需要更新的操作执行，commit阶段有三个主要阶段钩子
     1. before mutation-执行DOM操作前执行，会执行getSnapshotBeforeUpdate/componentDidUpdate

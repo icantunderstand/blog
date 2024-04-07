@@ -1,6 +1,6 @@
 ---
 title: webpack资料总结 
-date: 2021-4-1 11:30:00  
+date: "2021-4-1"
 tags: webpack
 categories: webpack
 ---
@@ -68,8 +68,8 @@ a pitch => b pitch => a loader normal execution
 
 
     module.exports = function(content, map, meta) {
-    // 告知loader-runner是一个异步loader
-      var callback = this.async();
+    // 告知loader-runner是一个异步loader 异步loader不会阻塞webpack编译
+      const callback = this.async();
       someAsyncOperation(content, function(err, result) {
         if (err) return callback(err);
         callback(null, result, map, meta);
