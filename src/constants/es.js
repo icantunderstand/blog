@@ -13,6 +13,8 @@ const blogCategory = [
   { key: "Node"},
   { key: "前端快报", meta: "收录最近阅读的前端资料"}，
   { key: "年度总结" },
+  { key: '随想' },
+  { key: '前端基础' },
 ]
 
 export default {
