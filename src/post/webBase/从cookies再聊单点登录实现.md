@@ -1,7 +1,7 @@
 ---
 title: 从cookies再聊单点登录实现
-date: "2023-04-05"
-tags: 计前端基础
+date: "2024-04-05"
+tags: 前端基础
 path: /sso
 
 ---
