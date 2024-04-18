@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-category-detail-js",
     "path": "/前端基础",
-    "result": {"data":{"allMarkdownRemark":{"totalCount":1,"edges":[{"node":{"id":"e7dba02a-4655-564c-ad4b-5a136e44fcf2","frontmatter":{"title":"聊聊页面间的通信机制","date":"2024-04-05","tags":"前端基础","path":"/window-message","top":null,"summary":null}}}]}},"pageContext":{"category":"前端基础"}},
+    "result": {"data":{"allMarkdownRemark":{"totalCount":2,"edges":[{"node":{"id":"1b4968b4-2a2a-5a14-9be0-5e4ab155f789","frontmatter":{"title":"从cookies再聊单点登录实现","date":"2024-04-05","tags":"前端基础","path":"/sso","top":null,"summary":null}}},{"node":{"id":"e7dba02a-4655-564c-ad4b-5a136e44fcf2","frontmatter":{"title":"聊聊页面间的通信机制","date":"2024-04-05","tags":"前端基础","path":"/window-message","top":null,"summary":null}}}]}},"pageContext":{"category":"前端基础"}},
     "staticQueryHashes": []}
