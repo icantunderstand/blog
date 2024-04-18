@@ -118,7 +118,7 @@ eslint提供了生成插件的工具[generator-eslint](https://github.com/eslint
     npm link eslint-plugin-hooks-limit(定义的插件名字)
 
 
-## [eslint-plugin-hooks-num-limit](https://www.npmjs.com/package/eslint-plugin-hooks-limit)
+## [eslint-plugin-hooks-limit](https://www.npmjs.com/package/eslint-plugin-hooks-limit)
 
 ### 安装插件
 
